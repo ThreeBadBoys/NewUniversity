@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace newUniversity
 {
     /// <summary>
@@ -42,8 +41,7 @@ namespace newUniversity
                 if (passwordInput.Password.ToString().Equals(password))
                 {
 
-
-
+              
                     var newForm = new MainWindow(); //create your new form.
                     newForm.Show(); //show the new form.
                     this.Close(); //only if you want to close the current form.
@@ -86,6 +84,13 @@ namespace newUniversity
             Effect = myEffect;
 
         }
+       
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
 
+            // Begin dragging the window
+            this.DragMove();
+        }
     }
 }
