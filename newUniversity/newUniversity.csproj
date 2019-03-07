@@ -224,6 +224,15 @@
     <Resource Include="Assets\icons8_Checkmark_28px.png" />
     <Resource Include="Assets\icons8_Delete_28px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8_Schedule_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Schedule_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8_Schedule_32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

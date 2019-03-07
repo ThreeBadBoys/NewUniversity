@@ -184,7 +184,7 @@
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image  Source="Assets/icons8_Services_32px.png" Visibility="Visible" Stretch="UniformToFill" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
-                        <TextBlock Text="ControllingUnitChoosing" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                        <TextBlock Text="ControllingUnitChoice" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem5_PreviewMouseLeftButtonDown">
@@ -222,7 +222,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="RightSideGrid"  Grid.Column="1" Grid.RowSpan="2" d:IsLocked="True">
+            <Grid x:Name="RightSideGrid"  Grid.Column="1" Grid.RowSpan="2">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="#FF3B1010" Offset="1"/>
@@ -254,7 +254,7 @@
 
                 </StackPanel>
             </Grid>
-            <Grid x:Name="grid1" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" d:IsLocked="True">
+            <Grid x:Name="grid1" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -281,7 +281,7 @@
                     </Button.Background>
                 </Button>
             </Grid>
-            <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+            <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -291,7 +291,7 @@
 
 
             </Grid>
-            <Grid x:Name="GridCreateNewCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+            <Grid x:Name="GridCreateNewCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -301,7 +301,7 @@
 
 
             </Grid>
-            <Grid x:Name="GridRemoveUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+            <Grid x:Name="GridRemoveUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -311,7 +311,7 @@
 
 
             </Grid>
-            <Grid x:Name="GridRemoveCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+            <Grid x:Name="GridRemoveCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -321,21 +321,69 @@
 
 
             </Grid>
-            <Grid x:Name="GridControllingUnitChoosing" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible">
+            <Grid x:Name="GridControllingUnitChoosing" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Height="60.8" Margin="77.2,151.6,0,0" VerticalAlignment="Top" Width="124.8">
-                    <CheckBox.Background>
-                        <ImageBrush/>
-                    </CheckBox.Background>
-                </CheckBox>
+                <Rectangle Margin="0 40 0 0" Height="280" VerticalAlignment="Top">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF5E232E" Offset="1"/>
+                            <GradientStop Color="#FFB55076"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="239.067" VerticalAlignment="Bottom" Margin="254.467,0,254.467,180.133" RadiusY="10" RadiusX="10">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB75177" Offset="0"/>
+                            <GradientStop Color="#FF5F232E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom" Margin="254.467,0,254.467,179.333" Height="241.733">
+                    <Label Content="ControllingUnitChoice" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+                    <StackPanel Margin="16.6,95,13,0" VerticalAlignment="Top">
+                        <CheckBox Style="{StaticResource MaterialDesignCheckBox}" Margin="5 0 5 0" Foreground="White">UnitChoice</CheckBox>
+                    </StackPanel>
+                    <StackPanel Margin="16.6,100,16.6,101.266" VerticalAlignment="Bottom">
+                        <CheckBox Style="{StaticResource MaterialDesignCheckBox}" Margin="5 0 5 0" Foreground="White">Add ot Remove Unit</CheckBox>
+                    </StackPanel>
+                </Grid>
+                <Button VerticalAlignment="Bottom" Margin="313.6,0,313.6,166.2" Content="SUBMIT" Click="btnUnitChoice_Click"/>
+                <Button x:Name="button2" VerticalAlignment="Top" Margin="254.467,103.601,254.467,0" BorderBrush="{x:Null}" Height="59.733" Width="Auto">
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8_Schedule_100px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
 
+                <StackPanel x:Name="UnitChoiceStateMsg" Orientation="Horizontal" Height="32.267" Margin="358.867,0,358.867,116.3" VerticalAlignment="Bottom" Visibility="Collapsed" >
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FF4BA44E" FontWeight="Bold" FontSize="14.667" Margin="5">DONE!</TextBlock>
+                </StackPanel>
 
             </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -397,12 +445,8 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145"  >Old password isn't valid!</TextBlock>
                 </StackPanel>
             </Grid>
-
-         
-          
-          
         </Grid>
-        <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0" d:IsLocked="True">
+        <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
             <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Click="ButtonClose_Click" RenderTransformOrigin="0.5,0.5" >
 
                 <Button.Background>

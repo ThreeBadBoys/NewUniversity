@@ -21,7 +21,6 @@ namespace newUniversity
     public partial class CorrectWindow : Window, IDisposable
     {
         public Action Worker { get; set; }
-        LoginPage secondForm;
         public CorrectWindow(Action worker)
         {
             InitializeComponent();
