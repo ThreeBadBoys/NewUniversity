@@ -37,17 +37,10 @@ namespace newUniversity
         {
 
         }
-
-
-
         private void image_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-           
 
-        }
-
-      
+        }      
     }
-
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,14 +13,12 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 namespace newUniversity
 {
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Window 
+    public partial class LoginPage : Window
     {
 
         public LoginPage()
@@ -43,19 +42,15 @@ namespace newUniversity
                 if (passwordInput.Password.ToString().Equals(password))
                 {
                     MyBlureEffectCorrect();
-                    ManagerWindow objAddNew = new ManagerWindow();
-                    objAddNew.Show();
+                    ManagerWindow managerWindow = new ManagerWindow();
+                    managerWindow.Show();
                     CloseWIndowUsingIdentifier("login");
 
                 }
                 else
                 {
                     MyBlureEffectWrong();
-                    
-                    var newForm = new LoginPage(); //create your new form.
-                    newForm.Show(); //show the new form.
-                    this.Close(); //only if you want to close the current form.
-
+          
                 }
 
             }
@@ -83,11 +78,9 @@ namespace newUniversity
                 Thread.Sleep(5);
             }
         }
-
         void Simulator1()
         {
-
-            Thread.Sleep(0);     
+            Thread.Sleep(0);
         }
         void MyBlureEffectLoading()
         {
@@ -103,7 +96,6 @@ namespace newUniversity
             Effect = myEffect;
 
         }
-
         void MyBlureEffectWrong()
         {
             myEffect.Radius = 10;
@@ -119,7 +111,7 @@ namespace newUniversity
 
             myEffect.Radius = 0;
             Effect = myEffect;
-      
+
         }
         void MyBlureEffectCorrect()
         {

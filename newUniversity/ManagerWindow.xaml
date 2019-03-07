@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:newUniversity"
         mc:Ignorable="d"
+        Tag="ManagerWindow"
         Title="MainWindow" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
@@ -63,6 +64,18 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="lockbtn" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="button1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="60.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
@@ -70,6 +83,9 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource lockbtn}"/>
         </EventTrigger>
     </Window.Triggers>
     <Grid x:Name="grid">
@@ -96,7 +112,7 @@
                 </LinearGradientBrush>
             </StackPanel.Background>
             <StackPanel Orientation="Horizontal" Height="90" HorizontalAlignment="Center" Margin="25,0">
-                <Button x:Name="ButtonBack"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Height="50" Padding="10" Margin="10,0,10,24" BorderBrush="{x:Null}" >
+                <Button x:Name="ButtonBack"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Height="50" Padding="10" Margin="10,0,10,24" BorderBrush="{x:Null}" Click="ButtonBack_Click" >
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="icons8_Door_Opened_60px.png"/>
                     </Button.Background>
@@ -108,13 +124,13 @@
                 </Button>
             </StackPanel>
             <ListView>
-                <ListViewItem x:Name="listViewItem0" Height="60">
+                <ListViewItem x:Name="listViewItem0" Height="60" PreviewMouseLeftButtonDown="listViewItem0_PreviewMouseLeftButtonDown">
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image x:Name="image" Source="Assets/icons8_Add_New_32px.png" Visibility="Visible" Stretch="UniformToFill" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
                         <TextBlock Text="Create New User" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem1_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -129,7 +145,7 @@
                     </StackPanel>
                 </ListViewItem>
 
-                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem2_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -143,7 +159,7 @@
                         <TextBlock Text="Remove User" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem3_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -157,7 +173,7 @@
                         <TextBlock Text="Remove Course" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem4_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -171,7 +187,7 @@
                         <TextBlock Text="ControllingUnitChoosing" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5">
+                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem5_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -190,6 +206,10 @@
 
         </StackPanel>
         <Grid x:Name="GridMain" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="559*"/>
+            </Grid.RowDefinitions>
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -202,14 +222,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="RightSideGrid" Grid.Column="1">
+            <Grid x:Name="RightSideGrid"  Grid.Column="1" Grid.RowSpan="2" d:IsLocked="True">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="#FF3B1010" Offset="1"/>
                         <GradientStop Color="#FFB95279" Offset="0.006"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center" Margin="10 0 10 2" Text="© 2019 Ali Najafi  (TheLoneCoder) All Rights Reserved" VerticalAlignment="Bottom" FontSize="6.667"/>
+                <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center" Margin="10 0 10 2" Text="© 2019 Ali Najafi  (TheLoneCoder) UI/UX Rights Reserved" VerticalAlignment="Bottom" FontSize="6.667"/>
                 <Image Height="150" Source="Assets/back.jpg" Stretch="UniformToFill" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" />
                 <Ellipse Width="100" Height="100" Margin="0,100,15,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" HorizontalAlignment="Right" >
                     <Ellipse.Fill>
@@ -234,7 +254,7 @@
 
                 </StackPanel>
             </Grid>
-            <Grid x:Name="grid1" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+            <Grid x:Name="grid1" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" d:IsLocked="True">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -245,29 +265,144 @@
                 </Grid.RenderTransform>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="560"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="ButtonOpenMenu" Visibility="Visible" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                <Button x:Name="ButtonOpenMenu" Visibility="Visible" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5,5,0,0" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
                     <Button.Background>
                         <ImageBrush ImageSource="icons8_Menu_32px_2.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5" BorderBrush="{x:Null}" Click="ButtonCloseMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" >
+                <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5,5,0,0" BorderBrush="{x:Null}" Click="ButtonCloseMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" >
                     <Button.Background>
                         <ImageBrush ImageSource="icons8_Menu_32px_2.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
             </Grid>
+            <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <Grid x:Name="GridCreateNewCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <Grid x:Name="GridRemoveUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <Grid x:Name="GridRemoveCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <Grid x:Name="GridControllingUnitChoosing" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Height="60.8" Margin="77.2,151.6,0,0" VerticalAlignment="Top" Width="124.8">
+                    <CheckBox.Background>
+                        <ImageBrush/>
+                    </CheckBox.Background>
+                </CheckBox>
+
+
+            </Grid>
+            <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,280">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="234.8" VerticalAlignment="Bottom" Margin="250.2,0,250.2,164.8" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,164.8" Height="280.533">
+                    <StackPanel Margin="16.6,46.866,16.6,28.867" VerticalAlignment="Center" Height="204.8">
+                        <TextBox Margin="0,10" materialDesign:HintAssist.Hint="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="newPasswordInput" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="newPasswordInputAgain" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
+                    <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="61.8,0,61.8,-14.2" Content="Change it!" Click="Button_Click" />
+                </Grid>
+                <Button x:Name="button1" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Top" Height="79.2" Margin="245.4,51.6,255,0" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="3.596,1.25" BorderBrush="{x:Null}" Width="Auto" >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8_Secure_96px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+
+                <StackPanel x:Name="PasswordChangedSuccessfullyMsg" Orientation="Horizontal" Height="36" Margin="246.334,0,240.2,93.9" VerticalAlignment="Bottom" Visibility="Collapsed" >
+                    <Grid>
+                        <Image HorizontalAlignment="Center" Margin="4" Source="Assets/icons8_Checkmark_28px.png" Stretch="UniformToFill"/>
+                    </Grid>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FF4BA44E">Your password has been changed successfully!</TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="PasswordNotChangedSuccessfullyMsg1" Orientation="Horizontal" Height="36" Margin="231.4,0,227.4,94.966" VerticalAlignment="Bottom" Visibility="Collapsed">
+                    <Grid>
+                        <Image HorizontalAlignment="Center" Margin="4" Source="Assets/icons8_Delete_28px.png" Stretch="UniformToFill"  />
+                    </Grid>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145" >Password confirmation doesn't match the password!</TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="PasswordNotChangedSuccessfullyMsg2" Orientation="Horizontal" Height="36" Margin="296.2,0,305.4,96.566" VerticalAlignment="Bottom" Visibility="Collapsed">
+                    <Grid>
+                        <Image HorizontalAlignment="Center" Margin="4" Source="Assets/icons8_Delete_28px.png" Stretch="UniformToFill"  />
+                    </Grid>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145"  >Old password isn't valid!</TextBlock>
+                </StackPanel>
+            </Grid>
+
+         
+          
+          
         </Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
+        <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0" d:IsLocked="True">
             <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Click="ButtonClose_Click" RenderTransformOrigin="0.5,0.5" >
 
                 <Button.Background>

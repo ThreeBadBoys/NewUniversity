@@ -13,7 +13,6 @@
         WindowStyle="None" 
         FontFamily="Segoe UI Emoji">
     <Grid>
-
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -22,7 +21,6 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-
         <Rectangle Width="280" Height="281.6" VerticalAlignment="Bottom" Margin="35,0,35,80" RadiusY="10" RadiusX="10" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
@@ -31,7 +29,7 @@
         <Grid VerticalAlignment="Bottom" Margin="35,0,35,80" Height="280.533">
             <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
             <StackPanel Margin="16.6,81.732,16.6,81.732" d:LayoutOverrides="Height" VerticalAlignment="Center">
-                <TextBox Margin="0,10" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <TextBox x:Name="tbUserName" Margin="0,10" materialDesign:HintAssist.Hint="UserName"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                 <PasswordBox x:Name="passwordInput" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
