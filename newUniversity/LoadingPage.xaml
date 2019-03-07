@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="LoadingPage" Height="200" Width="200" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="Window_Loaded" ShowInTaskbar="False" AllowsTransparency="True">
     <Window.Resources>
-        <Storyboard x:Key="load" RepeatBehavior="Forever">
+        <Storyboard x:Key="load" RepeatBehavior="2">
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1">
                 <EasingColorKeyFrame KeyTime="0" Value="#BFC30E0E"/>
                 <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#7FC30E0E"/>
