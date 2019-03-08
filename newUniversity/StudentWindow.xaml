@@ -3,10 +3,231 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:newUniversity"
         mc:Ignorable="d"
-        Title="StudentWindow" Height="300" Width="300">
+        Tag="StudentWindow"
+        Title="StudentWindow" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenuStudent">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelStudent">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="249.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="StackPanelStudent">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenuStudent">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelStudent">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="StackPanelStudent">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GridMain">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenuStudent}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenuStudent}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFB95279" Offset="0"/>
+                <GradientStop Color="#FF3B1010" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="StackPanelStudent"  HorizontalAlignment="Left" Width="250" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB95279" Offset="0"/>
+                    <GradientStop Color="#FF3B1010" Offset="1"/>
+                    <GradientStop Color="#FF3B1010" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <StackPanel Orientation="Horizontal" Height="90" HorizontalAlignment="Center" Margin="25,0">
+                <Button x:Name="ButtonBack"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="50" Height="50" Padding="10" Margin="10,0,10,32" BorderBrush="{x:Null}" Click="ButtonBack_Click" VerticalAlignment="Bottom" d:LayoutOverrides="Height" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="icons8_Door_Opened_60px.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="button"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="60" Height="60" Padding="0" Margin="10,0,10,24" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="pexels-photo-247885.jpeg" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <ListView>
+                <ListViewItem x:Name="listViewItem0" Height="60" PreviewMouseLeftButtonDown="listViewItem0_PreviewMouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image x:Name="image" Source="Assets/icons8_Course_32px.png" Visibility="Visible" Stretch="UniformToFill" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="This Term Courses" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem1_PreviewMouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Test_Passed_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="PassedCourses" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem2_PreviewMouseLeftButtonDown">
+
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Grades_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Grades" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem3_PreviewMouseLeftButtonDown">
+
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Course_Assign_32px_1.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="UnitChoice" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem4_PreviewMouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Edit_Property_32px.png" Visibility="Visible" Stretch="UniformToFill" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Add or Remove Course" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem5_PreviewMouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Key_2_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Password" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+
+            </ListView>
+
+        </StackPanel>
+        <Grid x:Name="GridMain" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Background="White" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="559*"/>
+            </Grid.RowDefinitions>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="RightSideGrid"  Grid.Column="2" Grid.RowSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF3B1010" Offset="1"/>
+                        <GradientStop Color="#FFB95279" Offset="0.006"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center" Margin="10 0 10 2" Text="© 2019 Ali Najafi  (TheLoneCoder) UI/UX Rights Reserved" VerticalAlignment="Bottom" FontSize="6.667"/>
+                <Image Height="150" Source="Assets/back.jpg" Stretch="UniformToFill" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" />
+                <Ellipse Width="100" Height="100" Margin="0,100,15,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" HorizontalAlignment="Right" >
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="pexels-photo-247885.jpeg" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel Orientation="Vertical" x:Name="StackPaenlMenu" Margin="0 200 0 150">
+                    <ListView>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/icons8_User_32px.png" />
+                                <TextBlock x:Name="txtUserName" Text="Omdi Rezaei" Foreground="White" FontSize="20" FontFamily="Nirmala UI" Margin="10 10" VerticalAlignment="Top"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/icons8_Address_Book_32px.png" />
+                                <TextBlock x:Name="txtUserNameState" Text="Student" Foreground="White" FontSize="20" FontFamily="Nirmala UI" Margin="10 10" VerticalAlignment="Top"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="grid1" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="560"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonOpenMenu" Visibility="Visible" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5,5,0,0" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8_Menu_32px_2.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Margin="5,5,0,0" BorderBrush="{x:Null}" Click="ButtonCloseMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8_Menu_32px_2.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Grid>
+
+
+        <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
+            <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Click="ButtonClose_Click" RenderTransformOrigin="0.5,0.5" >
+                <Button.Background>
+                    <ImageBrush ImageSource="icons8_Shutdown_32px_4.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
     </Grid>
+    
 </Window>

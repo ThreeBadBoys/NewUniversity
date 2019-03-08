@@ -572,7 +572,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,219.2" Height="146.133">
-                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontFamily="Champagne &amp; Limousines" FontSize="18">Are you sure that you wnnt to finish this term?</TextBlock>
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontFamily="Champagne &amp; Limousines" FontSize="18">Are you sure that you want to finish this term?</TextBlock>
                     <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 50 0 0" FontFamily="Champagne &amp; Limousines" FontSize="14">(Can't return to the passed term)</TextBlock>
                 </Grid>
 

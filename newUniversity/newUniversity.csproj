@@ -252,6 +252,21 @@
   <ItemGroup>
     <Resource Include="Assets\icons8_Finish_Flag_32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Course_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Test_Passed_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Grades_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Course_Assign_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Edit_Property_32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

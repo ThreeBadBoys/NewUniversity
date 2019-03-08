@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +22,76 @@ namespace newUniversity
     {
         public StudentWindow()
         {
-            InitializeComponent();
+            try { InitializeComponent(); }
+            catch (Exception ex)
+            { // Log error (including InnerExceptions!)
+              // Handle exception }
+              Console.WriteLine(ex.StackTrace);
+            }
+        }
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //This term Courses
+        }
+
+        private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //PassedCourses
+        }
+
+        private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //Grades
+        }
+
+        private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //UnitChoice
+        }
+
+        private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //Add remove
+        }
+
+        private void listViewItem5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //Change Password
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            LoginPage loginWindow = new LoginPage();
+            loginWindow.Show();
+            CloseWIndowUsingIdentifier("StudentWindow");
+        }
+        public static void CloseWIndowUsingIdentifier(string windowTag)
+        {
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w.GetType().Assembly == currentAssembly && w.Tag.Equals(windowTag))
+                {
+                    w.Close();
+                    break;
+                }
+            }
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+        }
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
         }
     }
 }
