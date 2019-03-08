@@ -35,7 +35,7 @@
         </Grid>
         <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="btnLogin"/>
         <Image Stretch="Uniform" Source="Assets/icons8_Home_64px_1.png" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
-        <ComboBox x:Name="comboBox" materialDesign:HintAssist.Hint="UserType" Margin="51.2,190.4,47.6,0" Height="33.6" VerticalAlignment="Top">
+        <ComboBox x:Name="comboBox" materialDesign:HintAssist.Hint="UserType" Margin="51.2,190.4,47.6,0" Height="33.6" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" FontSize="18">
 
             <ComboBoxItem Content="Manager"/>
             <ComboBoxItem Content="Master"/>

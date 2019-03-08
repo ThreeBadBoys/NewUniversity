@@ -66,6 +66,9 @@
     <Compile Include="CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StudentWindow.xaml.cs">
+      <DependentUpon>StudentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WrongWindow.xaml.cs">
       <DependentUpon>WrongWindow.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WrongWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +239,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons8_Schedule_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Trash_Can_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8_Trash_Can_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wrong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8_Finish_Flag_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

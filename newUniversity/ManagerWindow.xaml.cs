@@ -104,6 +104,7 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -115,6 +116,7 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -126,6 +128,7 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
         private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -137,6 +140,7 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Visible;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
         private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -149,6 +153,7 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
         private void listViewItem5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -159,6 +164,19 @@ namespace newUniversity
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
+        }
+
+        private void listViewItem6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ResetUnitChoicePanel();
+            GridCreateNewUser.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Visible;
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
@@ -188,6 +206,48 @@ namespace newUniversity
             MyBlureEffectLoading();
             UnitChoiceStateMsg.Visibility = Visibility.Visible;
             //TODO: RESULTS OF CHANGING STATE OF THE UNIT CHOICE WITH UI SHOULD BE SET
+        }
+
+        private void btn_DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF CHANGING PASSWORD WITH UI SHOULD BE SET
+        }
+
+        private void btn_DeleteCourse_Click(object sender, RoutedEventArgs e)
+        {
+
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF DELETINGCOURSE PASSWORD WITH UI SHOULD BE SET
+        }
+
+        private void btnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF CREATING NEW USER WITH UI SHOULD BE SET
+        }
+
+        private void btnAddCourse_Click(object sender, RoutedEventArgs e)
+        {
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
+        }
+
+        private void btnPassTheTerm_Click(object sender, RoutedEventArgs e)
+        {
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
+        }
+
+        private void btnNotPassTheTerm_Click(object sender, RoutedEventArgs e)
+        {
+            GridCreateNewUser.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
         }
     }
 }

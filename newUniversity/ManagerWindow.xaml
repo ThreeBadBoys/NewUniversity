@@ -184,7 +184,7 @@
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image  Source="Assets/icons8_Services_32px.png" Visibility="Visible" Stretch="UniformToFill" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
-                        <TextBlock Text="ControllingUnitChoice" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                        <TextBlock Text="Controlling" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem5_PreviewMouseLeftButtonDown">
@@ -199,6 +199,20 @@
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image  Source="Assets/icons8_Key_2_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
                         <TextBlock Text="Password" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem6" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem6_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Finish_Flag_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Finish Current Term" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
 
@@ -288,8 +302,35 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,248">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="280.8" VerticalAlignment="Bottom" Margin="190,0,190,190.4" RadiusY="23.2" RadiusX="23.2" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="192.6,0,191,100" Height="369.333">
+                    <Label Content="ENTER USER INFO" FontFamily="Champagne &amp; Limousines" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" />
+                    <StackPanel Orientation="Vertical" Margin="16.6,41.699,16.6,33.233" VerticalAlignment="Center" Height="294.401">
 
+                        <ComboBox x:Name="comboBoxForCreateNewUser" materialDesign:HintAssist.Hint="UserType"  Height="33.6" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                            <ComboBoxItem Content="Manager"/>
+                            <ComboBoxItem Content="Master"/>
+                            <ComboBoxItem Content="Student"/>
+                        </ComboBox>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="FirstName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="LastName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="Major" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
 
+                </Grid>
+                <Button x:Name="btnSignUp" VerticalAlignment="Bottom" Margin="307.2,0,307.2,170.4" Content="SIGN UP" Click="btnSignUp_Click" />
             </Grid>
             <Grid x:Name="GridCreateNewCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
@@ -298,17 +339,78 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,248">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="386.4" VerticalAlignment="Bottom" Margin="175.2,0,175.2,129.2" RadiusY="23.2" RadiusX="23.2" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="192.6,0,191,47.2" Height="465.333">
+                    <Label Content="ENTER COURSE INFO" FontFamily="Champagne &amp; Limousines" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" />
+                    <StackPanel Orientation="Vertical" Margin="16.6,43.299,16.6,-1.967" VerticalAlignment="Center" Height="424.001">
 
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="MasterID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseUnit No" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <DatePicker Margin="0,15,0,0" materialDesign:HintAssist.Hint="ExamDate"  Style="{StaticResource MaterialDesignDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+                        <materialDesign:TimePicker  Margin="0,15,0,0" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+                    </StackPanel>
 
+                </Grid>
+
+                <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="308,0,308,112.8" Content="ADD" Click="btnAddCourse_Click" />
             </Grid>
-            <Grid x:Name="GridRemoveUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+
+            <Grid x:Name="GridRemoveUser"  Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+                <Grid.Background>
+                    <ImageBrush/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,248">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="198.8" VerticalAlignment="Bottom" Margin="235.2,0,228.8,186" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
+                    <Label Content="ENTER USER INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                    <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,118.033" VerticalAlignment="Center" Height="102.401">
 
+                        <ComboBox x:Name="comboBox" materialDesign:HintAssist.Hint="UserType"  Height="33.6" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                            <ComboBoxItem Content="Manager"/>
+                            <ComboBoxItem Content="Master"/>
+                            <ComboBoxItem Content="Student"/>
+                        </ComboBox>
+                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
+
+                </Grid>
+                <Button VerticalAlignment="Bottom" Margin="313.733,0,313.733,168.133" Content="DELETE" Click="btn_DeleteUser_Click" Background="Red" BorderBrush="Red" />
+                <Button Margin="237.6,85,228,0" VerticalAlignment="Top" Height="68" BorderBrush="{x:Null}" RenderTransformOrigin="0.482,0.112">
+                    <Button.Background>
+                        <ImageBrush ImageSource="icons8_Trash_Can_50px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
 
             </Grid>
             <Grid x:Name="GridRemoveCourse" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
@@ -318,8 +420,27 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,248">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="198.8" VerticalAlignment="Bottom" Margin="235.2,0,228.8,186" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
+                    <Label Content="ENTER COURSE INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                    <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,157.633" VerticalAlignment="Center" Height="62.801">
+                        <TextBox x:Name="txtCourseID" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Course ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
 
-
+                </Grid>
+                <Button VerticalAlignment="Bottom" Margin="313.733,0,313.733,168.133" Content="DELETE" Click="btn_DeleteCourse_Click" Background="Red" BorderBrush="Red" />
             </Grid>
             <Grid x:Name="GridControllingUnitChoosing" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
@@ -368,23 +489,7 @@
                 </StackPanel>
 
             </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" d:IsLocked="True" >
+            <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -444,6 +549,35 @@
                     </Grid>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145"  >Old password isn't valid!</TextBlock>
                 </StackPanel>
+            </Grid>
+            <!--//-->
+            <Grid x:Name="GridFinishTerm" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Margin="0,40,0,280">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFB95279"/>
+                            <GradientStop Color="#FF511B2F" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Height="148.4" VerticalAlignment="Bottom" Margin="250.2,0,250.2,217.6" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,219.2" Height="146.133">
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontFamily="Champagne &amp; Limousines" FontSize="18">Are you sure that you wnnt to finish this term?</TextBlock>
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 50 0 0" FontFamily="Champagne &amp; Limousines" FontSize="14">(Can't return to the passed term)</TextBlock>
+                </Grid>
+
+                <Button Margin="0,0,280.4,201.4" Content="Yes" Click="btnPassTheTerm_Click" HorizontalAlignment="Right" Width="98.8" Height="32" VerticalAlignment="Bottom"/>
+                <Button Margin="279.6,0,0,202.2" Content="No" Click="btnNotPassTheTerm_Click" HorizontalAlignment="Left" Width="98.8" Height="32" VerticalAlignment="Bottom" Background="#FFF32121" BorderBrush="#FFF32121"/>
             </Grid>
         </Grid>
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
