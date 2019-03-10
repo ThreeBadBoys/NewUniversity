@@ -262,6 +262,20 @@ namespace newUniversity
         private void btn_change_Password_Click(object sender, RoutedEventArgs e)
         {
 
+
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+        public void ResetPasswordPanel()
+        {
+            PasswordChangedSuccessfullyMsg.Visibility = Visibility.Collapsed;
+            PasswordNotChangedSuccessfullyMsg1.Visibility = Visibility.Collapsed;
+            PasswordNotChangedSuccessfullyMsg2.Visibility = Visibility.Collapsed;
         }
     }
 }
