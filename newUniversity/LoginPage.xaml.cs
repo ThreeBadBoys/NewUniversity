@@ -57,6 +57,19 @@ namespace newUniversity
             else if (comboBox.SelectionBoxItem.ToString().Equals("Master"))
             {
                 MyBlureEffectLoading();
+                if (passwordInput.Password.ToString().Equals(password))
+                {
+                    MyBlureEffectCorrect();
+                    MasterWindow masterWindow = new MasterWindow();
+                    masterWindow.Show();
+                    CloseWIndowUsingIdentifier("login");
+
+                }
+                else
+                {
+                    MyBlureEffectWrong();
+
+                }
 
             }
             else if (comboBox.SelectionBoxItem.ToString().Equals("Student"))

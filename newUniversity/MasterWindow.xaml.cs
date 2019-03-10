@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,64 @@ namespace newUniversity
         public MasterWindow()
         {
             InitializeComponent();
+        }
+
+        private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridListOfClasses.Visibility = Visibility.Visible;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridListOfClasses.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            LoginPage loginWindow = new LoginPage();
+            loginWindow.Show();
+            CloseWIndowUsingIdentifier("MasterWindow");
+        }
+        public static void CloseWIndowUsingIdentifier(string windowTag)
+        {
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w.GetType().Assembly == currentAssembly && w.Tag.Equals(windowTag))
+                {
+                    w.Close();
+                    break;
+                }
+            }
+        }
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+        }
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void Button_change_Master_Password_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
         }
     }
 }

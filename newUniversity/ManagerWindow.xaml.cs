@@ -249,5 +249,6 @@ namespace newUniversity
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
         }
+     
     }
 }
