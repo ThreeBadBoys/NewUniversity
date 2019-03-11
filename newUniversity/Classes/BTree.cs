@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace University.Classes
 {
-    using System;
-
     [Serializable]
     class BTree
     {
@@ -54,7 +49,7 @@ namespace University.Classes
         }
 
         /**
-         * Returns the file address associated with the biggest key.
+         * Returns the file index associated with the biggest key.
          */
         public int getLast()
         {
@@ -68,7 +63,7 @@ namespace University.Classes
             // external node
             if (ht == 0)
             {
-                return children[x.m - 1].address;
+                return children[x.m - 1].index;
             }
 
             // internal node
@@ -76,24 +71,24 @@ namespace University.Classes
             {
                 return search(children[x.m - 1].next, ht - 1);
             }
-            return -1;
+            return 0;
         }
 
         /**
-         * Returns the file address associated with the given key.
+         * Returns the file index associated with the given key.
          *
          * @param  key the key
-         * @return the file address associated with the given key if the key is in the symbol table
+         * @return the file index associated with the given key if the key is in the symbol table
          *         and {@code null} if the key is not in the symbol table
          * @throws ArgumentOutOfRangeException if {@code key} is {@code null}
          */
-        public int get(int key)
+        public int get(string key)
         {
-            if (key == 0) throw new ArgumentOutOfRangeException("argument to get() is null");
+            if (key == null) throw new ArgumentOutOfRangeException("argument to get() is null");
             return search(root, key, height);
         }
 
-        private int search(Node x, int key, int ht)
+        private int search(Node x, string key, int ht)
         {
             Entry[] children = x.children;
 
@@ -102,7 +97,7 @@ namespace University.Classes
             {
                 for (int j = 0; j < x.m; j++)
                 {
-                    if (equal(key, children[j].key)) return children[j].address;
+                    if (equal(key, children[j].key)) return children[j].index;
                 }
             }
 
@@ -119,17 +114,17 @@ namespace University.Classes
         }
 
         /**
-         * Inserts the key-address pair into the symbol table, overwriting the old address
-         * with the new address if the key is already in the symbol table.
+         * Inserts the key-index pair into the symbol table, overwriting the old index
+         * with the new index if the key is already in the symbol table.
          *
          * @param  key the string
-         * @param  address the string
+         * @param  index the string
          * @throws ArgumentOutOfRangeException if {@code key} is {@code null}
          */
-        public void put(int key, int address)
+        public void put(string key, int index)
         {
-            if (key == 0) throw new ArgumentOutOfRangeException("argument key to put() is null");
-            Node u = insert(root, key, address, height);
+            if (key == null) throw new ArgumentOutOfRangeException("argument key to put() is null");
+            Node u = insert(root, key, index, height);
             n++;
             if (u == null) return;
 
@@ -144,9 +139,9 @@ namespace University.Classes
         /**
          * this effectively deletes the key from the symbol table.
          */
-        public void delete(int key)
+        public void delete(string key)
         {
-            if (key == 0) throw new ArgumentOutOfRangeException("argument key to put() is null");
+            if (key == null) throw new ArgumentOutOfRangeException("argument key to put() is null");
             Node u = insert(root, key, -1, height);
             n++;
             if (u == null) return;
@@ -159,10 +154,10 @@ namespace University.Classes
             height++;
         }
 
-        private Node insert(Node h, int key, int address, int ht)
+        private Node insert(Node h, string key, int index, int ht)
         {
             int j;
-            Entry t = new Entry(key, address, null);
+            Entry t = new Entry(key, index, null);
 
             // external node
             if (ht == 0)
@@ -180,7 +175,7 @@ namespace University.Classes
                 {
                     if ((j + 1 == h.m) || less(key, h.children[j + 1].key))
                     {
-                        Node u = insert(h.children[j++].next, key, address, ht - 1);
+                        Node u = insert(h.children[j++].next, key, index, ht - 1);
                         if (u == null) return null;
                         t.key = u.children[0].key;
                         t.next = u;
@@ -226,7 +221,7 @@ namespace University.Classes
             {
                 for (int j = 0; j < h.m; j++)
                 {
-                    s += indent + children[j].key + " " + children[j].address + "\n";
+                    s += indent + children[j].key + " " + children[j].index + "\n";
                 }
             }
             else
@@ -240,17 +235,50 @@ namespace University.Classes
             return s;
         }
 
+        /**
+         * Returns an array representation of this B-tree.
+         *
+         * @return an array representation of this B-tree.
+         */
+        public List<int> toArray()
+        {
+            return toArray(root, height);
+        }
+
+        private List<int> toArray(Node h, int ht)
+        {
+            List<int> array = new List<int>();
+            Entry[] children = h.children;
+
+            if (ht == 0)
+            {
+                for (int j = 0; j < h.m; j++)
+                {
+                    if (children[j].index != null)
+                    {
+                        array.Add(children[j].index);
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < h.m; j++)
+                {
+                    array.AddRange(toArray(children[j].next, ht - 1));
+                }
+            }
+            return array;
+        }
+
         // comparison functions - make Comparable instead of Key to avoid casts
-        private bool less(int k1, int k2)
+        private bool less(string k1, string k2)
         {
             return k1.CompareTo(k2) < 0;
         }
 
-        private bool equal(int k1, int k2)
+        private bool equal(string k1, string k2)
         {
             return k1.Equals(k2);
         }
     }
 }
-
-
