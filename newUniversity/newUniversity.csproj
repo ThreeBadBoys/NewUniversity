@@ -63,12 +63,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterWindow.xaml.cs">
       <DependentUpon>MasterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MinimumCharacterRule.cs" />
+    <Compile Include="ObservableObject.cs" />
+    <Compile Include="RegistrationVM.cs" />
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>

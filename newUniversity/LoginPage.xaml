@@ -6,12 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:newUniversity"
         mc:Ignorable="d"
+     
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Login" Height="500" Width="350" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
         FontFamily="Segoe UI Emoji">
+    <Window.DataContext>
+        <local:RegistrationVM/>
+    </Window.DataContext>
     <Grid>
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -29,7 +33,15 @@
         <Grid VerticalAlignment="Bottom" Margin="35,0,35,80" Height="280.533">
             <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
             <StackPanel Margin="16.6,81.732,16.6,81.732" d:LayoutOverrides="Height" VerticalAlignment="Center">
-                <TextBox x:Name="tbUserName" Margin="0,10" materialDesign:HintAssist.Hint="UserName"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <TextBox x:Name="tbUserName" Margin="0,10" materialDesign:HintAssist.Hint="UserName"  Validation.ErrorTemplate="{StaticResource errorTemplate}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <TextBox.Text>
+                        <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:MinimumCharacterRule MinimumCharacters="5"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <PasswordBox x:Name="passwordInput" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
