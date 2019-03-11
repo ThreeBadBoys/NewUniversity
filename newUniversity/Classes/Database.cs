@@ -16,11 +16,14 @@ namespace University.Classes
         public Database(string fileName)
         {
             this.fileName = fileName;
-            BTree newTree = new BTree();
-            this.IDTree = newTree;
+            this.IDTree = new BTree();
+            this.NameTree = new BTree();
             FileStream file = File.Create(fileName + "idtree");
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, this.IDTree);
+            file.Close();
+            file = File.Create(fileName + "nametree");
+            bf.Serialize(file, this.NameTree);
             file.Close();
             file = File.Create(fileName);
             file.Close();
@@ -35,6 +38,12 @@ namespace University.Classes
             this.NameTree = bf.Deserialize(file) as BTree;
             file.Close();
         }
+
+        public abstract void loadRecordFromFile(int index);
+
+        public abstract void loadRecordFromFile(FileStream file, int index);
+
+        public abstract int insertRecordToFile();
 
         public abstract void save();
 
@@ -58,12 +67,29 @@ namespace University.Classes
         public void update()
         {
             File.Move(this.fileName, "temp" + this.fileName);
-            File.Move(this.fileName + "tree", "temp" + this.fileName + "tree");
-            FileStream file = File.Create(this.fileName);
-            FileStream treefile = File.Create(this.fileName + "tree");
+            FileStream file = File.Open("temp" + this.fileName, FileMode.Open);
+            File.Create(this.fileName);
+            BinaryFormatter bf = new BinaryFormatter();
             List<int> indexes = IDTree.toArray();
-            //some code
+            IDTree = new BTree();
+            NameTree = new BTree();
+            for(int i = 0 ; i<indexes.Count ; i++)
+            {
+                loadRecordFromFile(file, indexes[i]);
+                int index = insertRecordToFile();
+                IDTree.put(ID + "", index);
+                NameTree.put(Name, index);
+            }
+            file.Close();
             File.Delete("temp" + this.fileName);
+            file = File.Open(this.fileName + "idtree", FileMode.Open);
+            bf.Serialize(file, IDTree);
+            file.Close();
+            file = File.Open(this.fileName + "nametree", FileMode.Open);
+            bf.Serialize(file, NameTree);
+            file.Close();
         }
+
+
     }
 }
