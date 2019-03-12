@@ -63,7 +63,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\CourseDB.cs" />
     <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\ManagerDB.cs" />
+    <Compile Include="Classes\MasterDB.cs" />
+    <Compile Include="Classes\StudentDB.cs" />
+    <Compile Include="Classes\University.cs" />
+    <Compile Include="Classes\UserDB.cs" />
     <Compile Include="CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
     </Compile>
