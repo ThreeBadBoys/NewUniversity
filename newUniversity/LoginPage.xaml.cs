@@ -25,7 +25,6 @@ namespace newUniversity
         {
             InitializeComponent();
         }
-        string id = "1234";
         string password = "1234";
         BlurEffect myEffect = new BlurEffect();
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -95,7 +94,7 @@ namespace newUniversity
         {
             for (int i = 0; i < 500; i++)
             {
-                Thread.Sleep(7);
+                Thread.Sleep(4);
             }
         }
         void SimulatorWrongWindow()
