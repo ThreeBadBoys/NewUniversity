@@ -29,12 +29,14 @@ namespace newUniversity
         {
             GridListOfClasses.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GridListOfClasses.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

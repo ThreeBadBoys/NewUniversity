@@ -265,6 +265,30 @@
                     </Button.Background>
                 </Button>
             </Grid>
+            <Grid x:Name="GridArrow" Grid.Column="0" Margin="100" Grid.RowSpan="2" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-10"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+
+                <Image Source="Assets/arrow.png">
+
+                </Image>
+            </Grid>
+            <Grid x:Name="GridStart" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible" Opacity="0.4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <MediaElement x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
+            </Grid>
+
             <Grid  x:Name="GridThisTermCourses" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -272,7 +296,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5">
+                <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5" Opacity="0.73">
                     <Rectangle.Fill>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
@@ -338,7 +362,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5">
                     <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush EndPoint="0.5,1" Opacity="0.73" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
                             <GradientStop Color="#FF511B2F" Offset="1"/>
                         </LinearGradientBrush>
@@ -403,7 +427,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5">
                     <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush EndPoint="0.5,1" Opacity="0.73" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
                             <GradientStop Color="#FF511B2F" Offset="1"/>
                         </LinearGradientBrush>
@@ -468,7 +492,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5">
                     <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush EndPoint="0.5,1" Opacity="0.73" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
                             <GradientStop Color="#FF511B2F" Offset="1"/>
                         </LinearGradientBrush>
@@ -544,7 +568,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Margin="0,40,0,248" RenderTransformOrigin="0.5,0.5">
                     <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush EndPoint="0.5,1" Opacity="0.73" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
                             <GradientStop Color="#FF511B2F" Offset="1"/>
                         </LinearGradientBrush>
@@ -620,7 +644,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Margin="0,40,0,280">
                     <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" Opacity="0.73" StartPoint="0.5,0">
                             <GradientStop Color="#FFB95279"/>
                             <GradientStop Color="#FF511B2F" Offset="1"/>
                         </LinearGradientBrush>

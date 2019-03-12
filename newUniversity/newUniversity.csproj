@@ -284,6 +284,16 @@
   <ItemGroup>
     <Resource Include="Assets\icons8_Edit_Property_32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\arrow.png" />
+    <Resource Include="arrow.png" />
+    <Content Include="Assets\sky.MP4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sky.MP4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

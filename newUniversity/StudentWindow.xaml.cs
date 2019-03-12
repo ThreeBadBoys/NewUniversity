@@ -55,6 +55,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Collapsed;
             GridUnitChoice.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -66,6 +67,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Collapsed;
             GridUnitChoice.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -77,6 +79,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Collapsed;
             GridUnitChoice.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -88,6 +91,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Visible;
             GridUnitChoice.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -99,6 +103,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Collapsed;
             GridUnitChoice.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -110,6 +115,7 @@ namespace newUniversity
             GridADDORREMOVECOURSE.Visibility = Visibility.Collapsed;
             GridUnitChoice.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

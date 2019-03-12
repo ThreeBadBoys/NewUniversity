@@ -105,6 +105,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -117,6 +118,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -129,6 +131,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -141,6 +144,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -154,6 +158,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void listViewItem5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -165,6 +170,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -177,6 +183,7 @@ namespace newUniversity
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Visible;
+            GridArrow.Visibility = Visibility.Collapsed;
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
@@ -249,6 +256,7 @@ namespace newUniversity
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
         }
-     
+
+
     }
 }
