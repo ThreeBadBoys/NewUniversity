@@ -42,5 +42,12 @@ namespace University.Classes
         {
             throw new NotImplementedException();
         }
+
+        public void newMaster(string name, string family, string password, string field)
+        {
+            this.name = name;
+            this.family = family;
+            this.password = password;
+        }
     }
 }
