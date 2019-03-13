@@ -9,6 +9,10 @@ namespace University.Classes
 {
     class StudentDB : UserDB
     {
+        public string field;
+        public List<int> passedCourses;
+        public List<int> currentCourses;
+
         public StudentDB(string fileName) : base(fileName)
         {
         }
@@ -41,6 +45,16 @@ namespace University.Classes
         public override void save()
         {
             throw new NotImplementedException();
+        }
+
+        public void newMaster(string name, string family, string password, string field)
+        {
+            this.name = name;
+            this.family = family;
+            this.password = password;
+            this.field = field;
+            this.passedCourses = new List<int>();
+            this.currentCourses = new List<int>();
         }
     }
 }

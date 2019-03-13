@@ -10,7 +10,7 @@ namespace University.Classes
         string fileName = "";
         BTree IDTree;
         BTree NameTree;
-        int ID = 0;
+        public int ID = 0;
         string Name = null;
 
         public Database(string fileName)
