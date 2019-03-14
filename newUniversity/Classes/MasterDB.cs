@@ -9,6 +9,9 @@ namespace University.Classes
 {
     class MasterDB : UserDB
     {
+        public string field;
+        public List<int> courses;
+
         public MasterDB(string fileName) : base(fileName)
         {
         }
@@ -38,9 +41,12 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
-        public override void save()
+        public void newMaster(string name, string family)
         {
-            throw new NotImplementedException();
+            this.name = name;
+            this.family = family;
+            this.password = ID + "";
+            this.courses = new List<int>();
         }
     }
 }

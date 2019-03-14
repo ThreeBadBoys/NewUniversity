@@ -8,9 +8,9 @@ namespace University.Classes
     abstract class Database
     {
         string fileName = "";
-        BTree IDTree;
-        BTree NameTree;
-        int ID = 0;
+        protected BTree IDTree = null;
+        protected BTree NameTree = null;
+        public int ID = 0;
         string Name = null;
 
         public Database(string fileName)
@@ -29,7 +29,7 @@ namespace University.Classes
             file.Close();
         }
 
-        private void loadTree()
+        protected void loadTrees()
         {
             FileStream file = File.Open(fileName + "idTree", FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
@@ -43,9 +43,21 @@ namespace University.Classes
 
         public abstract void loadRecordFromFile(FileStream file, int index);
 
+        public abstract int insertRecordToFile(int index);
+
         public abstract int insertRecordToFile();
 
-        public abstract void save();
+        public void save()
+        {
+            if (IDTree == null)
+                loadTrees();
+            int index = IDTree.get(ID + "");
+            if (index == -1)
+                insertRecordToFile();
+            else
+                insertRecordToFile(index);
+        }
+
 
         public void delete()
         {

@@ -18,29 +18,6 @@ namespace University.Classes
         {
         }
 
-        public override void getByID(int id)
-        {
-            
-        }
-
-        public override void getByName(string Name)
-        {
-            
-        }
-
-        public override void save()
-        {
-            
-        }
-
-        public void newCourse(string title, short unitsCount, int masterID)
-        {
-            this.title = title;
-            this.unitsCount = unitsCount;
-            this.masterID = masterID;
-            this.studentsID = new List<int>();
-        }
-
         public override void loadRecordFromFile(int index)
         {
             throw new NotImplementedException();
@@ -54,6 +31,24 @@ namespace University.Classes
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
+        }
+
+        public override void getByID(int id)
+        {
+            
+        }
+
+        public override void getByName(string Name)
+        {
+            
+        }
+
+        public void newCourse(string title, short unitsCount, int masterID)
+        {
+            this.title = title;
+            this.unitsCount = unitsCount;
+            this.masterID = masterID;
+            this.studentsID = new List<int>();
         }
     }
 }

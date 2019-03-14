@@ -9,6 +9,10 @@ namespace University.Classes
 {
     class StudentDB : UserDB
     {
+        public string field;
+        public List<int> passedCourses;
+        public List<int> currentSemister;
+
         public StudentDB(string fileName) : base(fileName)
         {
         }
@@ -28,6 +32,11 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
+        public override int insertRecordToFile(int index)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void loadRecordFromFile(int index)
         {
             throw new NotImplementedException();
@@ -38,9 +47,13 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
-        public override void save()
+        public void newStudent(string name, string family)
         {
-            throw new NotImplementedException();
+            this.name = name;
+            this.family = family;
+            this.password = ID + "";
+            this.passedCourses = new List<int>();
+            this.currentSemister = new List<int>();
         }
     }
 }
