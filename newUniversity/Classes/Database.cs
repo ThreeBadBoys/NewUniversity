@@ -84,7 +84,6 @@ namespace University.Classes
                 insertRecordToFile(index);
         }
 
-
         public void delete()
         {
             if (this.ID != 0 && this.Name != null)
@@ -138,7 +137,5 @@ namespace University.Classes
             }
 
         }
-
-
     }
 }

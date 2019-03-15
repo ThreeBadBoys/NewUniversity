@@ -28,6 +28,11 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
+        public override int insertRecordToFile(int index)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void loadRecordFromFile(int index)
         {
             throw new NotImplementedException();

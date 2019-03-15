@@ -48,5 +48,10 @@ namespace University.Classes
             this.password = ID + "";
             this.courses = new List<int>();
         }
+
+        public override int insertRecordToFile(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

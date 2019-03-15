@@ -31,17 +31,17 @@
         </Rectangle>
         <Grid VerticalAlignment="Bottom" Margin="35,0,35,80" Height="280.533">
             <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
-            <StackPanel Margin="16.6,81.732,16.6,81.732" d:LayoutOverrides="Height" VerticalAlignment="Center">
-                <TextBox x:Name="tbUserName" Margin="0,10" materialDesign:HintAssist.Hint="UserName"  Validation.ErrorTemplate="{StaticResource errorTemplate}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18">
+            <StackPanel Margin="16.6,85.417,16.6,70" VerticalAlignment="Center" Height="125.116">
+                <TextBox x:Name="UserNameInput" Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName"  Validation.ErrorTemplate="{StaticResource errorTemplate}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18">
                     <TextBox.Text>
                         <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:MinimumCharacterRule MinimumCharacters="5"/>
+                                <local:UserNameRule MinimumCharacters="5"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <PasswordBox x:Name="passwordInput" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <PasswordBox x:Name="passwordInput" Margin="0,5,0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
         <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="btnLogin"/>
