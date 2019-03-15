@@ -29,14 +29,40 @@ namespace University.Classes
             file.Close();
         }
 
-        protected void loadTrees()
+        protected bool loadTrees()
         {
-            FileStream file = File.Open(fileName + "idTree", FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            this.IDTree = bf.Deserialize(file) as BTree;
-            file = File.Open(fileName + "nameTree", FileMode.Open);
-            this.NameTree = bf.Deserialize(file) as BTree;
-            file.Close();
+            return loadIdTree() && loadNameTree();
+        }
+        protected bool loadIdTree()
+        {
+            if (File.Exists(fileName + "idTree"))
+            {
+                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
+                if (new FileInfo(fileName + "idTree").Length != 0)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    this.IDTree = bf.Deserialize(file) as BTree;
+                    file.Close();
+                    return true;
+                }
+            }
+            return false;
+        }
+        protected bool loadNameTree()
+        {
+            if (File.Exists(fileName + "nameTree"))
+            {
+                FileStream file = File.Open(fileName + "nameTree", FileMode.Open);
+                file = File.Open(fileName + "nameTree", FileMode.Open);
+                if (new FileInfo(fileName + "nameTree").Length != 0)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    this.NameTree = bf.Deserialize(file) as BTree;
+                    file.Close();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public abstract void loadRecordFromFile(int index);
