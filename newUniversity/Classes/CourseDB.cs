@@ -28,7 +28,7 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
-        public override int insertRecordToFile()
+        public override int insertRecordToFile(int index)
         {
             throw new NotImplementedException();
         }
@@ -50,5 +50,7 @@ namespace University.Classes
             this.masterID = masterID;
             this.studentsID = new List<int>();
         }
+
+      
     }
 }
