@@ -23,12 +23,13 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
-        public override void loadRecordFromFile(FileStream file, int index)
+
+        public override int insertRecordToFile(int index)
         {
             throw new NotImplementedException();
         }
 
-        public override int insertRecordToFile(int index)
+        public override int insertRecordToFile()
         {
             throw new NotImplementedException();
         }
@@ -51,6 +52,10 @@ namespace University.Classes
             this.studentsID = new List<int>();
         }
 
-      
+        public override void loadRecordFromFile(FileStream file, int index)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
