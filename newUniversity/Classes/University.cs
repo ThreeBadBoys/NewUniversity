@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     class University
     {

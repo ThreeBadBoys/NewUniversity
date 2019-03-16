@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     class ManagerDB : UserDB
     {
@@ -24,6 +24,11 @@ namespace University.Classes
         }
 
         public override int insertRecordToFile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int insertRecordToFile(int index)
         {
             throw new NotImplementedException();
         }

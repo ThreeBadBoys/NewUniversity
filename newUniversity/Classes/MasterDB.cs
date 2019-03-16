@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     class MasterDB : UserDB
     {
@@ -48,6 +48,11 @@ namespace University.Classes
             this.Name = name + " " + family;
             this.password = ID + "";
             this.courses = new List<int>();
+        }
+
+        public override int insertRecordToFile(int index)
+        {
+            throw new NotImplementedException();
         }
     }
 }

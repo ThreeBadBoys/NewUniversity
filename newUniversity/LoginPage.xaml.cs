@@ -1,4 +1,5 @@
-﻿using System;
+﻿using newUniversity.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -25,7 +26,7 @@ namespace newUniversity
         {
             InitializeComponent();
         }
-        string password = "1234";
+      
         BlurEffect myEffect = new BlurEffect();
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -34,59 +35,88 @@ namespace newUniversity
 
         private void btnLogin(object sender, RoutedEventArgs e)
         {
+            if(UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
+            {
+                return;
+            }
+            if (!State.isOk)
+            {
+                return;
+            }
+       
             if (comboBox.SelectionBoxItem.ToString().Equals("Manager"))
             {
+                if (UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
+                {
+                    return;
+                }
+                if (!State.isOk)
+                {
+                    return;
+                }
+              
                 MyBlureEffectLoading();
 
-                if (passwordInput.Password.ToString().Equals(password))
+                if (Interface.authentication("Manager", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
                 {
                     MyBlureEffectCorrect();
                     ManagerWindow managerWindow = new ManagerWindow();
                     managerWindow.Show();
                     CloseWIndowUsingIdentifier("login");
-
                 }
                 else
                 {
                     MyBlureEffectWrong();
-          
                 }
-
             }
             else if (comboBox.SelectionBoxItem.ToString().Equals("Master"))
             {
+                if (UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
+                {
+                    return;
+                }
+                if (!State.isOk)
+                {
+                    return;
+                }
+               
                 MyBlureEffectLoading();
-                if (passwordInput.Password.ToString().Equals(password))
+                if (Interface.authentication("Master", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
                 {
                     MyBlureEffectCorrect();
                     MasterWindow masterWindow = new MasterWindow();
                     masterWindow.Show();
                     CloseWIndowUsingIdentifier("login");
-
                 }
                 else
                 {
                     MyBlureEffectWrong();
-
                 }
-
             }
             else if (comboBox.SelectionBoxItem.ToString().Equals("Student"))
             {
+                if (UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
+                {
+                    return;
+                }
+                if (!State.isOk)
+                {
+                    return;
+                }
+             
+           
                 MyBlureEffectLoading();
 
-                if (passwordInput.Password.ToString().Equals(password))
+                if (Interface.authentication("Student", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
                 {
                     MyBlureEffectCorrect();
                     StudentWindow studentWindow = new StudentWindow();
                     studentWindow.Show();
                     CloseWIndowUsingIdentifier("login");
-
                 }
                 else
                 {
                     MyBlureEffectWrong();
-
                 }
             }
         }

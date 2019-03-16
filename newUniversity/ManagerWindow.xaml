@@ -316,7 +316,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <MediaElement x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
+                <MediaElement  x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
             </Grid>
             <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
