@@ -9,19 +9,7 @@ namespace University.Classes
 {
     class ManagerDB : UserDB
     {
-        public ManagerDB(string fileName) : base(fileName)
-        {
-        }
-
-        public override void getByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void getByName(string Name)
-        {
-            throw new NotImplementedException();
-        }
+        public ManagerDB(string fileName) : base(fileName) { }
 
         public override int insertRecordToFile()
         {
@@ -43,7 +31,7 @@ namespace University.Classes
             throw new NotImplementedException();
         }
 
-        public void newStudent(string name, string family)
+        public void newManager(string name, string family)
         {
             this.name = name;
             this.family = family;

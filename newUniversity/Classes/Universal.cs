@@ -13,16 +13,16 @@ namespace University.Classes
         public bool isAbleUnitChoice = false;       //UnitChoice ability
         public bool isAbleUnitEdit = false;         //UnitEdit ability
 
-        public static University instance;
+        public static Universal instance;
 
         /**
          * Initializes main file and BTrees.
          */
-        static University()
+        static Universal()
         {
             if (instance == null)
             {
-                instance = new University();
+                instance = new Universal();
                 if (File.Exists("Uni"))
                 {
                     //File exists.
@@ -35,13 +35,15 @@ namespace University.Classes
                         instance.managers = new ManagerDB("managers");
                         instance.masters = new MasterDB("masters");
                         instance.courses = new CourseDB("courses");
+                        instance.managers.newManager("admin", "admin");
+                        instance.managers.save();
                         bf.Serialize(file, instance);
                         file.Close();
                     }
                     else
                     {
                         //File was already created.
-                        instance = bf.Deserialize(file) as University;
+                        instance = bf.Deserialize(file) as Universal;
                         file.Close();
                     }
                 }

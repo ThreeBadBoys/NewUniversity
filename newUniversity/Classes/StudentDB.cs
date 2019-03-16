@@ -13,9 +13,7 @@ namespace University.Classes
         public List<int> passedCourses;
         public List<int> currentSemister;
 
-        public StudentDB(string fileName) : base(fileName)
-        {
-        }
+        public StudentDB(string fileName) : base(fileName) { }
 
         public override int insertRecordToFile()
         {
