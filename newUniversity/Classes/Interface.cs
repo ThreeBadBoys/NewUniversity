@@ -4,23 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace newUniversity.Classes
+namespace University.Classes
 {
     class Interface
     {
-        static University uni;
+        static Universal uni;
 
-        public static bool authentication(string usertype,string userName , string password)
+        public static bool authentication(string usertype, string userName, string password)
         {
-            
-            if(usertype.Equals("Manager"))
+            if (usertype.Equals("Manager"))
             {
-                University.instance.managers.getByID(Convert.ToInt32(userName));
-                
-
-
+                ManagerDB manager = Universal.instance.managers.getByID(Convert.ToInt32(userName));
+                if (manager.password.Equals(password))
+                    return true;
+                return false;
             }
-           
+
             return true;
         }
     }

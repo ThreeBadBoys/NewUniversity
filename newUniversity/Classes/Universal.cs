@@ -3,7 +3,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace University.Classes
 {
-    class University
+    class Universal
     {
         public StudentDB students;                  //students database
         public ManagerDB managers;                  //managers database

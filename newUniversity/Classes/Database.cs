@@ -97,22 +97,24 @@ namespace University.Classes
             }
         }
 
-        public void getByID(int id)
+        public Database getByID(int id)
         {
             int index = IDTree.get(id + "");
             if (index != -1)
                 loadRecordFromFile(index);
             else
                 throw new notFoundException("record not found!");
+            return this;
         }
 
-        public void getByName(string Name)
+        public Database getByName(string Name)
         {
             int index = IDTree.get(Name);
             if (index != -1)
                 loadRecordFromFile(index);
             else
                 throw new notFoundException("record not found!");
+            return this;
         }
 
         public void update()
