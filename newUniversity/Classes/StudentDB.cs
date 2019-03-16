@@ -17,16 +17,6 @@ namespace University.Classes
         {
         }
 
-        public override void getByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void getByName(string Name)
-        {
-            throw new NotImplementedException();
-        }
-
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
@@ -51,6 +41,7 @@ namespace University.Classes
         {
             this.name = name;
             this.family = family;
+            this.Name = name + " " + family;
             this.password = ID + "";
             this.passedCourses = new List<int>();
             this.currentSemister = new List<int>();

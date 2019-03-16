@@ -11,7 +11,7 @@ namespace University.Classes
         protected BTree IDTree = null;
         protected BTree NameTree = null;
         public int ID = 0;
-        string Name = null;
+        protected string Name = null;
 
         public Database(string fileName)
         {
@@ -72,9 +72,23 @@ namespace University.Classes
             }
         }
 
-        public abstract void getByID(int id);
+        public void getByID(int id)
+        {
+            int index = IDTree.get(id + "");
+            if (index != -1)
+                loadRecordFromFile(index);
+            else
+                throw new notFoundException("record not found!");
+        }
 
-        public abstract void getByName(string Name);
+        public void getByName(string Name)
+        {
+            int index = IDTree.get(Name);
+            if (index != -1)
+                loadRecordFromFile(index);
+            else
+                throw new notFoundException("record not found!");
+        }
 
         public void update()
         {

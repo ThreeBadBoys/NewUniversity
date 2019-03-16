@@ -46,6 +46,7 @@ namespace University.Classes
         public void newCourse(string title, short unitsCount, int masterID)
         {
             this.title = title;
+            this.Name = title;
             this.unitsCount = unitsCount;
             this.masterID = masterID;
             this.studentsID = new List<int>();

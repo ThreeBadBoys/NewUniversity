@@ -42,6 +42,7 @@ namespace University.Classes
         {
             this.name = name;
             this.family = family;
+            this.Name = name + " " + family;
             this.password = ID + "";
         }
     }
