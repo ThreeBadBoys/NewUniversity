@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace newUniversity.Classes
+namespace University.Classes
 {
     class CourseDB : Database
     {

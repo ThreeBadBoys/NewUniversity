@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace newUniversity.Classes
+namespace University.Classes
 {
     // internal nodes: only use key and next
     // external nodes: only use key and address

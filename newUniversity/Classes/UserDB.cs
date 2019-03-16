@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace newUniversity.Classes
+namespace University.Classes
 {
     abstract class UserDB : Database
     {
