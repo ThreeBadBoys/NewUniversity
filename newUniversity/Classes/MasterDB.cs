@@ -14,15 +14,12 @@ namespace newUniversity.Classes
 
         public MasterDB(string fileName) : base(fileName) { }
 
-<<<<<<< HEAD
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
         }
 
-=======
- 
->>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
+
 
         public override int insertRecordToFile(int index)
         {

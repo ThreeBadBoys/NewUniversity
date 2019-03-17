@@ -72,7 +72,7 @@
     <Compile Include="Classes\MasterDB.cs" />
     <Compile Include="Classes\notFoundException.cs" />
     <Compile Include="Classes\StudentDB.cs" />
-    <Compile Include="Classes\University.cs" />
+    <Compile Include="Classes\Universal.cs" />
     <Compile Include="Classes\UserDB.cs" />
     <Compile Include="CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>

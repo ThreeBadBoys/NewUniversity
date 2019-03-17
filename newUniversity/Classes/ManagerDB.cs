@@ -9,14 +9,9 @@ namespace newUniversity.Classes
 {
     class ManagerDB : UserDB
     {
-<<<<<<< HEAD
-        public ManagerDB(string fileName) : base(fileName) { }
-=======
-        public ManagerDB(string fileName) : base(fileName)
-        {
-        }
 
->>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
+        public ManagerDB(string fileName) : base(fileName) { }
+        
 
         public override int insertRecordToFile()
         {

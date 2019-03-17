@@ -31,14 +31,11 @@ namespace newUniversity.Classes
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
         }
 
-=======
->>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
         public void newCourse(string title, short unitsCount, int masterID)
         {
             this.title = title;
