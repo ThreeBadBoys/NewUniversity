@@ -29,11 +29,13 @@ namespace newUniversity.Classes
             file.Close();
         }
 
-        protected bool loadTrees()
+        protected void loadTrees()
         {
-            return loadIdTree() && loadNameTree();
+            loadIdTree();
+            loadNameTree();
         }
-        protected bool loadIdTree()
+
+        protected void loadIdTree()
         {
             if (File.Exists(fileName + "idTree"))
             {
@@ -43,12 +45,15 @@ namespace newUniversity.Classes
                     BinaryFormatter bf = new BinaryFormatter();
                     this.IDTree = bf.Deserialize(file) as BTree;
                     file.Close();
-                    return true;
                 }
+                else
+                    throw new notFoundException("tree file is empty");
             }
-            return false;
+            else
+                throw new notFoundException("tree file not found");
         }
-        protected bool loadNameTree()
+
+        protected void loadNameTree()
         {
             if (File.Exists(fileName + "nameTree"))
             {
@@ -59,10 +64,12 @@ namespace newUniversity.Classes
                     BinaryFormatter bf = new BinaryFormatter();
                     this.NameTree = bf.Deserialize(file) as BTree;
                     file.Close();
-                    return true;
                 }
+                else
+                    throw new notFoundException("tree file is empty");
             }
-            return false;
+            else
+                throw new notFoundException("tree file not found");
         }
 
         public abstract void loadRecordFromFile(int index);

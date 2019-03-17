@@ -12,13 +12,19 @@ namespace newUniversity.Classes
         public string field;
         public List<int> courses;
 
-        public MasterDB(string fileName) : base(fileName)
+        public MasterDB(string fileName) : base(fileName) { }
+
+<<<<<<< HEAD
+        public override int insertRecordToFile()
         {
+            throw new NotImplementedException();
         }
 
+=======
  
+>>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
 
-        public override int insertRecordToFile()
+        public override int insertRecordToFile(int index)
         {
             throw new NotImplementedException();
         }
@@ -40,11 +46,6 @@ namespace newUniversity.Classes
             this.Name = name + " " + family;
             this.password = ID + "";
             this.courses = new List<int>();
-        }
-
-        public override int insertRecordToFile(int index)
-        {
-            throw new NotImplementedException();
         }
     }
 }

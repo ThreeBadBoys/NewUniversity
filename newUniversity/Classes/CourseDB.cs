@@ -14,26 +14,31 @@ namespace newUniversity.Classes
         public int masterID;
         public List<int> studentsID;
 
-        public CourseDB(string fileName) : base(fileName)
-        {
-        }
+        public CourseDB(string fileName) : base(fileName) { }
 
         public override void loadRecordFromFile(int index)
         {
             throw new NotImplementedException();
         }
 
+        public override void loadRecordFromFile(FileStream file, int index)
+        {
+            throw new NotImplementedException();
+        }
 
         public override int insertRecordToFile(int index)
         {
             throw new NotImplementedException();
         }
 
+<<<<<<< HEAD
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
         }
 
+=======
+>>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
         public void newCourse(string title, short unitsCount, int masterID)
         {
             this.title = title;
@@ -42,11 +47,5 @@ namespace newUniversity.Classes
             this.masterID = masterID;
             this.studentsID = new List<int>();
         }
-
-        public override void loadRecordFromFile(FileStream file, int index)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

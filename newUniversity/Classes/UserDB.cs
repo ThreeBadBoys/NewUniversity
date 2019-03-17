@@ -12,8 +12,6 @@ namespace newUniversity.Classes
         public string name;
         public string family;
 
-        public UserDB(string fileName) : base(fileName)
-        {
-        }
+        public UserDB(string fileName) : base(fileName) { }
     }
 }
