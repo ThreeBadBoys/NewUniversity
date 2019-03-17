@@ -70,6 +70,7 @@
     <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\ManagerDB.cs" />
     <Compile Include="Classes\MasterDB.cs" />
+    <Compile Include="Classes\notFoundException.cs" />
     <Compile Include="Classes\StudentDB.cs" />
     <Compile Include="Classes\University.cs" />
     <Compile Include="Classes\UserDB.cs" />
