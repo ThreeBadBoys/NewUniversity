@@ -255,14 +255,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Margin="0,40,0,248">
-                    <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.73">
-                            <GradientStop Color="#FFB95279"/>
-                            <GradientStop Color="#FF511B2F" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
                 <Rectangle Height="280.8" VerticalAlignment="Bottom" Margin="190,0,190,190.4" RadiusY="23.2" RadiusX="23.2" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
@@ -276,14 +268,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Margin="0,40,0,280">
-                    <Rectangle.Fill>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.73">
-                            <GradientStop Color="#FFB95279"/>
-                            <GradientStop Color="#FF511B2F" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
                 <Rectangle Height="234.8" VerticalAlignment="Bottom" Margin="250.2,0,250.2,164.8" RadiusY="10" RadiusX="10" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
