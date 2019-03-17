@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
-    class Universal
+    class University
     {
         public StudentDB students;                  //students database
         public ManagerDB managers;                  //managers database

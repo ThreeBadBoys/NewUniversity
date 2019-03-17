@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     class MasterDB : UserDB
     {
@@ -14,11 +14,15 @@ namespace University.Classes
 
         public MasterDB(string fileName) : base(fileName) { }
 
+<<<<<<< HEAD
         public override int insertRecordToFile()
         {
             throw new NotImplementedException();
         }
 
+=======
+ 
+>>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
 
         public override int insertRecordToFile(int index)
         {

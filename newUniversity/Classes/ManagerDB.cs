@@ -5,11 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     class ManagerDB : UserDB
     {
+<<<<<<< HEAD
         public ManagerDB(string fileName) : base(fileName) { }
+=======
+        public ManagerDB(string fileName) : base(fileName)
+        {
+        }
+
+>>>>>>> 410909b55064670f5dd3e748fafc81ed47eecdb4
 
         public override int insertRecordToFile()
         {

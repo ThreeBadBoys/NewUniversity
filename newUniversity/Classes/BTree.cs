@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace University.Classes
+namespace newUniversity.Classes
 {
     [Serializable]
     class BTree
