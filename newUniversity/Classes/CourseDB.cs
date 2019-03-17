@@ -34,17 +34,6 @@ namespace newUniversity.Classes
             throw new NotImplementedException();
         }
 
-        public override Database getByID(int id)
-        {
-            return null;
-        }
-
-        public override Database getByName(string Name)
-        {
-            return null;
-
-        }
-
         public void newCourse(string title, short unitsCount, int masterID)
         {
             this.title = title;

@@ -16,15 +16,7 @@ namespace newUniversity.Classes
         {
         }
 
-        public override void getByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void getByName(string Name)
-        {
-            throw new NotImplementedException();
-        }
+ 
 
         public override int insertRecordToFile()
         {
