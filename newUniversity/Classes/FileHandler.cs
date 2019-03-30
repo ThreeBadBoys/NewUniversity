@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    static class FileController
+    static class FileHandler
     {
-
         public static int Add<T>(BTree whichTree, object objectToAdd, int objectToAddID, string fileDirectoryPlusName)
         {
             byte[] objectArray = ObjectToByteArray(objectToAdd);
@@ -104,10 +103,6 @@ namespace newUniversity.Classes
             }
             return index;
         }
-
-
-
-
 
         private static byte[] ObjectToByteArray(object objectToGetBytes)
         {
