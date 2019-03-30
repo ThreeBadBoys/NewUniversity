@@ -14,8 +14,8 @@ namespace newUniversity.Classes
         
         public MasterObject(string name, string family, string field)
         {
-            this.name = name;
-            this.family = family;
+            this.Firstname = name;
+            this.Lastname = family;
             this.field = field;
             this.Name = name + " " + family;
             this.password = ID + "";
