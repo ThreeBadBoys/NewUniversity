@@ -67,7 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CourseObject.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\FileController.cs" />
+    <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\LessonObject.cs" />
     <Compile Include="Classes\ManagerObject.cs" />
