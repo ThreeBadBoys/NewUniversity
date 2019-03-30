@@ -11,8 +11,8 @@ namespace newUniversity.Classes
     {
         public ManagerObject(string name, string family)
         {
-            this.Firstname = name;
-            this.Lastname = family;
+            this.firstName = name;
+            this.lastName = family;
             this.Name = name + " " + family;
             this.password = ID + "";
         }
