@@ -8,6 +8,10 @@ namespace newUniversity.Classes
     abstract class Database
     {
         string fileName = "";
+        public string getFileName()
+        {
+            return fileName;
+        }
         protected BTree IDTree = null;
         protected BTree NameTree = null;
         public int ID = 0;
