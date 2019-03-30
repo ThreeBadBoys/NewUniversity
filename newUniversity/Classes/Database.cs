@@ -8,6 +8,10 @@ namespace newUniversity.Classes
     abstract class Database
     {
         string fileName = "";
+        public string getFileName()
+        {
+            return fileName;
+        }
         protected BTree IDTree = null;
         protected BTree NameTree = null;
         public int ID = 0;
@@ -76,7 +80,7 @@ namespace newUniversity.Classes
 
         public abstract void loadRecordFromFile(FileStream file, int index);
 
-        public abstract int insertRecordToFile(int index);
+        public abstract int insertEdittedRecordToFile(int index);
 
         public abstract int insertRecordToFile();
 
@@ -88,7 +92,7 @@ namespace newUniversity.Classes
             if (index == -1)
                 insertRecordToFile();
             else
-                insertRecordToFile(index);
+                insertEdittedRecordToFile(index);
         }
 
         public void delete()
@@ -141,8 +145,15 @@ namespace newUniversity.Classes
                     {
                         loadRecordFromFile(file, indexes[i]);
                         int index = insertRecordToFile();
-                        IDTree.put(ID + "", index);
-                        NameTree.put(Name, index);
+                        if (index != -1)
+                        {
+                            IDTree.put(ID + "", index);
+                            NameTree.put(Name, index);
+                        }
+                        else
+                        {
+                            throw new Exception("THE PROBLEM OF SAVING THE OBJECT TO FILE!!!!");
+                        }
                     }
                     file.Close();
                     File.Delete("temp" + this.fileName);
@@ -161,4 +172,5 @@ namespace newUniversity.Classes
 
         }
     }
+
 }

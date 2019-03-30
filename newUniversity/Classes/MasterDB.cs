@@ -21,7 +21,7 @@ namespace newUniversity.Classes
 
 
 
-        public override int insertRecordToFile(int index)
+        public override int insertEdittedRecordToFile(int index)
         {
             throw new NotImplementedException();
         }
