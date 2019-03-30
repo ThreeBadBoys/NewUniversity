@@ -5,10 +5,11 @@ namespace newUniversity.Classes
 {
     class Universal
     {
-        public StudentDB students;                  //students database
-        public ManagerDB managers;                  //managers database
-        public MasterDB masters;                    //masters database
-        public CourseDB courses;                    //courses database
+        public Database<StudentObject> students;                  //students database
+        public Database<ManagerObject> managers;                  //managers database
+        public Database<MasterObject> masters;                    //masters database
+        public Database<CourseObject> courses;                    //courses database
+        public Database<PassedLessonObject> passedLessons;        //passed lessons database
 
         public bool isAbleUnitChoice = false;       //UnitChoice ability
         public bool isAbleUnitEdit = false;         //UnitEdit ability
@@ -31,11 +32,12 @@ namespace newUniversity.Classes
                     if (new FileInfo("Uni").Length == 0)
                     {
                         //File exists but is empty.
-                        instance.students = new StudentDB("students");
-                        instance.managers = new ManagerDB("managers");
-                        instance.masters = new MasterDB("masters");
-                        instance.courses = new CourseDB("courses");
-                        instance.managers.newManager("admin", "admin");
+                        instance.students = new Database<StudentObject>("students");
+                        instance.managers = new Database<ManagerObject>("managers");
+                        instance.masters = new Database<MasterObject>("masters");
+                        instance.courses = new Database<CourseObject>("courses");
+                        instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
+                        instance.managers.insert(new ManagerObject("admin", "admin"));
                         instance.managers.save();
                         bf.Serialize(file, instance);
                         file.Close();
@@ -50,10 +52,11 @@ namespace newUniversity.Classes
                 else
                 {
                     //File not exists
-                    instance.students = new StudentDB("students");
-                    instance.managers = new ManagerDB("managers");
-                    instance.masters = new MasterDB("masters");
-                    instance.courses = new CourseDB("courses");
+                    instance.students = new Database<StudentObject>("students");
+                    instance.managers = new Database<ManagerObject>("managers");
+                    instance.masters = new Database<MasterObject>("masters");
+                    instance.courses = new Database<CourseObject>("courses");
+                    instance.passedLessons = new Database<PassedLessonObject>("courses");
                     FileStream file = File.Create("Uni");
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(file, instance);

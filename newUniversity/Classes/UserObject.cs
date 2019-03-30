@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    abstract class UserDB : Database
+    abstract class UserObject
     {
+        public int ID = 0;
+        protected string Name = null;
         public string password;
         public string name;
         public string family;
-
-        public UserDB(string fileName) : base(fileName) { }
     }
 }

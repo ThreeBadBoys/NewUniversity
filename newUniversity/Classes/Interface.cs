@@ -14,21 +14,21 @@ namespace newUniversity.Classes
         {
             if (usertype.Equals("Manager"))
             {
-                ManagerDB manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerDB;
+                ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;
                 if (manager.password.Equals(password))
                     return true;
                 return false;
             }
             else if (usertype.Equals("Master"))
             {
-                MasterDB master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterDB;
+                MasterObject master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterObject;
                 if (master.password.Equals(password))
                     return true;
                 return false;
             }
             else
             {
-                StudentDB student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentDB;
+                StudentObject student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentObject;
                 if (student.password.Equals(password))
                     return true;
                 return false;

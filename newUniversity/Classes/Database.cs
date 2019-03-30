@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace newUniversity.Classes
 {
-    abstract class Database
+    class Database<T>
     {
         string fileName = "";
         public string getFileName()
@@ -14,8 +14,7 @@ namespace newUniversity.Classes
         }
         protected BTree IDTree = null;
         protected BTree NameTree = null;
-        public int ID = 0;
-        protected string Name = null;
+        public T dbObject;
 
         public Database(string fileName)
         {
@@ -76,31 +75,48 @@ namespace newUniversity.Classes
                 throw new notFoundException("tree file not found");
         }
 
-        public abstract void loadRecordFromFile(int index);
+        public void loadRecordFromFile(int index)
+        {
 
-        public abstract void loadRecordFromFile(FileStream file, int index);
+        }
 
-        public abstract int insertEdittedRecordToFile(int index);
+        public void loadRecordFromFile(FileStream file, int index)
+        {
 
-        public abstract int insertRecordToFile();
+        }
+
+        public int insertEdittedRecordToFile(int index)
+        {
+            return 0;
+        }
+
+        public int insertRecordToFile()
+        {
+            return 0;
+        }
 
         public void save()
         {
             if (IDTree == null)
                 loadTrees();
-            int index = IDTree.get(ID + "");
+            int index = IDTree.get(dbObject.ID + "");
             if (index == -1)
                 insertRecordToFile();
             else
                 insertEdittedRecordToFile(index);
         }
 
+        public void insert(T newObject)
+        {
+            this.dbObject = newObject;
+        }
+
         public void delete()
         {
-            if (this.ID != 0 && this.Name != null)
+            if (dbObject.ID != 0 && dbObject.Name != null)
             {
-                IDTree.delete(this.ID + "");
-                NameTree.delete(this.Name);
+                IDTree.delete(dbObject.ID + "");
+                NameTree.delete(dbObject.Name);
             }
             else
             {
@@ -108,24 +124,24 @@ namespace newUniversity.Classes
             }
         }
 
-        public Database getByID(int id)
+        public T getByID(int id)
         {
             int index = IDTree.get(id + "");
             if (index != -1)
                 loadRecordFromFile(index);
             else
                 throw new notFoundException("record not found!");
-            return this;
+            return dbObject;
         }
 
-        public Database getByName(string Name)
+        public T getByName(string Name)
         {
             int index = IDTree.get(Name);
             if (index != -1)
                 loadRecordFromFile(index);
             else
                 throw new notFoundException("record not found!");
-            return this;
+            return dbObject;
         }
 
         public void update()
@@ -145,8 +161,8 @@ namespace newUniversity.Classes
                     {
                         loadRecordFromFile(file, indexes[i]);
                         int index = insertRecordToFile();
-                        IDTree.put(ID + "", index);
-                        NameTree.put(Name, index);
+                        IDTree.put(dbObject.ID + "", index);
+                        NameTree.put(dbObject.Name, index);
                     }
                     file.Close();
                     File.Delete("temp" + this.fileName);
