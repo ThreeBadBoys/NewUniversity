@@ -61,7 +61,35 @@ namespace newUniversity.Classes
             }
         }//DECODED SUCCESSFULLY
 
+        public static object Load(object objectTempToLoad, out bool Readable, string fileDirectoryPlusName, int index)
+        {
+            if (index == -1)
+            {
+                Readable = false;
+                return null;
+            }
+            objectTempToLoad = LoadObj(objectTempToLoad, fileDirectoryPlusName, index, out Readable);
 
+            return objectTempToLoad;
+        }
+
+        private static object LoadObj(object objectTempToLoad, string fileDirectoryPlusName, int index, out bool Readable)
+        {
+            byte[] buffer = ObjectToByteArray(objectTempToLoad);
+
+
+            using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(fileDirectoryPlusName, FileMode.Open))
+            {
+                using (MemoryMappedViewAccessor mmfReader = mmf.CreateViewAccessor())
+                {
+                    Readable = mmfReader.CanRead;
+                    if (Readable)
+                        mmfReader.ReadArray<byte>(index * buffer.Length, buffer, 0, buffer.Length);
+                }
+            }
+            objectTempToLoad = ByteArrayToObject(buffer);
+            return objectTempToLoad;
+        }
 
         public static int SaveEdited(int index, object objectToEdit, string fileDirectoryPlusName)
         {
