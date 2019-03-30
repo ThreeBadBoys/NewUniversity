@@ -76,7 +76,7 @@ namespace newUniversity.Classes
 
         public abstract void loadRecordFromFile(FileStream file, int index);
 
-        public abstract int insertRecordToFile(int index);
+        public abstract int insertEdittedRecordToFile(int index);
 
         public abstract int insertRecordToFile();
 
@@ -88,7 +88,7 @@ namespace newUniversity.Classes
             if (index == -1)
                 insertRecordToFile();
             else
-                insertRecordToFile(index);
+                insertEdittedRecordToFile(index);
         }
 
         public void delete()

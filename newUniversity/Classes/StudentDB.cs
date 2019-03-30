@@ -17,12 +17,12 @@ namespace newUniversity.Classes
 
         public override int insertRecordToFile()
         {
-            throw new NotImplementedException();
+            return FileController.Add<StudentDB>(this.IDTree, this, this.ID, this.getFileName());
         }
 
-        public override int insertRecordToFile(int index)
+        public override int insertEdittedRecordToFile(int index)
         {
-            throw new NotImplementedException();
+            return FileController.SaveEdited(index, this, this.getFileName());
         }
 
         public override void loadRecordFromFile(int index)
