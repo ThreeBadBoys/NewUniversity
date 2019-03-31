@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:newUniversity"
         mc:Ignorable="d"
         Tag="ManagerWindow"
-        Title="MainWindow" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="670" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
@@ -211,6 +211,34 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Classroom_50px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Masters' List" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem7" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem7_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Crowd_50px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Students' List" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem8" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem8_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image  Source="Assets/icons8_Finish_Flag_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
                         <TextBlock Text="Finish Current Term" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
@@ -354,7 +382,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-    
+
                 <Rectangle Height="386.4" VerticalAlignment="Bottom" Margin="175.2,0,175.2,129.2" RadiusY="23.2" RadiusX="23.2" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
@@ -377,7 +405,7 @@
                 <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="308,0,308,112.8" Content="ADD" Click="btnAddCourse_Click" />
             </Grid>
 
-            <Grid x:Name="GridRemoveUser"  Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+            <Grid x:Name="GridRemoveUser"  Grid.Column="0" Margin="0,-5.783,0,0" Visibility="Collapsed" Grid.Row="1">
                 <Grid.Background>
                     <ImageBrush/>
                 </Grid.Background>
@@ -441,7 +469,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-     
+
                 <Rectangle Height="239.067" VerticalAlignment="Bottom" Margin="254.467,0,254.467,180.133" RadiusY="10" RadiusX="10">
                     <Rectangle.Fill>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -527,7 +555,121 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145"  >Old password isn't valid!</TextBlock>
                 </StackPanel>
             </Grid>
-            
+            <Grid  x:Name="GridMASTERLIST" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="75,0,75,126.4" RadiusY="10" RadiusX="10">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF4E071E" Offset="0"/>
+                            <GradientStop Color="#FFFD5389" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="80,0,79,126.4" Height="362.133" >
+                    <DataGrid x:Name="DATAGRIDGMASTERS" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="Width" Value="AUTO"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Margin" Value="5 5 5 0"/>
+                                <Setter Property="Foreground" Value="#FF511B2F"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="FontFamily" Value="Nirmala UI"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                                <Setter Property="BorderBrush" Value="#FF511B2F"/>
+                                <Setter Property="Margin" Value="4 4 4 4"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns><!-- TODO -->
+                            <DataGridTextColumn Header="No"  Binding="{Binding MasterNo}" />
+                            <DataGridTextColumn Header="Name"   Binding="{Binding MasterName}"/>
+                            <DataGridTextColumn Header="Course Name"  Binding="{Binding PassedNAME}"/>
+                            <DataGridTextColumn Header="Exam Date" Binding="{Binding PassedEXAMDATE}" />
+                            <DataGridTextColumn Header="Exam Time" Binding="{Binding PassedEXAMTIME}" />
+                            <DataGridTextColumn Header="GRADE" Binding="{Binding PassedGRADE}" />
+                            <DataGridTextColumn Header="STATE" Binding="{Binding PassedSTATE}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+            </Grid>
+            <Grid  x:Name="GridSTUDENTS" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="75,0,75,126.4" RadiusY="10" RadiusX="10">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF4E071E" Offset="0"/>
+                            <GradientStop Color="#FFFD5389" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="80,0,79,126.4" Height="362.133" >
+                    <DataGrid x:Name="DATAGRIDGSTUDENTS" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="Width" Value="AUTO"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Margin" Value="5 5 5 0"/>
+                                <Setter Property="Foreground" Value="#FF511B2F"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="FontFamily" Value="Nirmala UI"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                                <Setter Property="BorderBrush" Value="#FF511B2F"/>
+                                <Setter Property="Margin" Value="4 4 4 4"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <!-- TODO -->
+                            <DataGridTextColumn Header="No"  Binding="{Binding MasterNo}" />
+                            <DataGridTextColumn Header="Name"   Binding="{Binding MasterName}"/>
+                            <DataGridTextColumn Header="Course Name"  Binding="{Binding PassedNAME}"/>
+                            <DataGridTextColumn Header="Exam Date" Binding="{Binding PassedEXAMDATE}" />
+                            <DataGridTextColumn Header="Exam Time" Binding="{Binding PassedEXAMTIME}" />
+                            <DataGridTextColumn Header="GRADE" Binding="{Binding PassedGRADE}" />
+                            <DataGridTextColumn Header="STATE" Binding="{Binding PassedSTATE}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+            </Grid>
             <Grid x:Name="GridFinishTerm" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

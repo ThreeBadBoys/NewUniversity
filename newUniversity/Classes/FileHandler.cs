@@ -22,10 +22,10 @@ namespace newUniversity.Classes
                 tempindex = whichTree.getLast();
             // Get a handle to an existing memory mapped file
             using (MemoryMappedFile mmf =
-                MemoryMappedFile.CreateFromFile(fileDirectoryPlusName, FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
+                MemoryMappedFile.CreateFromFile
+                (fileDirectoryPlusName, FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
             // (UP)  Here we created a filefrom  a memoryMappedFile that it's capacity is (tempindex + 2) times larger than objectArray.Length
             //HERE WE SHOULD THINK ABOUT IT!!!!
-
             {
                 // Create a view accessor from which to read the data
                 using (MemoryMappedViewAccessor mmfReader = mmf.CreateViewAccessor())
