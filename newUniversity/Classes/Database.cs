@@ -21,59 +21,26 @@ namespace newUniversity.Classes
             this.fileName = fileName;
             this.IDTree = new BTree();
             this.NameTree = new BTree();
-            FileStream file = File.Create(fileName + "idtree");
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(file, this.IDTree);
-            file.Close();
-            file = File.Create(fileName + "nametree");
-            bf.Serialize(file, this.NameTree);
-            file.Close();
-            file = File.Create(fileName);
-            file.Close();
-        }
+            FileHandler.CreateBtreeFile(fileName, this.IDTree);
+            FileHandler.CreateBtreeFile(fileName, this.NameTree);
+            FileHandler.CreateFile(fileName);
+        } // READ
 
         protected void loadTrees()
         {
             loadIdTree();
             loadNameTree();
-        }
+        } //READ
 
         protected void loadIdTree()
         {
-            if (File.Exists(fileName + "idTree"))
-            {
-                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
-                if (new FileInfo(fileName + "idTree").Length != 0)
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    this.IDTree = bf.Deserialize(file) as BTree;
-                    file.Close();
-                }
-                else
-                    throw new notFoundException("tree file is empty");
-            }
-            else
-                throw new notFoundException("tree file not found");
-        }
+            FileHandler.loadBTreeFromFile(fileName, true);
+        }//READ
 
         protected void loadNameTree()
         {
-            if (File.Exists(fileName + "nameTree"))
-            {
-                FileStream file = File.Open(fileName + "nameTree", FileMode.Open);
-                file = File.Open(fileName + "nameTree", FileMode.Open);
-                if (new FileInfo(fileName + "nameTree").Length != 0)
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    this.NameTree = bf.Deserialize(file) as BTree;
-                    file.Close();
-                }
-                else
-                    throw new notFoundException("tree file is empty");
-            }
-            else
-                throw new notFoundException("tree file not found");
-        }
+            FileHandler.loadBTreeFromFile(fileName, false);
+        }//READ
 
         public void loadRecordFromFile(int index)
         {
@@ -99,11 +66,11 @@ namespace newUniversity.Classes
         {
             if (IDTree == null)
                 loadTrees();
-            int index = IDTree.get(dbObject.ID + "");
-            if (index == -1)
-                insertRecordToFile();
-            else
-                insertEdittedRecordToFile(index);
+          //  int index = IDTree.get(dbObject.ID + "");
+        //    if (index == -1)
+        //        insertRecordToFile();
+       //     else
+          //      insertEdittedRecordToFile(index);
         }
 
         public void insert(T newObject)
@@ -113,15 +80,15 @@ namespace newUniversity.Classes
 
         public void delete()
         {
-            if (dbObject.ID != 0 && dbObject.Name != null)
-            {
-                IDTree.delete(dbObject.ID + "");
-                NameTree.delete(dbObject.Name);
-            }
-            else
-            {
-                throw new Exception("argument to delete() is null");
-            }
+            //if (dbObject.ID != 0 && dbObject.Name != null)
+            //{
+           //     IDTree.delete(dbObject.ID + "");
+           //     NameTree.delete(dbObject.Name);
+          //  }
+          //  else
+          //  {
+//throw new Exception("argument to delete() is null");
+          //  }
         }
 
         public T getByID(int id)
@@ -161,8 +128,8 @@ namespace newUniversity.Classes
                     {
                         loadRecordFromFile(file, indexes[i]);
                         int index = insertRecordToFile();
-                        IDTree.put(dbObject.ID + "", index);
-                        NameTree.put(dbObject.Name, index);
+                       // IDTree.put(dbObject.ID + "", index);
+                      //  NameTree.put(dbObject.Name, index);
                     }
                     file.Close();
                     File.Delete("temp" + this.fileName);

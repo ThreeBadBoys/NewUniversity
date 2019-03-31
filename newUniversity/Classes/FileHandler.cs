@@ -125,5 +125,38 @@ namespace newUniversity.Classes
                 return null;
             }
         }
+
+        public static void CreateBtreeFile(string fileName,BTree IDTree)
+        {
+            FileStream file = File.Create(fileName + "idtree");
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, IDTree);
+            file.Close();
+        }
+        public static void CreateFile(string fileName)
+        {
+            FileStream file = File.Create(fileName);
+            file.Close();
+        }
+
+        public static BTree loadBTreeFromFile(string fileName , bool isIDTree)
+        {
+            BTree btree;
+            if (File.Exists(fileName + (isIDTree ?"idTree" : "nameTree")))
+            {
+                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
+                if (new FileInfo(fileName + (isIDTree ? "idTree" : "nameTree")).Length != 0)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    btree = bf.Deserialize(file) as BTree;
+                    file.Close();
+                    return btree;
+                }
+                else
+                    throw new notFoundException("tree file is empty");
+            }
+            else
+                throw new notFoundException("tree file not found");
+        }
     }
 }
