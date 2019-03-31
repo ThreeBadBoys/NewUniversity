@@ -8,9 +8,13 @@ namespace newUniversity.Classes
 {
     abstract class UserObject
     {
+        char[] FirstName = new char[20];
+        public char[] LastName = new char[20];
+        char[] Password = new char[20];
+
         public int ID = 0;
         protected string Name = null;
-        char[] Password = new char[20];
+        
         public string password
         {
             get
@@ -35,8 +39,6 @@ namespace newUniversity.Classes
                 Password[i] = '\0';
             }
         }
-
-        char[] FirstName = new char[20];
         public string firstName
         {
             get
@@ -60,9 +62,7 @@ namespace newUniversity.Classes
                 }
                 FirstName[i] = '\0';
             }
-        }
-
-        public char[] LastName = new char[20];
+        }       
         public string lastName
         {
             get

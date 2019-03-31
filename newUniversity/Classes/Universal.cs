@@ -31,7 +31,7 @@ namespace newUniversity.Classes
                     BinaryFormatter bf = new BinaryFormatter();
                     if (new FileInfo("Uni").Length == 0)
                     {
-                        //File exists but is empty.
+                        //File exists but it is empty.
                         instance.students = new Database<StudentObject>("students");
                         instance.managers = new Database<ManagerObject>("managers");
                         instance.masters = new Database<MasterObject>("masters");
