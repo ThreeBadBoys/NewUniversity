@@ -14,12 +14,13 @@ namespace newUniversity.Classes
         
         public MasterObject(string name, string family, string field)
         {
+            this.ID = int.Parse(Universal.instance.masters.getLastID()) + 1;
             this.firstName = name;
             this.lastName = family;
             this.field = field;
-            this.Name = name + " " + family;
+            this.name = name + " " + family;
             this.password = ID + "";
-            this.courses = new List<int>();
+            this.courses = new List<int>(20);
         }
     }
 }

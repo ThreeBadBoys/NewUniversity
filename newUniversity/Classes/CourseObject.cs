@@ -13,7 +13,7 @@ namespace newUniversity.Classes
             this.name = title;
             this.unitsCount = unitsCount;
             this.masterID = masterID;
-            studentsID = new List<int>();
+            studentsID = new List<int>(50);
         }
     }
 }

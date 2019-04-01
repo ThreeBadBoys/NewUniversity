@@ -38,13 +38,14 @@ namespace newUniversity.Classes
         }
         public StudentObject(string name, string family, string field)
         {
+            this.ID = int.Parse(Universal.instance.students.getLastID()) + 1;
             this.firstName = name;
             this.lastName = family;
             this.field = field;
-            this.Name = name + " " + family;
+            this.name = name + " " + family;
             this.password = ID + "";
-            currentSemisterCourses = new List<int>();
-            passedLessons = new List<int>();
+            currentSemisterCourses = new List<int>(20);
+            passedLessons = new List<int>(100);
         }
     }
 }

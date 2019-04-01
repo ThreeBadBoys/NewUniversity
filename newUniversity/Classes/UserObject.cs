@@ -13,8 +13,32 @@ namespace newUniversity.Classes
         public char[] Password = new char[20];
 
         public int ID = 0;
-        protected string Name = null;
-        
+        char[] Name = new char[20];
+        protected string name
+        {
+            get
+            {
+                string temp = "";
+                for (int i = 0; i < Name.Length; i++)
+                {
+                    if (Name[i] != '\0')
+                        temp += Name[i];
+                    else
+                        break;
+                }
+                return temp;
+            }
+            set
+            {
+                int i;
+                for (i = 0; i < value.Length; i++)
+                {
+                    Name[i] = value[i];
+                }
+                Name[i] = '\0';
+            }
+        }
+
         public string password
         {
             get

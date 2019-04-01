@@ -11,9 +11,10 @@ namespace newUniversity.Classes
     {
         public ManagerObject(string name, string family)
         {
+            this.ID = int.Parse(Universal.instance.managers.getLastID()) + 1;
             this.firstName = name;
             this.lastName = family;
-            this.Name = name + " " + family;
+            this.name = name + " " + family;
             this.password = ID + "";
         }
     }
