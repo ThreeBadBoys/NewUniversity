@@ -165,7 +165,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid x:Name="RightSideGrid"  Grid.Column="1" Grid.RowSpan="2">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -248,18 +248,58 @@
                 </Grid.RowDefinitions>
                 <MediaElement x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
             </Grid>
-            <Grid x:Name="GridListOfClasses" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+
+            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Visible" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Height="280.8" VerticalAlignment="Bottom" Margin="190,0,190,190.4" RadiusY="23.2" RadiusX="23.2" Fill="White">
+                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="71,0,79.4,88.2" RadiusY="10" RadiusX="10">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF4E071E" Offset="0"/>
+                            <GradientStop Color="#FFFD5389" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                     </Rectangle.Effect>
                 </Rectangle>
+                <Grid  Margin="80,105,79.4,92.2" >
+                    <DataGrid x:Name="DATAGRIDGClASSES" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="Width" Value="AUTO"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Margin" Value="5 5 5 0"/>
+                                <Setter Property="Foreground" Value="#FF511B2F"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="FontFamily" Value="Nirmala UI"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                                <Setter Property="BorderBrush" Value="#FF511B2F"/>
+                                <Setter Property="Margin" Value="4 4 4 4"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <!-- TODO -->
+                            <DataGridTextColumn Header="No"  Binding="{Binding ClassNo}"/>
+                            <DataGridTextColumn Header="StudentID"  Binding="{Binding ClassID}"/>
+                            <DataGridTextColumn Header="FullName"   Binding="{Binding ClassName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Button Margin="0,0,345.4,489.2" Content="Reload" Click="btnReloadClassesList_Click" HorizontalAlignment="Right" Width="99" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>

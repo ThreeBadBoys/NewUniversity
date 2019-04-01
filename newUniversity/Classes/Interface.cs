@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-   public static class Interface
+    public static class Interface
     {
-      //  static Universal uni;
+        //  static Universal uni;
 
+        //LOGIN--------------------------------------------------------------------------------------
         public static bool authentication(string usertype, string userName, string password)
         {
             //if (usertype.Equals("Manager"))
@@ -36,15 +37,16 @@ namespace newUniversity.Classes
             return true;
         }
 
-        public static bool createNewUser(string userType,string firstName,string lastName,string major)
+        //MANAGER------------------------------------------------------------------------------------
+        public static bool createNewUser(string userType, string firstName, string lastName, string major)
         {
             throw new NotImplementedException();
         }
-        public static bool createNewCourse(string crsName,string crsId,string masterID,string crsUnit,string examDate,string examTime)
+        public static bool createNewCourse(string crsName, string crsId, string masterID, string crsUnit, string examDate, string examTime)
         {
             throw new NotImplementedException();
         }
-        public static bool removeUserCompletely(string userType,string userId)
+        public static bool removeUserCompletely(string userType, string userId)
         {
             throw new NotImplementedException();
         }
@@ -56,12 +58,57 @@ namespace newUniversity.Classes
         {
             throw new NotImplementedException();
         }
-        public static bool controllingUnitChoice(bool isUnitChoiceActive,bool isAddRemoveActive)
+        public static bool controllingUnitChoice(bool isUnitChoiceActive, bool isAddRemoveActive)
         {
             throw new NotImplementedException();
         }
-        public static bool changeUserPassword(string userType,string currentPassword,
-            string newPassword,string confirmationPassword)
+
+        public static bool changManagerPassword(string currentPassword,
+         string newPassword, string confirmationPassword)
+        {
+            throw new NotImplementedException();
+        }
+        public static List<StudentObject> getAllStudents()//TODO
+        {
+            return null;
+        }
+        public static List<MasterObject> getAllMasters()//TODO
+        {
+            return null;
+        }
+        public static bool passTerm()
+        {
+            throw new NotImplementedException();
+        }
+        //MASTER--------------------------------------------------------------------------------------
+
+        public static bool changeMasterPassword(string currentPassword,
+           string newPassword, string confirmationPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+        //STUDENT-------------------------------------------------------------------------------------
+
+
+        public static bool changeStudentPassword(string currentPassword,
+         string newPassword, string confirmationPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
+        //DEFAULT-------------------------------------------------------------------------------------
+        public static bool changeUserPassword(string userType, string currentPassword,
+           string newPassword, string confirmationPassword)
         {
             switch (userType)
             {
@@ -80,33 +127,6 @@ namespace newUniversity.Classes
 
             throw new NotImplementedException();
         }
-        public static bool changeStudentPassword(string currentPassword,
-            string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
 
-        public static bool changeMasterPassword(string currentPassword,
-           string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
-        public static bool changManagerPassword(string currentPassword,
-         string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
-        public static List<StudentObject> getAllStudents()//TODO
-        {
-            return null;
-        }
-        public static List<MasterObject> getAllMasters()//TODO
-        {
-            return null;
-        }
-        public static bool passTerm()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

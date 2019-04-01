@@ -84,5 +84,10 @@ namespace newUniversity
             // Begin dragging the window
             this.DragMove();
         }
+
+        private void btnReloadClassesList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
