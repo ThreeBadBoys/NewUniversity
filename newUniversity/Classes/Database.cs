@@ -146,8 +146,8 @@ namespace newUniversity.Classes
                     {
                         loadRecordFromFile(file, indexes[i]);
                         int index = insertRecordToFile();
-                       // IDTree.put(dbObject.ID + "", index);
-                      //  NameTree.put(dbObject.Name, index);
+                        IDTree.put(dbObject.ID + "", index);
+                        NameTree.put(dbObject.Name, index);
                     }
                     file.Close();
                     File.Delete("temp" + this.fileName);
