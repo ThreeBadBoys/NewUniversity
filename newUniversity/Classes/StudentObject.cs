@@ -43,6 +43,8 @@ namespace newUniversity.Classes
             this.field = field;
             this.Name = name + " " + family;
             this.password = ID + "";
+            currentSemisterCourses = new List<int>();
+            passedLessons = new List<int>();
         }
     }
 }

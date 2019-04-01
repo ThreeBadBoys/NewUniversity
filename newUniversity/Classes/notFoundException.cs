@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class notFoundException : Exception
+    class NotFoundException : Exception
     {
-        public notFoundException() : base("notFoundException") { }
-        public notFoundException(string message) : base(message) { }
-        public notFoundException(string message, System.Exception inner) : base(message, inner) { }
+        public NotFoundException() : base("notFoundException") { }
+        public NotFoundException(string message) : base(message) { }
+        public NotFoundException(string message, System.Exception inner) : base(message, inner) { }
     }
 }

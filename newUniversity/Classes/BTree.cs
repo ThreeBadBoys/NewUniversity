@@ -275,7 +275,7 @@ namespace newUniversity.Classes
             {
                 for (int j = 0; j < h.m; j++)
                 {
-                    if (children[j].index != null)
+                    if (children[j].index != -1)
                     {
                         array.Add(children[j].index);
                     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace newUniversity.Classes
+﻿namespace newUniversity.Classes
 {
     class Student : User
     {
@@ -14,7 +8,7 @@ namespace newUniversity.Classes
             {
                 CourseObject course = Universal.instance.courses.getByID(courseId);
                 if (student.currentSemisterCourses.Contains(courseId))
-                    throw new duplicateException("entered course ID recently selected!");
+                    throw new DuplicateException("entered course ID recently selected!");
                 else
                 {
                     student.currentSemisterCourses.Add(courseId);
@@ -25,9 +19,9 @@ namespace newUniversity.Classes
                     Universal.instance.courses.save();
                 }
             }
-            catch(notFoundException)
+            catch(NotFoundException)
             {
-                throw new notFoundException("entered course ID not exists!");
+                throw new NotFoundException("entered course ID not exists!");
             }
         }
 
@@ -44,7 +38,7 @@ namespace newUniversity.Classes
                 Universal.instance.courses.save();
             }
             else
-                throw new notFoundException("entered course ID was not selected recently!");
+                throw new NotFoundException("entered course ID was not selected recently!");
         }
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class duplicateException : Exception
+    class DuplicateException : Exception
     {
-        public duplicateException() : base("duplicateException") { }
-        public duplicateException(string message) : base(message) { }
-        public duplicateException(string message, System.Exception inner) : base(message, inner) { }
+        public DuplicateException() : base("duplicateException") { }
+        public DuplicateException(string message) : base(message) { }
+        public DuplicateException(string message, System.Exception inner) : base(message, inner) { }
     }
 }

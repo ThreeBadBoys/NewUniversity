@@ -10,7 +10,7 @@ namespace newUniversity.Classes
     public class MasterObject : UserObject
     {
         public string field;
-        public int[] courses;
+        public List<int> courses;
         
         public MasterObject(string name, string family, string field)
         {
@@ -19,7 +19,7 @@ namespace newUniversity.Classes
             this.field = field;
             this.Name = name + " " + family;
             this.password = ID + "";
-            this.courses = new int[20];
+            this.courses = new List<int>();
         }
     }
 }

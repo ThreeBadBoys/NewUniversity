@@ -19,7 +19,7 @@ namespace newUniversity.Classes
             if (whichTree.isEmpty())
                 tempindex = -1;
             else
-                tempindex = whichTree.getLast();
+                tempindex = whichTree.getLastIndex();
             // Get a handle to an existing memory mapped file
             using (MemoryMappedFile mmf =
                 MemoryMappedFile.CreateFromFile
@@ -120,7 +120,7 @@ namespace newUniversity.Classes
             {
                 return binaryFormatter.Deserialize(memoryStream);        // Deserialize stream to an object
             }
-            catch (SerializationException e)
+            catch (SerializationException)
             {
                 return null;
             }
@@ -153,10 +153,10 @@ namespace newUniversity.Classes
                     return btree;
                 }
                 else
-                    throw new notFoundException("tree file is empty");
+                    throw new NotFoundException("tree file is empty");
             }
             else
-                throw new notFoundException("tree file not found");
+                throw new NotFoundException("tree file not found");
         }
     }
 }

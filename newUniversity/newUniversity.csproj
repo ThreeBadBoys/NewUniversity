@@ -67,16 +67,21 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CourseObject.cs" />
     <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\duplicateException.cs" />
     <Compile Include="Classes\FileController.cs" />
     <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Interface.cs" />
+    <Compile Include="Classes\invalidPasswordException.cs" />
     <Compile Include="Classes\LessonObject.cs" />
     <Compile Include="Classes\ManagerObject.cs" />
+    <Compile Include="Classes\Master.cs" />
     <Compile Include="Classes\MasterObject.cs" />
     <Compile Include="Classes\notFoundException.cs" />
     <Compile Include="Classes\PassedLessonObject.cs" />
+    <Compile Include="Classes\Student.cs" />
     <Compile Include="Classes\StudentObject.cs" />
     <Compile Include="Classes\Universal.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserObject.cs" />
     <Compile Include="CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>

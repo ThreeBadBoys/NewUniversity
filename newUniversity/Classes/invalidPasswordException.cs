@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class invalidPasswordException : Exception
+    class InvalidPasswordException : Exception
     {
-        public invalidPasswordException() : base("invalidPasswordException") { }
-        public invalidPasswordException(string message) : base(message) { }
-        public invalidPasswordException(string message, System.Exception inner) : base(message, inner) { }
+        public InvalidPasswordException() : base("invalidPasswordException") { }
+        public InvalidPasswordException(string message) : base(message) { }
+        public InvalidPasswordException(string message, System.Exception inner) : base(message, inner) { }
     }
 }

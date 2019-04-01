@@ -18,7 +18,7 @@ namespace newUniversity.Classes
         public void deleteCourse(MasterObject master, int courseId)
         {
             if (!master.courses.Contains(courseId))
-                throw new notFoundException("entered courseId not exists!");
+                throw new NotFoundException("entered courseId not exists!");
             else
             {
                 Universal.instance.courses.getByID(courseId);
