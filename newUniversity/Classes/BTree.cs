@@ -51,12 +51,12 @@ namespace newUniversity.Classes
         /**
          * Returns the file index associated with the biggest key.
          */
-        public int getLast()
+        public int getLastIndex()
         {
-            return search(root, height);
+            return searchIndex(root, height);
         }
 
-        private int search(Node x, int ht)
+        private int searchIndex(Node x, int ht)
         {
             Entry[] children = x.children;
 
@@ -69,9 +69,30 @@ namespace newUniversity.Classes
             // internal node
             else
             {
-                return search(children[x.m - 1].next, ht - 1);
+                return searchIndex(children[x.m - 1].next, ht - 1);
             }
-            return 0;
+        }
+
+        public string getLastID()
+        {
+            return searchID(root, height);
+        }
+
+        private string searchID(Node x, int ht)
+        {
+            Entry[] children = x.children;
+
+            // external node
+            if (ht == 0)
+            {
+                return children[x.m - 1].key;
+            }
+
+            // internal node
+            else
+            {
+                return searchID(children[x.m - 1].next, ht - 1);
+            }
         }
 
         /**

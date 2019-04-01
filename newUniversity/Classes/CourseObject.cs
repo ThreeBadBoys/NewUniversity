@@ -6,8 +6,9 @@ namespace newUniversity.Classes
     {
         public List<int> studentsID;
         
-        public CourseObject(string title, short unitsCount, int masterID)
+        public CourseObject(int id,  string title, short unitsCount, int masterID)
         {
+            this.ID = id;
             this.title = title;
             this.Name = title;
             this.unitsCount = unitsCount;

@@ -14,7 +14,7 @@ namespace newUniversity.Classes
         }
         protected BTree IDTree = null;
         protected BTree NameTree = null;
-        public T dbObject;
+        protected T dbObject;
 
         public Database(string fileName)
         {
@@ -95,18 +95,31 @@ namespace newUniversity.Classes
             return 0;
         }
 
-        public void save()
+        public int save()
         {
             if (IDTree == null)
                 loadTrees();
             int index = IDTree.get(dbObject.ID + "");
             if (index == -1)
-                insertRecordToFile();
+                return insertRecordToFile();
             else
-                insertEdittedRecordToFile(index);
+                return insertEdittedRecordToFile(index);
         }
 
         public void insert(T newObject)
+        {
+            try
+            {
+                getByID(newObject.ID);
+            }
+            catch (notFoundException)
+            {
+                this.dbObject = newObject;
+            }
+            throw new duplicateException();
+        }
+
+        public void loadObject(T newObject)
         {
             this.dbObject = newObject;
         }
@@ -142,6 +155,11 @@ namespace newUniversity.Classes
             else
                 throw new notFoundException("record not found!");
             return dbObject;
+        }
+
+        public string getLastID()
+        {
+            return IDTree.getLastID();
         }
 
         public void update()

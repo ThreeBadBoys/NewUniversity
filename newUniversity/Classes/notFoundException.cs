@@ -8,7 +8,7 @@ namespace newUniversity.Classes
 {
     class notFoundException : Exception
     {
-        public notFoundException() : base() { }
+        public notFoundException() : base("notFoundException") { }
         public notFoundException(string message) : base(message) { }
         public notFoundException(string message, System.Exception inner) : base(message, inner) { }
     }
