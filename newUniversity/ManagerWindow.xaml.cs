@@ -23,7 +23,8 @@ namespace newUniversity
     /// </summary>
     public partial class ManagerWindow : Window
     {
-        public static int counter = 0;
+        public static int counter1 = 0;
+        public static int counter2 = 0;
         public ManagerWindow()
         {
             InitializeComponent();
@@ -333,7 +334,7 @@ namespace newUniversity
             if (students == null) students = new List<StudentObject>();
             foreach (StudentObject std in students)
             {
-                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID))));
+                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID),std.field));
             
             }  
         }
@@ -342,12 +343,38 @@ namespace newUniversity
             public string StudentName { get; set; }
             public string StudentID { get; set; }
             public int StudentNo { get; set; }
-
-            public Student(string StudentName, string StudentID)
+            public string StudentMajor { get; set; }
+            public Student(string StudentName, string StudentID,string StudentMajor)
             {
                 this.StudentID = StudentID;
                 this.StudentName = StudentName;
-                this.StudentNo = ++counter;
+                this.StudentNo = ++counter1;
+                this.StudentMajor = StudentMajor;
+            }
+        }
+
+        public class Master
+        {
+            public string MasterName { get; set; }
+            public string MasterID { get; set; }
+            public int MasterNo { get; set; }
+            public string MasterMajor { get; set; }
+            public Master(string MasterName, string MasterID, string MasterMajor)
+            {
+                this.MasterID = MasterID;
+                this.MasterName = MasterName;
+                this.MasterNo = ++counter2;
+                this.MasterMajor = MasterMajor;
+            }
+        }
+
+        private void btnReloadMasterList_Click(object sender, RoutedEventArgs e)
+        {
+            List<MasterObject> masters = Interface.getAllMasters();
+            if (masters == null) masters = new List<MasterObject>();
+            foreach (MasterObject mst in masters)
+            {
+                DATAGRIDGMASTERS.Items.Add(new Master(mst.firstName + mst.lastName, Convert.ToString(mst.ID), mst.field));
             }
         }
     }

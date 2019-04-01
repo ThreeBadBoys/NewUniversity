@@ -643,21 +643,16 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <!-- TODO -->
                             <DataGridTextColumn Header="No"  Binding="{Binding MasterNo}" />
                             <DataGridTextColumn Header="Name"   Binding="{Binding MasterName}"/>
-                            <DataGridTextColumn Header="Course Name"  Binding="{Binding PassedNAME}"/>
-                            <DataGridTextColumn Header="Exam Date" Binding="{Binding PassedEXAMDATE}" />
-                            <DataGridTextColumn Header="Exam Time" Binding="{Binding PassedEXAMTIME}" />
-                            <DataGridTextColumn Header="GRADE" Binding="{Binding PassedGRADE}" />
-                            <DataGridTextColumn Header="STATE" Binding="{Binding PassedSTATE}" />
+                            <DataGridTextColumn Header="MasterID"   Binding="{Binding MasterID}"/>
+                            <DataGridTextColumn Header="Major" Binding="{Binding MasterMajor}" />
                         </DataGrid.Columns>
-
                     </DataGrid>
-
                 </Grid>
+                <Button Margin="0,0,338.4,520.2" Content="Reload" Click="btnReloadMasterList_Click" HorizontalAlignment="Right" Width="99" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
-            <Grid  x:Name="GridSTUDENTS" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible">
+            <Grid  x:Name="GridSTUDENTS" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -706,6 +701,7 @@
                             <DataGridTextColumn Header="No"  Binding="{Binding StudentNo}"/>
                             <DataGridTextColumn Header="StudentID"  Binding="{Binding StudentID}"/>
                             <DataGridTextColumn Header="FullName"   Binding="{Binding StudentName}"/>
+                            <DataGridTextColumn Header="StudentMajor"   Binding="{Binding StudentMajor}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -733,7 +729,6 @@
         </Grid>
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
             <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Click="ButtonClose_Click" RenderTransformOrigin="0.5,0.5" >
-
                 <Button.Background>
                     <ImageBrush ImageSource="icons8_Shutdown_32px_4.png" Stretch="Uniform"/>
                 </Button.Background>

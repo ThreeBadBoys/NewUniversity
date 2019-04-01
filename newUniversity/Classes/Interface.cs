@@ -100,6 +100,10 @@ namespace newUniversity.Classes
         {
             return null;
         }
+        public static List<MasterObject> getAllMasters()//TODO
+        {
+            return null;
+        }
         public static bool passTerm()
         {
             throw new NotImplementedException();

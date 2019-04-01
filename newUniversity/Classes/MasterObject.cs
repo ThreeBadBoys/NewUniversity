@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class MasterObject : UserObject
+    public class MasterObject : UserObject
     {
         public string field;
         public int[] courses;
