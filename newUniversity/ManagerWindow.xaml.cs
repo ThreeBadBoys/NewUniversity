@@ -23,7 +23,7 @@ namespace newUniversity
     /// </summary>
     public partial class ManagerWindow : Window
     {
-
+        public static int counter = 0;
         public ManagerWindow()
         {
             InitializeComponent();
@@ -329,10 +329,26 @@ namespace newUniversity
 
         private void btnReloadStudentsList_Click(object sender, RoutedEventArgs e)
         {
-           List<StudentObject> students = Interface.getAllStudents();
+            List<StudentObject> students = Interface.getAllStudents();
+            if (students == null) students = new List<StudentObject>();
+            foreach (StudentObject std in students)
+            {
+                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID))));
+            
+            }  
+        }
+       public class Student
+        {
+            public string StudentName { get; set; }
+            public string StudentID { get; set; }
+            public int StudentNo { get; set; }
 
-
-
+            public Student(string StudentName, string StudentID)
+            {
+                this.StudentID = StudentID;
+                this.StudentName = StudentName;
+                this.StudentNo = ++counter;
+            }
         }
     }
 }

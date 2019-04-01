@@ -642,7 +642,8 @@
 
                             </Style>
                         </DataGrid.Resources>
-                        <DataGrid.Columns><!-- TODO -->
+                        <DataGrid.Columns>
+                            <!-- TODO -->
                             <DataGridTextColumn Header="No"  Binding="{Binding MasterNo}" />
                             <DataGridTextColumn Header="Name"   Binding="{Binding MasterName}"/>
                             <DataGridTextColumn Header="Course Name"  Binding="{Binding PassedNAME}"/>
@@ -677,6 +678,7 @@
                 <Grid VerticalAlignment="Bottom"  Margin="80,0,79,126.4" Height="362.133" >
                     <DataGrid x:Name="DATAGRIDGSTUDENTS" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
 
+
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="Foreground" Value="White"/>
@@ -707,7 +709,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-                <Button Margin="0,0,280.4,201.4" Content="Reload" Click="btnReloadStudentsList_Click" HorizontalAlignment="Right" Width="98.8" Height="32" VerticalAlignment="Bottom"/>
+                <Button Margin="0,0,338.4,520.2" Content="Reload" Click="btnReloadStudentsList_Click" HorizontalAlignment="Right" Width="99" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="GridFinishTerm" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
