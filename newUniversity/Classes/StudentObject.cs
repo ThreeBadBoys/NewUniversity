@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class StudentObject : UserObject
+  public class StudentObject : UserObject
     {
         public int[] passedLessons = new int[70];
         public int[] currentSemisterCourses = new int[20];

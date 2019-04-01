@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    abstract class UserObject
+    public abstract class UserObject
     {
         char[] FirstName = new char[20];
         public char[] LastName = new char[20];
