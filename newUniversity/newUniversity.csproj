@@ -68,6 +68,7 @@
     <Compile Include="Classes\CourseObject.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\FileController.cs" />
+    <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\LessonObject.cs" />
     <Compile Include="Classes\ManagerObject.cs" />
@@ -295,9 +296,12 @@
   <ItemGroup>
     <Resource Include="Assets\arrow.png" />
     <Resource Include="arrow.png" />
+    <Resource Include="Assets\icons8_Crowd_50px.png" />
+    <Resource Include="Assets\icons8_Classroom_50px.png" />
     <Content Include="Assets\sky.MP4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="icons8_Classroom_32px.png" />
     <Content Include="sky.MP4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class ManagerObject : UserObject
+    public class ManagerObject : UserObject
     {
         public ManagerObject(string name, string family)
         {
-            this.name = name;
-            this.family = family;
+            this.firstName = name;
+            this.lastName = family;
             this.Name = name + " " + family;
             this.password = ID + "";
         }

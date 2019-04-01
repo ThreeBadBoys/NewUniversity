@@ -15,7 +15,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using newUniversity.Classes;
 namespace newUniversity
 {
     /// <summary>
@@ -23,7 +23,8 @@ namespace newUniversity
     /// </summary>
     public partial class ManagerWindow : Window
     {
-
+        public static int counter1 = 0;
+        public static int counter2 = 0;
         public ManagerWindow()
         {
             InitializeComponent();
@@ -52,17 +53,7 @@ namespace newUniversity
             this.DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MyBlureEffectLoading();
-            //TODO: RESULTS OF CHANGING PASSWORD WITH UI SHOULD BE SET
 
-
-
-
-
-
-        }
         void MyBlureEffectLoading()
         {
             myEffect.Radius = 10;
@@ -99,90 +90,157 @@ namespace newUniversity
             ResetPasswordPanel();
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Visible;
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ResetPasswordPanel();
             ResetUnitChoicePanel();
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Visible;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ResetPasswordPanel();
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Visible;
+            GridRemoveUserCompletely.Visibility = Visibility.Visible;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
         private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ResetPasswordPanel();
             ResetUnitChoicePanel();
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Visible;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
         private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
             ResetPasswordPanel();
             ResetUnitChoicePanel();
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
         private void listViewItem5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ResetUnitChoicePanel();
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
             GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //MasterList
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Visible;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed; GridRemoveStudent.Visibility = Visibility.Collapsed;
+        }
+        private void listViewItem7_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ResetUnitChoicePanel();
+            GridSTUDENTS.Visibility = Visibility.Visible;
+            GridCreateNewUser.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
+            GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
+        }
+        private void listViewItem8_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
+            ResetUnitChoicePanel();
+            GridCreateNewUser.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
+            GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Visible;
+            GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveStudent.Visibility = Visibility.Collapsed;
+        }
+        private void listViewItem9_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridRemoveStudent.Visibility = Visibility.Visible;
+            GridSTUDENTS.Visibility = Visibility.Collapsed;
+            ResetUnitChoicePanel();
+            GridCreateNewUser.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
+            GridRemoveCourse.Visibility = Visibility.Collapsed;
+            GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
+            GridMASTERLIST.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridFinishTerm.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
@@ -206,7 +264,7 @@ namespace newUniversity
 
         private void btnUnitChoice_Click(object sender, RoutedEventArgs e)
         {
-            if  (UnitChoiceStateMsg.Visibility == Visibility.Visible)
+            if (UnitChoiceStateMsg.Visibility == Visibility.Visible)
             {
                 UnitChoiceStateMsg.Visibility = Visibility.Collapsed;
             }
@@ -242,21 +300,82 @@ namespace newUniversity
 
         private void btnPassTheTerm_Click(object sender, RoutedEventArgs e)
         {
+            Interface.passTerm();
             MyBlureEffectLoading();
-            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
         }
 
         private void btnNotPassTheTerm_Click(object sender, RoutedEventArgs e)
         {
             GridCreateNewUser.Visibility = Visibility.Collapsed;
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
-            GridRemoveUser.Visibility = Visibility.Collapsed;
+            GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridFinishTerm.Visibility = Visibility.Collapsed;
         }
 
+        private void btn_DeleteStudent_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void btn_changeManagerPassword_Click(object sender, RoutedEventArgs e)
+        {
+
+            MyBlureEffectLoading();
+            //TODO: RESULTS OF CHANGING PASSWORD WITH UI SHOULD BE SET
+
+        }
+
+        private void btnReloadStudentsList_Click(object sender, RoutedEventArgs e)
+        {
+            List<StudentObject> students = Interface.getAllStudents();
+            if (students == null) students = new List<StudentObject>();
+            foreach (StudentObject std in students)
+            {
+                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID),std.field));
+            
+            }  
+        }
+       public class Student
+        {
+            public string StudentName { get; set; }
+            public string StudentID { get; set; }
+            public int StudentNo { get; set; }
+            public string StudentMajor { get; set; }
+            public Student(string StudentName, string StudentID,string StudentMajor)
+            {
+                this.StudentID = StudentID;
+                this.StudentName = StudentName;
+                this.StudentNo = ++counter1;
+                this.StudentMajor = StudentMajor;
+            }
+        }
+
+        public class Master
+        {
+            public string MasterName { get; set; }
+            public string MasterID { get; set; }
+            public int MasterNo { get; set; }
+            public string MasterMajor { get; set; }
+            public Master(string MasterName, string MasterID, string MasterMajor)
+            {
+                this.MasterID = MasterID;
+                this.MasterName = MasterName;
+                this.MasterNo = ++counter2;
+                this.MasterMajor = MasterMajor;
+            }
+        }
+
+        private void btnReloadMasterList_Click(object sender, RoutedEventArgs e)
+        {
+            List<MasterObject> masters = Interface.getAllMasters();
+            if (masters == null) masters = new List<MasterObject>();
+            foreach (MasterObject mst in masters)
+            {
+                DATAGRIDGMASTERS.Items.Add(new Master(mst.firstName + mst.lastName, Convert.ToString(mst.ID), mst.field));
+            }
+        }
     }
 }

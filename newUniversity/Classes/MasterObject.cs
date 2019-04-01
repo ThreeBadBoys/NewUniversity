@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class MasterObject : UserObject
+    public class MasterObject : UserObject
     {
         public string field;
-        public List<int> courses;
+        public int[] courses;
         
         public MasterObject(string name, string family, string field)
         {
-            this.name = name;
-            this.family = family;
+            this.firstName = name;
+            this.lastName = family;
             this.field = field;
             this.Name = name + " " + family;
             this.password = ID + "";
-            this.courses = new List<int>();
+            this.courses = new int[20];
         }
     }
 }
