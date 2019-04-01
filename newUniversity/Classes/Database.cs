@@ -62,15 +62,15 @@ namespace newUniversity.Classes
             return 0;
         }
 
-        public int save()
+        public void save()
         {
             if (IDTree == null)
                 loadTrees();
-          //  int index = IDTree.get(dbObject.ID + "");
-        //    if (index == -1)
-        //        insertRecordToFile();
-       //     else
-          //      insertEdittedRecordToFile(index);
+            int index = IDTree.get(dbObject.ID + "");
+            if (index == -1)
+                insertRecordToFile();
+            else
+                insertEdittedRecordToFile(index);
         }
 
         public void insert(T newObject)
@@ -95,13 +95,13 @@ namespace newUniversity.Classes
         {
             //if (dbObject.ID != 0 && dbObject.Name != null)
             //{
-           //     IDTree.delete(dbObject.ID + "");
-           //     NameTree.delete(dbObject.Name);
-          //  }
-          //  else
-          //  {
-//throw new Exception("argument to delete() is null");
-          //  }
+            //    IDTree.delete(dbObject.ID + "");
+            //    NameTree.delete(dbObject.Name);
+            //}
+            //else
+            //{
+            //    throw new Exception("argument to delete() is null");
+            //}
         }
 
         public T getByID(int id)

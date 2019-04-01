@@ -9,8 +9,8 @@ namespace newUniversity.Classes
 {
   public class StudentObject : UserObject
     {
-        public int[] passedLessons = new int[70];
-        public int[] currentSemisterCourses = new int[20];
+        public List<int> passedLessons;
+        public List<int> currentSemisterCourses;
         char[] Field = new char[20];
         public string field
         {

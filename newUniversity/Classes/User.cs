@@ -46,7 +46,7 @@ namespace newUniversity.Classes
 
         public string toString(UserObject user)
         {
-            return user.ID + ";" + user.name + " " + user.family;
+            return user.ID + ";" + user.firstName + " " + user.lastName;
         }
     }
 }

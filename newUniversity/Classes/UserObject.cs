@@ -8,9 +8,9 @@ namespace newUniversity.Classes
 {
     public abstract class UserObject
     {
-        char[] FirstName = new char[20];
+        public char[] FirstName = new char[20];
         public char[] LastName = new char[20];
-        char[] Password = new char[20];
+        public char[] Password = new char[20];
 
         public int ID = 0;
         protected string Name = null;

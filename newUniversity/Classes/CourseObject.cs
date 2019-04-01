@@ -4,7 +4,7 @@ namespace newUniversity.Classes
 {
     class CourseObject : LessonObject
     {
-        public int[] studentsID = new int[50];
+        public List<int> studentsID;
         
         public CourseObject(int id,  string title, short unitsCount, int masterID)
         {
