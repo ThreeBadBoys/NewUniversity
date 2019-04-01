@@ -79,11 +79,11 @@ namespace newUniversity.Classes
             {
                 getByID(newObject.ID);
             }
-            catch (notFoundException)
+            catch (NotFoundException)
             {
                 this.dbObject = newObject;
             }
-            throw new duplicateException();
+            throw new DuplicateException();
         }
 
         public void loadObject(T newObject)
@@ -93,15 +93,15 @@ namespace newUniversity.Classes
 
         public void delete()
         {
-            //if (dbObject.ID != 0 && dbObject.Name != null)
-            //{
-            //    IDTree.delete(dbObject.ID + "");
-            //    NameTree.delete(dbObject.Name);
-            //}
-            //else
-            //{
-            //    throw new Exception("argument to delete() is null");
-            //}
+            if (dbObject.ID != 0 && dbObject.Name != null)
+            {
+                IDTree.delete(dbObject.ID + "");
+                NameTree.delete(dbObject.Name);
+            }
+            else
+            {
+                throw new Exception("argument to delete() is null");
+            }
         }
 
         public T getByID(int id)
@@ -110,7 +110,7 @@ namespace newUniversity.Classes
             if (index != -1)
                 loadRecordFromFile(index);
             else
-                throw new notFoundException("record not found!");
+                throw new NotFoundException("record not found!");
             return dbObject;
         }
 
@@ -120,7 +120,7 @@ namespace newUniversity.Classes
             if (index != -1)
                 loadRecordFromFile(index);
             else
-                throw new notFoundException("record not found!");
+                throw new NotFoundException("record not found!");
             return dbObject;
         }
 
