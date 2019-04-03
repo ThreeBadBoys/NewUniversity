@@ -249,7 +249,7 @@
                 <MediaElement x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
             </Grid>
 
-            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Visible" Grid.Row="1">
+            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Collapsed" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>

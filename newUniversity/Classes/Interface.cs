@@ -63,11 +63,6 @@ namespace newUniversity.Classes
             throw new NotImplementedException();
         }
 
-        public static bool changManagerPassword(string currentPassword,
-         string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
         public static List<StudentObject> getAllStudents()//TODO
         {
             return null;
@@ -82,48 +77,20 @@ namespace newUniversity.Classes
         }
         //MASTER--------------------------------------------------------------------------------------
 
-        public static bool changeMasterPassword(string currentPassword,
-           string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
-
-
+       
 
 
 
         //STUDENT-------------------------------------------------------------------------------------
 
 
-        public static bool changeStudentPassword(string currentPassword,
-         string newPassword, string confirmationPassword)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
 
 
 
         //DEFAULT-------------------------------------------------------------------------------------
-        public static bool changeUserPassword(string userType, string currentPassword,
+        public static bool changeUserPassword(User user, string currentPassword,
            string newPassword, string confirmationPassword)
         {
-            switch (userType)
-            {
-                case "STUDENT":
-                    changeStudentPassword(currentPassword, newPassword, confirmationPassword);
-                    break;
-
-                case "MASTER":
-                    changeMasterPassword(currentPassword, newPassword, confirmationPassword);
-                    break;
-
-                case "MANAGER":
-                    changManagerPassword(currentPassword, newPassword, confirmationPassword);
-                    break;
-            }
 
             throw new NotImplementedException();
         }

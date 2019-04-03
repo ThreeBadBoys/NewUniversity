@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class User
+    public class User
     {
         public void changePassword(StudentObject user, string currentPassword, string newPassword, string confirmPassword)
         {
