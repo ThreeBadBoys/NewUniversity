@@ -19,13 +19,13 @@ namespace newUniversity.Classes
             if (whichTree.isEmpty())
                 tempindex = -1;
             else
-                tempindex = whichTree.getLast();
+                tempindex = whichTree.getLastIndex();
             // Get a handle to an existing memory mapped file
             using (MemoryMappedFile mmf =
-                MemoryMappedFile.CreateFromFile(fileDirectoryPlusName, FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
+                MemoryMappedFile.CreateFromFile
+                (fileDirectoryPlusName, FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
             // (UP)  Here we created a filefrom  a memoryMappedFile that it's capacity is (tempindex + 2) times larger than objectArray.Length
             //HERE WE SHOULD THINK ABOUT IT!!!!
-
             {
                 // Create a view accessor from which to read the data
                 using (MemoryMappedViewAccessor mmfReader = mmf.CreateViewAccessor())
@@ -120,10 +120,43 @@ namespace newUniversity.Classes
             {
                 return binaryFormatter.Deserialize(memoryStream);        // Deserialize stream to an object
             }
-            catch (SerializationException e)
+            catch (SerializationException)
             {
                 return null;
             }
+        }
+
+        public static void CreateBtreeFile(string fileName,BTree IDTree)
+        {
+            FileStream file = File.Create(fileName + "idtree");
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, IDTree);
+            file.Close();
+        }
+        public static void CreateFile(string fileName)
+        {
+            FileStream file = File.Create(fileName);
+            file.Close();
+        }
+
+        public static BTree loadBTreeFromFile(string fileName , bool isIDTree)
+        {
+            BTree btree;
+            if (File.Exists(fileName + (isIDTree ?"idTree" : "nameTree")))
+            {
+                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
+                if (new FileInfo(fileName + (isIDTree ? "idTree" : "nameTree")).Length != 0)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    btree = bf.Deserialize(file) as BTree;
+                    file.Close();
+                    return btree;
+                }
+                else
+                    throw new NotFoundException("tree file is empty");
+            }
+            else
+                throw new NotFoundException("tree file not found");
         }
     }
 }

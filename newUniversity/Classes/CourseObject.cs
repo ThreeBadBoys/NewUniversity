@@ -4,14 +4,16 @@ namespace newUniversity.Classes
 {
     class CourseObject : LessonObject
     {
-        public int[] studentsID = new int[50];
+        public List<int> studentsID;
         
-        public CourseObject(string title, short unitsCount, int masterID)
+        public CourseObject(int id,  string title, short unitsCount, int masterID)
         {
+            this.ID = id;
             this.title = title;
             this.name = title;
             this.unitsCount = unitsCount;
             this.masterID = masterID;
+            studentsID = new List<int>(50);
         }
     }
 }

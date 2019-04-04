@@ -6,7 +6,7 @@ namespace newUniversity.Classes
     {
         public int ID = 0;
         char[] Name = new char[20];
-        public string name
+        protected string name
         {
             get
             {

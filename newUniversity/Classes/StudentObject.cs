@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class StudentObject : UserObject
+  public class StudentObject : UserObject
     {
+        public List<int> passedLessons;
+        public List<int> currentSemisterCourses;
         char[] Field = new char[20];
         public string field
         {
@@ -34,16 +36,16 @@ namespace newUniversity.Classes
                 Field[i] = '\0';
             }
         }
-        public int[] passedLessons = new int[70];
-        public int[] currentSemisterCourses = new int[20];
-
         public StudentObject(string name, string family, string field)
         {
+            this.ID = int.Parse(Universal.instance.students.getLastID()) + 1;
             this.firstName = name;
             this.lastName = family;
             this.field = field;
-            this.Name = name + " " + family;
+            this.name = name + " " + family;
             this.password = ID + "";
+            currentSemisterCourses = new List<int>(20);
+            passedLessons = new List<int>(100);
         }
     }
 }

@@ -14,66 +14,33 @@ namespace newUniversity.Classes
         }
         protected BTree IDTree = null;
         protected BTree NameTree = null;
-        public T dbObject;
+        protected T dbObject;
 
         public Database(string fileName)
         {
             this.fileName = fileName;
             this.IDTree = new BTree();
             this.NameTree = new BTree();
-            FileStream file = File.Create(fileName + "idtree");
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(file, this.IDTree);
-            file.Close();
-            file = File.Create(fileName + "nametree");
-            bf.Serialize(file, this.NameTree);
-            file.Close();
-            file = File.Create(fileName);
-            file.Close();
-        }
+            FileHandler.CreateBtreeFile(fileName, this.IDTree);
+            FileHandler.CreateBtreeFile(fileName, this.NameTree);
+            FileHandler.CreateFile(fileName);
+        } // READ
 
         protected void loadTrees()
         {
             loadIdTree();
             loadNameTree();
-        }
+        } //READ
 
         protected void loadIdTree()
         {
-            if (File.Exists(fileName + "idTree"))
-            {
-                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
-                if (new FileInfo(fileName + "idTree").Length != 0)
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    this.IDTree = bf.Deserialize(file) as BTree;
-                    file.Close();
-                }
-                else
-                    throw new notFoundException("tree file is empty");
-            }
-            else
-                throw new notFoundException("tree file not found");
-        }
+            FileHandler.loadBTreeFromFile(fileName, true);
+        }//READ
 
         protected void loadNameTree()
         {
-            if (File.Exists(fileName + "nameTree"))
-            {
-                FileStream file = File.Open(fileName + "nameTree", FileMode.Open);
-                file = File.Open(fileName + "nameTree", FileMode.Open);
-                if (new FileInfo(fileName + "nameTree").Length != 0)
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    this.NameTree = bf.Deserialize(file) as BTree;
-                    file.Close();
-                }
-                else
-                    throw new notFoundException("tree file is empty");
-            }
-            else
-                throw new notFoundException("tree file not found");
-        }
+            FileHandler.loadBTreeFromFile(fileName, false);
+        }//READ
 
         public void loadRecordFromFile(int index)
         {
@@ -108,6 +75,19 @@ namespace newUniversity.Classes
 
         public void insert(T newObject)
         {
+            try
+            {
+                getByID(newObject.ID);
+            }
+            catch (NotFoundException)
+            {
+                this.dbObject = newObject;
+            }
+            throw new DuplicateException();
+        }
+
+        public void loadObject(T newObject)
+        {
             this.dbObject = newObject;
         }
 
@@ -130,7 +110,7 @@ namespace newUniversity.Classes
             if (index != -1)
                 loadRecordFromFile(index);
             else
-                throw new notFoundException("record not found!");
+                throw new NotFoundException("record not found!");
             return dbObject;
         }
 
@@ -140,8 +120,13 @@ namespace newUniversity.Classes
             if (index != -1)
                 loadRecordFromFile(index);
             else
-                throw new notFoundException("record not found!");
+                throw new NotFoundException("record not found!");
             return dbObject;
+        }
+
+        public string getLastID()
+        {
+            return IDTree.getLastID();
         }
 
         public void update()
