@@ -73,6 +73,7 @@
     <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\InvalidPasswordException.cs" />
     <Compile Include="Classes\LessonObject.cs" />
+    <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\ManagerObject.cs" />
     <Compile Include="Classes\Master.cs" />
     <Compile Include="Classes\MasterObject.cs" />
