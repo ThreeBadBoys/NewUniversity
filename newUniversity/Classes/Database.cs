@@ -91,16 +91,16 @@ namespace newUniversity.Classes
             this.dbObject = newObject;
         }
 
-        public void delete()
+        public void delete(DatabaseObject obj)
         {
-            if (dbObject.ID != 0 && dbObject.Name != null)
+            if (IDTree.get(obj.ID+"") != -1)
             {
-                IDTree.delete(dbObject.ID + "");
-                NameTree.delete(dbObject.Name);
+                IDTree.delete(obj.ID + "");
+                NameTree.delete(obj.name);
             }
             else
             {
-                throw new Exception("argument to delete() is null");
+                throw new NotFoundException("argument to delete() is null");
             }
         }
 
