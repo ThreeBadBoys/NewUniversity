@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CourseObject.cs" />
     <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\DatabaseObject.cs" />
     <Compile Include="Classes\DuplicateException.cs" />
     <Compile Include="Classes\FileController.cs" />
     <Compile Include="Classes\FileHandler.cs" />

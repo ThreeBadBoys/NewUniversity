@@ -16,8 +16,9 @@ namespace newUniversity.Classes
             else
             {
                 
-                Universal.instance.courses.delete();
-
+                Universal.instance.courses.delete(course);
+                Universal.instance.courses.save();
+                return true;
             }
 
 
@@ -38,6 +39,7 @@ namespace newUniversity.Classes
                     course.studentsID.Add(student.ID);
                     Universal.instance.courses.loadObject(course);
                     Universal.instance.courses.save();
+                    return true;
                 }
             }
             catch (NotFoundException)
@@ -57,30 +59,33 @@ namespace newUniversity.Classes
                 course.studentsID.Remove(student.ID);
                 Universal.instance.courses.loadObject(course);
                 Universal.instance.courses.save();
+                return true;
             }
             else
                 throw new NotFoundException("entered course ID was not selected recently!");
         }
     
 
-        public bool addStudent(string name, string family, string field, string password)
+        public bool addStudent(string name, string family, string field)
         {
         if (name != null && family != null && field != null)
         {
             var student = new StudentObject(name, family, field);
             Universal.instance.students.insert(student);
+            Universal.instance.students.save();
             return true;
         }
         else
             return false;
         }
 
-        public bool addMaster(string name, string family, string field, string password)
+        public bool addMaster(string name, string family, string field)
         {
         if (name != null && family != null && field != null)
         {
             var master = new MasterObject(name, family, field);
             Universal.instance.masters.insert(master);
+            Universal.instance.masters.save();
             return true;
             }
         else
@@ -88,12 +93,13 @@ namespace newUniversity.Classes
 
         }
 
-        public bool addManager(string name, string family, string password)
+        public bool addManager(string name, string family)
         {
         if (name != null && family != null)
         {
             var manager = new ManagerObject(name, family);
             Universal.instance.managers.insert(manager);
+            Universal.instance.managers.save();
             return true;
         }
         else
