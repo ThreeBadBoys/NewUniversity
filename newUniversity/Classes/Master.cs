@@ -21,8 +21,8 @@ namespace newUniversity.Classes
                 throw new NotFoundException("entered courseId not exists!");
             else
             {
-                Universal.instance.courses.getByID(courseId);
-                Universal.instance.courses.delete();
+                var course = Universal.instance.courses.getByID(courseId);
+                Universal.instance.courses.delete(course);
                 Universal.instance.courses.save();
                 master.courses.Remove(courseId);
                 Universal.instance.masters.loadObject(master);

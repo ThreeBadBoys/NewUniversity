@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
-    class UserObject : DatabaseObject
+    public class UserObject : DatabaseObject
     {
         public char[] FirstName = new char[20];
         public char[] LastName = new char[20];

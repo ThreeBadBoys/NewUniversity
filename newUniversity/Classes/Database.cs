@@ -64,26 +64,100 @@ namespace newUniversity.Classes
 
         public void save()
         {
-            if (IDTree == null)
-                loadTrees();
-            int index = IDTree.get(dbObject.ID + "");
-            if (index == -1)
-                insertRecordToFile();
-            else
-                insertEdittedRecordToFile(index);
+            if (dbObject is StudentObject)
+            {
+                if (IDTree == null)
+                    loadTrees();
+                int index = IDTree.get((dbObject as StudentObject).ID + "");
+                if (index == -1)
+                    insertRecordToFile();
+                else
+                    insertEdittedRecordToFile(index);
+            } else if (dbObject is MasterObject)
+            {
+                if (IDTree == null)
+                    loadTrees();
+                int index = IDTree.get((dbObject as MasterObject).ID + "");
+                if (index == -1)
+                    insertRecordToFile();
+                else
+                    insertEdittedRecordToFile(index);
+            }
+            else if (dbObject is ManagerObject)
+            {
+                if (IDTree == null)
+                    loadTrees();
+                int index = IDTree.get((dbObject as ManagerObject).ID + "");
+                if (index == -1)
+                    insertRecordToFile();
+                else
+                    insertEdittedRecordToFile(index);
+            }
+            else if (dbObject is CourseObject)
+            {
+                if (IDTree == null)
+                    loadTrees();
+                int index = IDTree.get((dbObject as CourseObject).ID + "");
+                if (index == -1)
+                    insertRecordToFile();
+                else
+                    insertEdittedRecordToFile(index);
+            }
+
+
         }
 
         public void insert(T newObject)
         {
-            try
+            if (dbObject is StudentObject)
             {
-                getByID(newObject.ID);
+                try
+                {
+                    getByID((newObject as StudentObject).ID);
+                }
+                catch (NotFoundException)
+                {
+                    this.dbObject = newObject;
+                }
+                throw new DuplicateException();
             }
-            catch (NotFoundException)
+            else if (dbObject is MasterObject)
             {
-                this.dbObject = newObject;
+                try
+                {
+                    getByID((newObject as MasterObject).ID);
+                }
+                catch (NotFoundException)
+                {
+                    this.dbObject = newObject;
+                }
+                throw new DuplicateException();
             }
-            throw new DuplicateException();
+            else if (dbObject is ManagerObject)
+            {
+                try
+                {
+                    getByID((newObject as ManagerObject).ID);
+                }
+                catch (NotFoundException)
+                {
+                    this.dbObject = newObject;
+                }
+                throw new DuplicateException();
+            }
+            else if (dbObject is CourseObject)
+            {
+                try
+                {
+                    getByID((newObject as CourseObject).ID);
+                }
+                catch (NotFoundException)
+                {
+                    this.dbObject = newObject;
+                }
+                throw new DuplicateException();
+            }
+
         }
 
         public void loadObject(T newObject)
@@ -142,12 +216,45 @@ namespace newUniversity.Classes
                     List<int> indexes = IDTree.toArray();
                     IDTree = new BTree();
                     NameTree = new BTree();
-                    for (int i = 0; i < indexes.Count; i++)
+                    if (dbObject is StudentObject)
                     {
-                        loadRecordFromFile(file, indexes[i]);
-                        int index = insertRecordToFile();
-                        IDTree.put(dbObject.ID + "", index);
-                        NameTree.put(dbObject.Name, index);
+                        for (int i = 0; i < indexes.Count; i++)
+                        {
+                            loadRecordFromFile(file, indexes[i]);
+                            int index = insertRecordToFile();
+                            IDTree.put((dbObject as StudentObject).ID + "", index);
+                            NameTree.put((dbObject as StudentObject).name, index);
+                        }
+                    }
+                    else if (dbObject is MasterObject)
+                    {
+                        for (int i = 0; i < indexes.Count; i++)
+                        {
+                            loadRecordFromFile(file, indexes[i]);
+                            int index = insertRecordToFile();
+                            IDTree.put((dbObject as MasterObject).ID + "", index);
+                            NameTree.put((dbObject as MasterObject).name, index);
+                        }
+                    }
+                    else if (dbObject is ManagerObject)
+                    {
+                        for (int i = 0; i < indexes.Count; i++)
+                        {
+                            loadRecordFromFile(file, indexes[i]);
+                            int index = insertRecordToFile();
+                            IDTree.put((dbObject as ManagerObject).ID + "", index);
+                            NameTree.put((dbObject as ManagerObject).name, index);
+                        }
+                    }
+                    else if (dbObject is CourseObject)
+                    {
+                        for (int i = 0; i < indexes.Count; i++)
+                        {
+                            loadRecordFromFile(file, indexes[i]);
+                            int index = insertRecordToFile();
+                            IDTree.put((dbObject as CourseObject).ID + "", index);
+                            NameTree.put((dbObject as CourseObject).name, index);
+                        }
                     }
                     file.Close();
                     File.Delete("temp" + this.fileName);
