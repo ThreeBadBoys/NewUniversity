@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     public class UserObject : DatabaseObject
     {
         public char[] FirstName = new char[20];

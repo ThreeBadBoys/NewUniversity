@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
   public class StudentObject : UserObject
     {
         public List<int> passedLessons;

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     public class ManagerObject : UserObject
     {
         public ManagerObject(string name, string family)

@@ -1,5 +1,7 @@
-﻿namespace newUniversity.Classes
+﻿using System;
+namespace newUniversity.Classes
 {
+    [Serializable]
     class PassedLessonObject : LessonObject
     {
         public int grade;

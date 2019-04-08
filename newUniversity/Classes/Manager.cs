@@ -93,17 +93,17 @@ namespace newUniversity.Classes
 
         }
 
-        public bool addManager(string name, string family)
+        public static bool addManager(string name, string family)
         {
-        if (name != null && family != null)
-        {
-            var manager = new ManagerObject(name, family);
-            Universal.instance.managers.insert(manager);
-            Universal.instance.managers.save();
-            return true;
-        }
-        else
-            return false;
+            if (name != null && family != null)
+            {
+                var manager = new ManagerObject(name, family);
+                Universal.instance.managers.insert(manager);
+                Universal.instance.managers.save();
+                return true;
+            }
+            else
+                return false;
         }
 
 

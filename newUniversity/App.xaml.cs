@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using newUniversity.Classes;
 using System.Windows;
 
 namespace newUniversity
@@ -13,5 +14,6 @@ namespace newUniversity
     /// </summary>
     public partial class App : Application
     {
+        Universal uni;
     }
 }

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     class LessonObject : DatabaseObject
     {
         char[] Title = new char[20];

@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     class Database<T>
     {
         string fileName = "";
@@ -21,8 +22,8 @@ namespace newUniversity.Classes
             this.fileName = fileName;
             this.IDTree = new BTree();
             this.NameTree = new BTree();
-            FileHandler.CreateBtreeFile(fileName, this.IDTree);
-            FileHandler.CreateBtreeFile(fileName, this.NameTree);
+            FileHandler.CreateBtreeFile(fileName+"idtree", this.IDTree);
+            FileHandler.CreateBtreeFile(fileName + "nametree", this.NameTree);
             FileHandler.CreateFile(fileName);
         } // READ
 
@@ -59,7 +60,7 @@ namespace newUniversity.Classes
 
         public int insertRecordToFile()
         {
-            return 0;
+            FileHandler.Add<T>();
         }
 
         public void save()
@@ -118,6 +119,7 @@ namespace newUniversity.Classes
                 catch (NotFoundException)
                 {
                     this.dbObject = newObject;
+                    IDTree.put();
                 }
                 throw new DuplicateException();
             }

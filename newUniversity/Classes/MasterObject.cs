@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     public class MasterObject : UserObject
     {
         public string field;

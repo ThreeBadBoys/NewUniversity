@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace newUniversity.Classes
 {
-    class Universal
+    [Serializable]
+    class Universal 
     {
         public Database<StudentObject> students;                  //students database
         public Database<ManagerObject> managers;                  //managers database
@@ -37,10 +39,11 @@ namespace newUniversity.Classes
                         instance.masters = new Database<MasterObject>("masters");
                         instance.courses = new Database<CourseObject>("courses");
                         instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
-                        instance.managers.insert(new ManagerObject("admin", "admin"));
+                        instance.managers.insert(new ManagerObject("12345", "12345"));
                         instance.managers.save();
                         bf.Serialize(file, instance);
                         file.Close();
+                        Manager.addManager("sajjad", "najafi");
                     }
                     else
                     {
@@ -56,11 +59,12 @@ namespace newUniversity.Classes
                     instance.managers = new Database<ManagerObject>("managers");
                     instance.masters = new Database<MasterObject>("masters");
                     instance.courses = new Database<CourseObject>("courses");
-                    instance.passedLessons = new Database<PassedLessonObject>("courses");
+                    instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
                     FileStream file = File.Create("Uni");
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(file, instance);
                     file.Close();
+                    Manager.addManager("sajjad", "najafi");
                 }
             }
         }        

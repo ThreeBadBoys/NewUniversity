@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     public class DatabaseObject
     {
         public int ID = 0;

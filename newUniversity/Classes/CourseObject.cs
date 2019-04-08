@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace newUniversity.Classes
 {
+    [Serializable]
     class CourseObject : LessonObject
     {
         public List<int> studentsID;
