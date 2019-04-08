@@ -8,11 +8,10 @@ namespace newUniversity.Classes
 {
     public static class Interface
     {
-         static Universal uni;
-
         //LOGIN--------------------------------------------------------------------------------------
         public static bool authentication(string usertype, string userName, string password)
         {
+            Universal u = new Universal();
             if (usertype.Equals("Manager"))
             {
                 ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;

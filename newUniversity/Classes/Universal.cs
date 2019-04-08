@@ -64,7 +64,9 @@ namespace newUniversity.Classes
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(file, instance);
                     file.Close();
-                    Manager.addManager("sajjad", "najafi");
+                    ManagerObject manager = new ManagerObject();
+                    instance.managers.insert(manager);
+                    instance.managers.save();
                 }
             }
         }        

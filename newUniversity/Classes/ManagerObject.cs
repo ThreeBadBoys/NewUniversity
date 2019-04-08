@@ -12,11 +12,19 @@ namespace newUniversity.Classes
     {
         public ManagerObject(string name, string family)
         {
-            this.ID = int.Parse(Universal.instance.managers.getLastID()) + 1;
-            this.firstName = name;
-            this.lastName = family;
+            ID = int.Parse(Universal.instance.managers.getLastID()) + 1;
+            firstName = name;
+            lastName = family;
             this.name = name + " " + family;
-            this.password = ID + "";
+            password = ID + "";
+        }
+        public ManagerObject()
+        {
+            ID = 12345;
+            firstName = "admin";
+            lastName = "admin";
+            name = "admin" + " " + "admin";
+            password = ID + "";
         }
     }
 }

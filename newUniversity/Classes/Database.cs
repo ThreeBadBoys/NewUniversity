@@ -128,75 +128,75 @@ namespace newUniversity.Classes
 
         public void insert(T newObject)
         {
-            if (dbObject is StudentObject)
+            if (newObject is StudentObject)
             {
                 try
                 {
                     getByID((newObject as StudentObject).ID);
+                    throw new DuplicateException();
                 }
                 catch (NotFoundException)
                 {
-                    this.dbObject = newObject;
+                    dbObject = newObject;
                     int index = insertRecordToFile();
                     IDTree.put((newObject as StudentObject).ID+"",index);
                 }
-                throw new DuplicateException();
             }
-            else if (dbObject is MasterObject)
+            else if (newObject is MasterObject)
             {
                 try
                 {
                     getByID((newObject as MasterObject).ID);
+                    throw new DuplicateException();
                 }
                 catch (NotFoundException)
                 {
-                    this.dbObject = newObject;
+                    dbObject = newObject;
                     int index = insertRecordToFile();
                     IDTree.put((newObject as MasterObject).ID + "", index);
                 }
-                throw new DuplicateException();
             }
-            else if (dbObject is ManagerObject)
+            else if (newObject is ManagerObject)
             {
                 try
                 {
                     getByID((newObject as ManagerObject).ID);
+                    throw new DuplicateException();
                 }
                 catch (NotFoundException)
                 {
-                    this.dbObject = newObject;
+                    dbObject = newObject;
                     int index = insertRecordToFile();
                     IDTree.put((newObject as ManagerObject).ID + "", index);
                 }
-                throw new DuplicateException();
             }
-            else if (dbObject is CourseObject)
+            else if (newObject is CourseObject)
             {
                 try
                 {
                     getByID((newObject as CourseObject).ID);
+                    throw new DuplicateException();
                 }
                 catch (NotFoundException)
                 {
-                    this.dbObject = newObject;
+                    dbObject = newObject;
                     int index = insertRecordToFile();
                     IDTree.put((newObject as CourseObject).ID + "", index);
                 }
-                throw new DuplicateException();
             }
-            else if (dbObject is PassedLessonObject)
+            else if (newObject is PassedLessonObject)
             {
                 try
                 {
                     getByID((newObject as PassedLessonObject).ID);
+                    throw new DuplicateException();
                 }
                 catch (NotFoundException)
                 {
-                    this.dbObject = newObject;
+                    dbObject = newObject;
                     int index = insertRecordToFile();
                     IDTree.put((newObject as PassedLessonObject).ID + "", index);
                 }
-                throw new DuplicateException();
             }
         }
 
