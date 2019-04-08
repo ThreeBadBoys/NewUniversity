@@ -12,7 +12,7 @@ namespace newUniversity.Classes
 {
     static class FileHandler
     {
-        public static int Add<T>(BTree whichTree, object objectToAdd, int objectToAddID, string fileDirectoryPlusName)
+        public static int Add<T>(BTree whichTree, object objectToAdd, string fileDirectoryPlusName)
         {
             byte[] objectArray = ObjectToByteArray(objectToAdd);
             int tempindex;
@@ -38,24 +38,10 @@ namespace newUniversity.Classes
 
                     //HERE IS THE TRICK
                     //TO SAVE THE DATA IN FILE ==>> We navigate over the file to find the null place to save the data
-                    for (int index = 0; ; index++)
-                    {
-                        if (mmfReader.CanRead)
-                        {
-                            mmfReader.ReadArray<byte>(index * objectArray.Length, buffer, 0, buffer.Length);
-                            //Posiiton is the startPoint of reading the data
-                            //The unit of reading data is our buffer arraysize //COUNTER = buffer.Length
-                            //Because we want to read from start to end of the unit,We set OFFSET to 0
-                            T temp = (T)ByteArrayToObject(buffer);
-                            if (temp == null)//HERE we found the empty place , so we save data their
-                            {
-                                mmfReader.WriteArray<byte>(index * objectArray.Length, objectArray, 0, buffer.Length);//DATA is written to File                             
-                                return index;
-                            }
-                        }
-                        else
-                            return -1;
-                    }
+
+
+                    mmfReader.WriteArray<byte>((tempindex + 1 )* objectArray.Length, objectArray, 0, buffer.Length);//DATA is written to File                             
+                    return tempindex + 1;
                 }
             }
         }//DECODED SUCCESSFULLY
@@ -90,7 +76,7 @@ namespace newUniversity.Classes
             return objectTempToLoad;
         }
 
-        public static int SaveEdited(int index, object objectToEdit, string fileDirectoryPlusName)
+        public static void SaveEdited(int index, object objectToEdit, string fileDirectoryPlusName)
         {
             byte[] buffer = ObjectToByteArray(objectToEdit);
 
@@ -101,7 +87,6 @@ namespace newUniversity.Classes
                     mmfWriter.WriteArray<byte>(index * buffer.Length, buffer, 0, buffer.Length);
                 }
             }
-            return index;
         }
 
         private static byte[] ObjectToByteArray(object objectToGetBytes)
@@ -128,7 +113,7 @@ namespace newUniversity.Classes
 
         public static void CreateBtreeFile(string fileName,BTree IDTree)
         {
-            FileStream file = File.Create(fileName + "idtree");
+            FileStream file = File.Create(fileName);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, IDTree);
             file.Close();

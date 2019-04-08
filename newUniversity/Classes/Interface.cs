@@ -8,7 +8,7 @@ namespace newUniversity.Classes
 {
     public static class Interface
     {
-        //  static Universal uni;
+         static Universal uni;
 
         //LOGIN--------------------------------------------------------------------------------------
         public static bool authentication(string usertype, string userName, string password)

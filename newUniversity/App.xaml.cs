@@ -14,6 +14,6 @@ namespace newUniversity
     /// </summary>
     public partial class App : Application
     {
-        Universal uni;
+
     }
 }

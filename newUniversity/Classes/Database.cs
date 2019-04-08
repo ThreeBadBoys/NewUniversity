@@ -33,6 +33,22 @@ namespace newUniversity.Classes
             loadNameTree();
         } //READ
 
+        protected void saveTrees()
+        {
+            saveIdTree();
+            saveNameTree();
+        } //WRITE
+
+        protected void saveIdTree()
+        {
+            FileHandler.loadBTreeFromFile(fileName, true);
+        }//WRITE
+
+        protected void saveNameTree()
+        {
+            FileHandler.loadBTreeFromFile(fileName, false);
+        }//WRITE
+
         protected void loadIdTree()
         {
             FileHandler.loadBTreeFromFile(fileName, true);
@@ -45,22 +61,24 @@ namespace newUniversity.Classes
 
         public void loadRecordFromFile(int index)
         {
-
+            bool read;
+            FileHandler.Load(dbObject, out read, fileName, index);
         }
 
-        public void loadRecordFromFile(FileStream file, int index)
+        public void loadRecordFromFile(string FileName, int index)
         {
-
+            bool read;
+            FileHandler.Load(dbObject, out read, FileName, index);
         }
 
-        public int insertEdittedRecordToFile(int index)
+        public void insertEdittedRecordToFile(int index)
         {
-            return 0;
+            FileHandler.SaveEdited(index, dbObject, fileName);
         }
 
         public int insertRecordToFile()
         {
-            FileHandler.Add<T>();
+            return FileHandler.Add<T>(IDTree,dbObject,fileName);
         }
 
         public void save()
@@ -104,7 +122,7 @@ namespace newUniversity.Classes
                 else
                     insertEdittedRecordToFile(index);
             }
-
+            saveTrees();
 
         }
 
@@ -119,7 +137,8 @@ namespace newUniversity.Classes
                 catch (NotFoundException)
                 {
                     this.dbObject = newObject;
-                    IDTree.put();
+                    int index = insertRecordToFile();
+                    IDTree.put((newObject as StudentObject).ID+"",index);
                 }
                 throw new DuplicateException();
             }
@@ -132,6 +151,8 @@ namespace newUniversity.Classes
                 catch (NotFoundException)
                 {
                     this.dbObject = newObject;
+                    int index = insertRecordToFile();
+                    IDTree.put((newObject as MasterObject).ID + "", index);
                 }
                 throw new DuplicateException();
             }
@@ -144,6 +165,8 @@ namespace newUniversity.Classes
                 catch (NotFoundException)
                 {
                     this.dbObject = newObject;
+                    int index = insertRecordToFile();
+                    IDTree.put((newObject as ManagerObject).ID + "", index);
                 }
                 throw new DuplicateException();
             }
@@ -156,10 +179,25 @@ namespace newUniversity.Classes
                 catch (NotFoundException)
                 {
                     this.dbObject = newObject;
+                    int index = insertRecordToFile();
+                    IDTree.put((newObject as CourseObject).ID + "", index);
                 }
                 throw new DuplicateException();
             }
-
+            else if (dbObject is PassedLessonObject)
+            {
+                try
+                {
+                    getByID((newObject as PassedLessonObject).ID);
+                }
+                catch (NotFoundException)
+                {
+                    this.dbObject = newObject;
+                    int index = insertRecordToFile();
+                    IDTree.put((newObject as PassedLessonObject).ID + "", index);
+                }
+                throw new DuplicateException();
+            }
         }
 
         public void loadObject(T newObject)
@@ -212,7 +250,6 @@ namespace newUniversity.Classes
                 if (File.Exists(this.fileName))
                 {
                     File.Move(this.fileName, "temp" + this.fileName);
-                    FileStream file = File.Open("temp" + this.fileName, FileMode.Open);
                     File.Create(this.fileName);
                     BinaryFormatter bf = new BinaryFormatter();
                     List<int> indexes = IDTree.toArray();
@@ -222,7 +259,7 @@ namespace newUniversity.Classes
                     {
                         for (int i = 0; i < indexes.Count; i++)
                         {
-                            loadRecordFromFile(file, indexes[i]);
+                            loadRecordFromFile("temp" + this.fileName, indexes[i]);
                             int index = insertRecordToFile();
                             IDTree.put((dbObject as StudentObject).ID + "", index);
                             NameTree.put((dbObject as StudentObject).name, index);
@@ -232,7 +269,7 @@ namespace newUniversity.Classes
                     {
                         for (int i = 0; i < indexes.Count; i++)
                         {
-                            loadRecordFromFile(file, indexes[i]);
+                            loadRecordFromFile("temp" + this.fileName, indexes[i]);
                             int index = insertRecordToFile();
                             IDTree.put((dbObject as MasterObject).ID + "", index);
                             NameTree.put((dbObject as MasterObject).name, index);
@@ -242,7 +279,7 @@ namespace newUniversity.Classes
                     {
                         for (int i = 0; i < indexes.Count; i++)
                         {
-                            loadRecordFromFile(file, indexes[i]);
+                            loadRecordFromFile("temp" + this.fileName, indexes[i]);
                             int index = insertRecordToFile();
                             IDTree.put((dbObject as ManagerObject).ID + "", index);
                             NameTree.put((dbObject as ManagerObject).name, index);
@@ -252,15 +289,14 @@ namespace newUniversity.Classes
                     {
                         for (int i = 0; i < indexes.Count; i++)
                         {
-                            loadRecordFromFile(file, indexes[i]);
+                            loadRecordFromFile("temp" + this.fileName, indexes[i]);
                             int index = insertRecordToFile();
                             IDTree.put((dbObject as CourseObject).ID + "", index);
                             NameTree.put((dbObject as CourseObject).name, index);
                         }
                     }
-                    file.Close();
                     File.Delete("temp" + this.fileName);
-                    file = File.Open(this.fileName + "idtree", FileMode.Open);
+                    FileStream file = File.Open(this.fileName + "idtree", FileMode.Open);
                     bf.Serialize(file, IDTree);
                     file.Close();
                     file = File.Open(this.fileName + "nametree", FileMode.Open);
