@@ -20,7 +20,7 @@ namespace newUniversity.Classes
         }
         public ManagerObject()
         {
-            ID = 12345;
+            ID = 98000;
             firstName = "admin";
             lastName = "admin";
             name = "admin" + " " + "admin";
