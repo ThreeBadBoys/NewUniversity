@@ -22,12 +22,12 @@ namespace newUniversity
     {
         private object o;
         private static int counter1 = 0;
-        public MasterWindow()
-        // (object o)
+        public MasterWindow(
+     object o)
         {
             InitializeComponent();
             this.o = o;
-            // bindData(o);
+          bindData(o);
         }
         public void bindData(object o)
         {

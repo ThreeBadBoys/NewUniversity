@@ -31,39 +31,38 @@ namespace newUniversity.Classes
         }
 
         //LOGIN--------------------------------------------------------------------------------------
-        public static bool authentication(string usertype, string userName, string password)
+        public static object authentication(string usertype, string userName, string password)
         {
-            //  try
-            // {
-            //    Universal u = new Universal();
-            //    if (usertype.Equals("Manager"))
-            //    {
-            //        ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;
-            //        if (manager.password.Equals(password))
-            //            return manager;
-            //        return null;
-            //    }
-            //    else if (usertype.Equals("Master"))
-            //    {
-            //        MasterObject master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterObject;
-            //        if (master.password.Equals(password))
-            //            return master;
-            //        return null;
-            //    }
-            //    else
-            //    {
-            //        StudentObject student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentObject;
-            //        if (student.password.Equals(password))
-            //            return student;
-            //        return null;
-            //    }
+            try
+            {
+                Universal u = new Universal();
+                if (usertype.Equals("Manager"))
+                {
+                    ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;
+                    if (manager.password.Equals(password))
+                        return manager;
+                    return null;
+                }
+                else if (usertype.Equals("Master"))
+                {
+                    MasterObject master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterObject;
+                    if (master.password.Equals(password))
+                        return master;
+                    return null;
+                }
+                else
+                {
+                    StudentObject student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentObject;
+                    if (student.password.Equals(password))
+                        return student;
+                    return null;
+                }
 
-            //}
-            //catch (NotFoundException)
-            //{
-            //    return null;
-            //}
-            return true;
+            }
+            catch (NotFoundException)
+            {
+                return null;
+            }
         }
 
         //MANAGER------------------------------------------------------------------------------------
@@ -142,6 +141,7 @@ namespace newUniversity.Classes
             throw new NotImplementedException();
         }
 
+        //Getting the CourseObjects of the Master that chose
         public static List<CourseObject> getAllClasses(object o)
         {
             throw new  NotImplementedException();
@@ -157,7 +157,7 @@ namespace newUniversity.Classes
 
         //STUDENT-------------------------------------------------------------------------------------
 
-            //Getting the Student's current Term Courses
+        //Getting the Student's current Term Courses
         public static CourseObject[] getThisTermCourse(object o)
         {
             throw new NotImplementedException();

@@ -13,11 +13,11 @@ namespace newUniversity
     {
         private object o;
         private static int counter1 = 0;
-        public StudentWindow()
-        //object o)
+        public StudentWindow(
+        object o)
         {
             InitializeComponent();
-            //    bindData(o);
+       bindData(o);
             this.o = o;
        
         }

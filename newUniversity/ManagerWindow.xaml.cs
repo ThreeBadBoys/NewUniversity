@@ -27,11 +27,10 @@ namespace newUniversity
         private object o;
         public static int counter1 = 0;
         public static int counter2 = 0;
-        public ManagerWindow()
-        //object o)
+        public ManagerWindow(object o)
         {
             InitializeComponent();
-            // bindData(o);
+         bindData(o);
         }
         public void bindData(object o)
         {
