@@ -128,6 +128,13 @@ namespace newUniversity.Classes
         }
 
 
+        public static bool insertGrade(object o,string courseID,string studentID,string grade)
+        {
+
+            throw new NotImplementedException();
+        }
+
+
         //STUDENT-------------------------------------------------------------------------------------
 
 

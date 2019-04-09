@@ -40,6 +40,7 @@ namespace newUniversity
         private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridInsertGrade.Visibility = Visibility.Collapsed;
             GridListOfClasses.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
@@ -53,6 +54,7 @@ namespace newUniversity
             GridChangePassword.Visibility = Visibility.Visible;
             GridArrow.Visibility = Visibility.Collapsed;
             GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
+            GridInsertGrade.Visibility = Visibility.Collapsed;
         }
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -61,6 +63,7 @@ namespace newUniversity
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
             GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
+            GridInsertGrade.Visibility = Visibility.Collapsed;
         }
         private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -69,7 +72,23 @@ namespace newUniversity
             GridListOfClasses.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridInsertGrade.Visibility = Visibility.Collapsed;
         }
+        private void listViewItem4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+       
+            GridInsertGrade.Visibility = Visibility.Visible;
+
+            GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
+            GridListOfClasses.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
+        }
+
+
+
+
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             LoginPage loginWindow = new LoginPage();
@@ -107,6 +126,16 @@ namespace newUniversity
         private void Button_change_Master_Password_Click(object sender, RoutedEventArgs e)
         {
 
+
+            Interface.changeUserPassword(
+                o,
+                txtCurentPasswordMaster.Text.ToString(),
+                txtNewPasswordMaster.Password.ToString(),
+                txtNewPasswordAgainMaster.Password.ToString()
+                , "Master");
+
+
+
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -121,17 +150,17 @@ namespace newUniversity
             counter1 = 0;
             List<CourseObject> crs = Interface.getAllClasses(o);
 
-            foreach(CourseObject crsObject in crs)
+            foreach (CourseObject crsObject in crs)
             {
 
-                DATAGRIDGClASSES.Items.Add(new Class(
-                    crsObject.name,
-                    crsObject.ID,
-                    crsObject.time,
-                    crsObject.date,
-                    crsObject.days,
-                    crsObject.examTime,
-                    crsObject.examDate));
+                //DATAGRIDGClASSES.Items.Add(new Class(
+                //    crsObject.name,
+                //    crsObject.ID,
+                //    crsObject.time,
+                //    crsObject.date,
+                //    crsObject.days,
+                //    crsObject.examTime,
+                //    crsObject.examDate));
             }
         }
         class Class
@@ -147,7 +176,7 @@ namespace newUniversity
 
 
             public Class(
-                string ClassCourseName, 
+                string ClassCourseName,
                 string ClassCourseID,
                 string ClassTime,
                 string ClassDate,
@@ -196,13 +225,9 @@ namespace newUniversity
 
             if (checkBox_Thu.IsChecked.Value)
             {
-                days += "Thu";
+                days += "Thu _ ";
             }
-
-
-
-
-
+            days = days.Substring(0, days.Length - 3);
             Interface.addClass(o,
                 txtCourseNameForCreateClass.Text.ToString(),
                 txtCourseIDForCreateClass.Text.ToString(),
@@ -219,6 +244,16 @@ namespace newUniversity
         private void btn_DeleteCourse_Click(object sender, RoutedEventArgs e)
         {
             Interface.removeCourseMaster(txtCourseIDMaster.Text.ToString());
+        }
+
+        private void Button_Insert_Grade_Click(object sender, RoutedEventArgs e)
+        {
+            Interface.insertGrade(
+                o,
+                txtCourseIDForInsertGrade.Text.ToString(),
+                txtStudentIDForInsertGrade.Text.ToString(),
+                txtGradeForInsertGrade.Text.ToString()
+                );
         }
     }
 }

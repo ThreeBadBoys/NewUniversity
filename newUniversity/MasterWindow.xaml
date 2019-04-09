@@ -158,6 +158,27 @@
                         <TextBlock Text="Remove Course" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
+
+                <ListViewItem x:Name="listViewItem4" Height="55" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem4_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Grades_32px_2.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Insert Grade" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+
+
+
+
+
+
                 <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem1_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
@@ -329,7 +350,7 @@
 
                 <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="301.4,0,314,60" Content="ADD" Click="btnAddClass_Click" />
             </Grid>
-            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Visible" Grid.Row="1">
+            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Collapsed" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -387,6 +408,35 @@
                 </Grid>
                 <Button Margin="339,0,339,505.2" Content="Reload" Click="btnReloadClassesList_Click" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
+
+
+            <Grid x:Name="GridInsertGrade" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="234.8" VerticalAlignment="Bottom" Margin="250.2,0,250.2,164.8" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,164.8" Height="280.533">
+                    <StackPanel Margin="16.6,46.866,16.6,28.867" VerticalAlignment="Center" Height="204.8">
+                        <TextBox x:Name="txtCourseIDForInsertGrade" Margin="0,10" materialDesign:HintAssist.Hint="CourseID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtStudentIDForInsertGrade"  Margin="0,10" materialDesign:HintAssist.Hint="StudentID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtGradeForInsertGrade"  Margin="0,10" materialDesign:HintAssist.Hint="Grade" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
+                    <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="61.8,0,61.8,-14.2" Content="Insert" Click="Button_Insert_Grade_Click" />
+                </Grid>
+
+
+            </Grid>
+
+
+
+            <!---->
             <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -401,9 +451,9 @@
                 </Rectangle>
                 <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,164.8" Height="280.533">
                     <StackPanel Margin="16.6,46.866,16.6,28.867" VerticalAlignment="Center" Height="204.8">
-                        <TextBox Margin="0,10" materialDesign:HintAssist.Hint="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <PasswordBox x:Name="newPasswordInput" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <PasswordBox x:Name="newPasswordInputAgain" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox  x:Name="txtCurentPasswordMaster" Margin="0,10" materialDesign:HintAssist.Hint="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="txtNewPasswordMaster" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="txtNewPasswordAgainMaster" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
                     <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="61.8,0,61.8,-14.2" Content="Change it!" Click="Button_change_Master_Password_Click" />
                 </Grid>
