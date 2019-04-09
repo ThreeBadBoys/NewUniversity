@@ -8,11 +8,12 @@ namespace newUniversity.Classes
 {
     class Master : User
     {
-        static public void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examTime, string courseTime)
+        static public void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examDate, string examTime, string courseTime, string classDays)
         {
-            Universal.instance.courses.insert(new CourseObject(courseId,courseTitle, courseUnitsCount, master.ID));
-            Universal.instance.courses.save();
+            Universal.instance.courses.insert(new CourseObject(courseId,courseTitle, courseUnitsCount, master.ID, examDate, examTime, courseTime, classDays));
             master.courses.Add(courseId);
+            Universal.instance.masters.loadObject(master);
+            Universal.instance.masters.save();
         }
 
         static public void deleteCourse(MasterObject master, int courseId)
