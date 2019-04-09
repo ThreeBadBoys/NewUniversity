@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using newUniversity.Classes;
 
 namespace newUniversity
 {
@@ -25,21 +26,24 @@ namespace newUniversity
         CHOSENCourses cr2 = new CHOSENCourses(2, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
         CHOSENCourses cr3 = new CHOSENCourses(3, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
         CHOSENCourses cr4 = new CHOSENCourses(4, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
-        public StudentWindow()
+        public StudentWindow(object o)
         {
-           InitializeComponent();
-
-
-         
+            InitializeComponent();
+            bindData(o);
             list.Add(cr1);
             list.Add(cr2);
             list.Add(cr3);
             list.Add(cr4);
+        }
+        public void bindData(object o)
+        {
+            if (o != null)
+            {
+                StudentObject student = o as StudentObject;
+                txtUserName.Text = student.firstName + " " + student.lastName;
 
-         
 
-
-
+            }
         }
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -163,7 +167,7 @@ namespace newUniversity
                 this.EXAMTIME = EXAMTIME;
             }
 
-           
+
         }
         public class PassedCourses
         {
@@ -191,7 +195,7 @@ namespace newUniversity
                     this.PassedSTATE = "Fail";
                 }
             }
-           
+
 
         }
         public class CHOSENCourses
@@ -225,7 +229,7 @@ namespace newUniversity
 
         private void courseID_LostFocus(object sender, RoutedEventArgs e)
         {
-            AddNewCourseUnitChoicecourseID.Width-= 10;
+            AddNewCourseUnitChoicecourseID.Width -= 10;
             AddNewCourseUnitChoiceButton.Width += 10;
         }
 

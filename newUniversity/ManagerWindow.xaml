@@ -360,7 +360,7 @@
                 </Grid.RowDefinitions>
                 <MediaElement  x:Name="Media" Margin="0 40 0 0" Source="sky.MP4" LoadedBehavior="Play"   Stretch="UniformToFill" UnloadedBehavior="Play" SpeedRatio="1" IsMuted="True"  />
             </Grid>
-            <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+            <Grid x:Name="GridCreateNewUser" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -381,9 +381,9 @@
                             <ComboBoxItem Content="Master"/>
                             <ComboBoxItem Content="Student"/>
                         </ComboBox>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="FirstName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="LastName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="Major" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCreateFirstName" Margin="0,10,0,0" materialDesign:HintAssist.Hint="FirstName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCreateLastName" Margin="0,10,0,0" materialDesign:HintAssist.Hint="LastName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCreateMajor" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Major" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
 
                 </Grid>

@@ -25,8 +25,9 @@ namespace newUniversity
         public LoginPage()
         {
             InitializeComponent();
+ 
         }
-      
+
         BlurEffect myEffect = new BlurEffect();
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -35,7 +36,7 @@ namespace newUniversity
 
         private void btnLogin(object sender, RoutedEventArgs e)
         {
-            if(UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
+            if (UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
             {
                 return;
             }
@@ -43,7 +44,7 @@ namespace newUniversity
             {
                 return;
             }
-       
+
             if (comboBox.SelectionBoxItem.ToString().Equals("Manager"))
             {
                 if (UserNameInput.Text.Length == 0 && passwordInput.Password.ToString().Length == 0)
@@ -54,13 +55,13 @@ namespace newUniversity
                 {
                     return;
                 }
-              
-                MyBlureEffectLoading();
 
-                if (Interface.authentication("Manager", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
+                MyBlureEffectLoading();
+                ManagerObject manager = Interface.authentication("Manager", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as ManagerObject;
+                if (manager != null)
                 {
                     MyBlureEffectCorrect();
-                    ManagerWindow managerWindow = new ManagerWindow();
+                    ManagerWindow managerWindow = new ManagerWindow(manager);
                     managerWindow.Show();
                     CloseWIndowUsingIdentifier("login");
                 }
@@ -79,12 +80,13 @@ namespace newUniversity
                 {
                     return;
                 }
-               
+
                 MyBlureEffectLoading();
-                if (Interface.authentication("Master", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
+                MasterObject master = Interface.authentication("Master", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as MasterObject;
+                if (master != null)
                 {
                     MyBlureEffectCorrect();
-                    MasterWindow masterWindow = new MasterWindow();
+                    MasterWindow masterWindow = new MasterWindow(master);
                     masterWindow.Show();
                     CloseWIndowUsingIdentifier("login");
                 }
@@ -103,14 +105,14 @@ namespace newUniversity
                 {
                     return;
                 }
-             
-           
-                MyBlureEffectLoading();
 
-                if (Interface.authentication("Student", UserNameInput.Text.ToString(), passwordInput.Password.ToString()))
+
+                MyBlureEffectLoading();
+                StudentObject student = Interface.authentication("Student", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as StudentObject;
+                if(student != null)
                 {
                     MyBlureEffectCorrect();
-                    StudentWindow studentWindow = new StudentWindow();
+                    StudentWindow studentWindow = new StudentWindow(student);
                     studentWindow.Show();
                     CloseWIndowUsingIdentifier("login");
                 }

@@ -8,37 +8,62 @@ namespace newUniversity.Classes
 {
     public static class Interface
     {
-        //LOGIN--------------------------------------------------------------------------------------
-        public static bool authentication(string usertype, string userName, string password)
+        //DEFAULT-------------------------------------------------------------------------------------
+        public static bool changeUserPassword(User user, string currentPassword,
+           string newPassword, string confirmationPassword)
         {
-            Universal u = new Universal();
-            if (usertype.Equals("Manager"))
+
+            throw new NotImplementedException();
+        }
+
+        //LOGIN--------------------------------------------------------------------------------------
+        public static object authentication(string usertype, string userName, string password)
+        {
+            try
             {
-                ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;
-                if (manager.password.Equals(password))
-                    return true;
-                return false;
+                Universal u = new Universal();
+                if (usertype.Equals("Manager"))
+                {
+                    ManagerObject manager = Universal.instance.managers.getByID(Convert.ToInt32(userName)) as ManagerObject;
+                    if (manager.password.Equals(password))
+                        return manager;
+                    return null;
+                }
+                else if (usertype.Equals("Master"))
+                {
+                    MasterObject master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterObject;
+                    if (master.password.Equals(password))
+                        return master;
+                    return null;
+                }
+                else
+                {
+                    StudentObject student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentObject;
+                    if (student.password.Equals(password))
+                        return student;
+                    return null;
+                }
+
             }
-            else if (usertype.Equals("Master"))
+            catch (NotFoundException e)
             {
-                MasterObject master = Universal.instance.masters.getByID(Convert.ToInt32(userName)) as MasterObject;
-                if (master.password.Equals(password))
-                    return true;
-                return false;
-            }
-            else
-            {
-                StudentObject student = Universal.instance.students.getByID(Convert.ToInt32(userName)) as StudentObject;
-                if (student.password.Equals(password))
-                    return true;
-                return false;
+                return null;
             }
         }
 
         //MANAGER------------------------------------------------------------------------------------
         public static bool createNewUser(string userType, string firstName, string lastName, string major)
         {
-            throw new NotImplementedException();
+            switch (userType)
+            {
+                case "Manager":
+                    return Manager.addManager(firstName, lastName);
+                case "Master":
+                    return Manager.addMaster(firstName, lastName, major);
+                case "Student":
+                    return Manager.addStudent(firstName, lastName, major);
+            }
+            throw new Exception("It shouldn't reach here : " + userType);
         }
         public static bool createNewCourse(string crsName, string crsId, string masterID, string crsUnit, string examDate, string examTime)
         {
@@ -75,7 +100,7 @@ namespace newUniversity.Classes
         }
         //MASTER--------------------------------------------------------------------------------------
 
-       
+
 
 
 
@@ -85,13 +110,7 @@ namespace newUniversity.Classes
 
 
 
-        //DEFAULT-------------------------------------------------------------------------------------
-        public static bool changeUserPassword(User user, string currentPassword,
-           string newPassword, string confirmationPassword)
-        {
 
-            throw new NotImplementedException();
-        }
 
     }
 }

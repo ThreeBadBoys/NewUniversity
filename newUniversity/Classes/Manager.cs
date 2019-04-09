@@ -66,7 +66,7 @@ namespace newUniversity.Classes
         }
     
 
-        public bool addStudent(string name, string family, string field)
+        public static bool addStudent(string name, string family, string field)
         {
         if (name != null && family != null && field != null)
         {
@@ -79,7 +79,7 @@ namespace newUniversity.Classes
             return false;
         }
 
-        public bool addMaster(string name, string family, string field)
+        public static bool addMaster(string name, string family, string field)
         {
         if (name != null && family != null && field != null)
         {

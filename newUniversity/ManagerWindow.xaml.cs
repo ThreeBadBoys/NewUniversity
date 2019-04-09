@@ -25,9 +25,20 @@ namespace newUniversity
     {
         public static int counter1 = 0;
         public static int counter2 = 0;
-        public ManagerWindow()
+        public ManagerWindow(object o)
         {
             InitializeComponent();
+            bindData(o);
+        }
+        public void bindData(object o)
+        {
+            if (o != null)
+            {
+                ManagerObject manager = o as ManagerObject;
+                txtUserName.Text = manager.firstName + " " + manager.lastName;
+
+
+            }
         }
         BlurEffect myEffect = new BlurEffect();
 
@@ -289,9 +300,11 @@ namespace newUniversity
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
             MyBlureEffectLoading();
-            //TODO: RESULTS OF CREATING NEW USER WITH UI SHOULD BE SET
+            Interface.createNewUser(comboBoxForCreateNewUser.SelectionBoxItem.ToString(),
+                txtCreateFirstName.Text.ToString(),
+                txtCreateLastName.Text.ToString(),
+                txtCreateMajor.Text.ToString());
         }
-
         private void btnAddCourse_Click(object sender, RoutedEventArgs e)
         {
             MyBlureEffectLoading();

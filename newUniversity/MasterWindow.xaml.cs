@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using newUniversity.Classes;
 namespace newUniversity
 {
     /// <summary>
@@ -20,11 +20,21 @@ namespace newUniversity
     /// </summary>
     public partial class MasterWindow : Window
     {
-        public MasterWindow()
+        public MasterWindow(object o)
         {
             InitializeComponent();
+            bindData(o);
         }
+        public void bindData(object o)
+        {
+            if(o != null)
+            {
+                MasterObject master = o as MasterObject;
+                txtUserName.Text = master.firstName + " " + master.lastName; 
 
+
+            }
+        }
         private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GridListOfClasses.Visibility = Visibility.Visible;
