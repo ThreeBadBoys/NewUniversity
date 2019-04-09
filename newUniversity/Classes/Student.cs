@@ -7,7 +7,7 @@
             try
             {
                 CourseObject course = Universal.instance.courses.getByID(courseId) as CourseObject;
-                if (student.currentSemisterCourses.Contains(int.Parse(courseId+student.ID+"")))
+                if (student.currentSemisterCourses.Contains(int.Parse(student.ID+""+ courseId)))
                     throw new DuplicateException("entered course ID recently selected!");
                 else
                 {
@@ -15,7 +15,7 @@
                     Universal.instance.studentLessons.insert(lesson);
                     Universal.instance.studentLessons.loadObject(lesson);
                     Universal.instance.students.save();
-                    student.currentSemisterCourses.Add(int.Parse(courseId + student.ID + ""));
+                    student.currentSemisterCourses.Add(int.Parse(student.ID + "" + courseId));
                     Universal.instance.students.loadObject(student);
                     Universal.instance.students.save();
                     course.studentsID.Add(student.ID);
@@ -52,7 +52,7 @@
             int[] arr = new int[20];
             for(int i = 0;i< std.currentSemisterCourses.Count; i++)
             {
-                arr[i] = int.Parse(std.currentSemisterCourses[i].ToString().Substring(0,5));
+                arr[i] = int.Parse(std.currentSemisterCourses[i].ToString().Substring(5,4));
             }
             return (Universal.instance.studentLessons.getAll(arr).ToArray() as CourseObject[]);
         }

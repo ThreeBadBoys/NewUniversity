@@ -12,17 +12,17 @@ namespace newUniversity.Classes
             name = course.title;
             unitsCount = course.unitsCount;
             masterID = course.masterID;
-            ID = int.Parse(courseId + student.ID + "");
+            ID = int.Parse(studentID + "" + course.ID);
         }
 
         public StudentLessonObject()
         {
-            this.title = "";
-            this.name = "";
-            this.unitsCount = 0;
-            this.masterID = 0;
-            this.ID = 0;
-            this.grade = 0;
+            title = "";
+            name = "";
+            unitsCount = 0;
+            masterID = 0;
+            ID = 0;
+            grade = 0;
         }
     }
 }
