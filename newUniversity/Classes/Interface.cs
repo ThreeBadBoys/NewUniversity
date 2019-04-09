@@ -124,11 +124,11 @@ namespace newUniversity.Classes
 
         public static List<CourseObject> getAllClasses(object o)
         {
-            throw new  NotImplementedException();
+            throw new NotImplementedException();
         }
 
 
-        public static bool insertGrade(object o,string courseID,string studentID,string grade)
+        public static bool insertGrade(object o, string courseID, string studentID, string grade)
         {
 
             throw new NotImplementedException();
@@ -137,7 +137,13 @@ namespace newUniversity.Classes
 
         //STUDENT-------------------------------------------------------------------------------------
 
+        
 
+
+        public static CourseObject[] getThisTermCourse(object o)
+        {
+            throw new NotImplementedException();
+        }
 
 
 

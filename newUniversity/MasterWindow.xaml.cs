@@ -148,6 +148,7 @@ namespace newUniversity
         private void btnReloadClassesList_Click(object sender, RoutedEventArgs e)
         {
             counter1 = 0;
+            DATAGRIDGClASSES.Items.Clear();
             List<CourseObject> crs = Interface.getAllClasses(o);
 
             foreach (CourseObject crsObject in crs)
@@ -203,7 +204,7 @@ namespace newUniversity
         {
 
 
-            String days = "";
+            string days = "";
 
             if (checkBox_Sun.IsChecked.Value)
             {

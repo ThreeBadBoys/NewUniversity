@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using newUniversity.Classes;
 
 namespace newUniversity
@@ -21,16 +11,19 @@ namespace newUniversity
     /// </summary>
     public partial class StudentWindow : Window
     {
+        private object o;
+        private static int counter1 = 0;
         List<CHOSENCourses> list = new List<CHOSENCourses>();
         CHOSENCourses cr1 = new CHOSENCourses(1, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
         CHOSENCourses cr2 = new CHOSENCourses(2, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
         CHOSENCourses cr3 = new CHOSENCourses(3, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
         CHOSENCourses cr4 = new CHOSENCourses(4, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
         public StudentWindow()
-            //object o)
+        //object o)
         {
             InitializeComponent();
-      //    bindData(o);
+            //    bindData(o);
+            this.o = o;
             list.Add(cr1);
             list.Add(cr2);
             list.Add(cr3);
@@ -287,6 +280,69 @@ namespace newUniversity
             PasswordChangedSuccessfullyMsg.Visibility = Visibility.Collapsed;
             PasswordNotChangedSuccessfullyMsg1.Visibility = Visibility.Collapsed;
             PasswordNotChangedSuccessfullyMsg2.Visibility = Visibility.Collapsed;
+        }
+        class ThisTermCourse
+        {
+
+            public int TermCourseNo { get; set; }
+            public string TermCourseID { get; set; }
+            public string TermCourseNAME { get; set; }
+            public string TermCourseDate { get; set; }
+            public string TermCourseTime { get; set; }
+            public string TermCourseDays { get; set; }
+            public string TermCourseEXAMDATE { get; set; }
+            public string TermCourseEXAMTIME { get; set; }
+
+
+            public ThisTermCourse(
+                string TermCourseID,
+                string TermCourseNAME,
+                string TermCourseDate,
+                string TermCourseTime,
+                string TermCourseDays,
+                string TermCourseEXAMDATE,
+                string TermCourseEXAMTIME
+                )
+            {
+                this.TermCourseNo = ++counter1;
+                this.TermCourseID = TermCourseID;
+                this.TermCourseNAME = TermCourseNAME;
+                this.TermCourseDate = TermCourseDate;
+                this.TermCourseTime = TermCourseTime;
+                this.TermCourseDays = TermCourseDays;
+                this.TermCourseEXAMDATE = TermCourseEXAMDATE;
+                this.TermCourseEXAMTIME = TermCourseEXAMTIME;
+            }
+
+        }
+
+
+        private void btnReloadThisTemCoursesList_Click(object sender, RoutedEventArgs e)
+        {
+            counter1 = 0;
+            DATAGRIDTHISTERMCOURSES.Items.Clear();
+            CourseObject[] courses = Interface.getThisTermCourse(o);
+            foreach (CourseObject termCrs in courses)
+            {
+                //DATAGRIDTHISTERMCOURSES.Items.Add(new ThisTermCourse(
+                //    termCrs.ID,
+                //    termCrs.name,
+                //    termCrs.date,
+                //    termCrs.time,
+                //    termCrs.days,
+                //    termCrs.examDate,
+                //    termCrs.examTime
+                //    ) );
+            }
+        }
+
+        private void btnReloadPassedCoursesList_Click(object sender, RoutedEventArgs e)
+        {
+            DATAGRIDPASSEDCOURSES.Items.Clear();
+
+
+
+
         }
     }
 }

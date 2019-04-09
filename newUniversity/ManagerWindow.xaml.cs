@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using newUniversity.Classes;
 namespace newUniversity
 {
- 
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -28,10 +28,10 @@ namespace newUniversity
         public static int counter1 = 0;
         public static int counter2 = 0;
         public ManagerWindow()
-            //object o)
+        //object o)
         {
             InitializeComponent();
-       // bindData(o);
+            // bindData(o);
         }
         public void bindData(object o)
         {
@@ -198,7 +198,7 @@ namespace newUniversity
 
         private void listViewItem6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
+
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
@@ -316,7 +316,7 @@ namespace newUniversity
             Interface.removeUserCompletely(
                 comboBoxRemoveUserCompletely.SelectionBoxItem.ToString(),
                 txtRemoveUserCompletely.Text
-);        
+);
         }
 
         private void btn_DeleteCourse_Click(object sender, RoutedEventArgs e)
@@ -352,7 +352,7 @@ namespace newUniversity
 
         private void btn_DeleteStudent_Click(object sender, RoutedEventArgs e)
         {
-            Interface.removeStudentTerm( txtRemoveStudentTerm.Text.ToString());
+            Interface.removeStudentTerm(txtRemoveStudentTerm.Text.ToString());
         }
 
         private void btn_changeManagerPassword_Click(object sender, RoutedEventArgs e)
@@ -360,7 +360,7 @@ namespace newUniversity
 
             MyBlureEffectLoading();
 
-            Interface.changeUserPassword(o ,
+            Interface.changeUserPassword(o,
                 txtCurrentPasswordManager.Text.ToString(),
                 txtnewPassowrdManager.Password.ToString(),
                 txtnewPasswordAgainManager.Password.ToString(),
@@ -371,20 +371,21 @@ namespace newUniversity
         private void btnReloadStudentsList_Click(object sender, RoutedEventArgs e)
         {
             counter1 = 0;
+            DATAGRIDGSTUDENTS.Items.Clear();
             List<StudentObject> students = Interface.getAllStudents();
             if (students == null) students = new List<StudentObject>();
             foreach (StudentObject std in students)
             {
-                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID),std.field));
-            }  
+                DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID), std.field));
+            }
         }
-       public class Student
+        public class Student
         {
             public string StudentName { get; set; }
             public string StudentID { get; set; }
             public int StudentNo { get; set; }
             public string StudentMajor { get; set; }
-            public Student(string StudentName, string StudentID,string StudentMajor)
+            public Student(string StudentName, string StudentID, string StudentMajor)
             {
                 this.StudentID = StudentID;
                 this.StudentName = StudentName;
@@ -411,6 +412,7 @@ namespace newUniversity
         private void btnReloadMasterList_Click(object sender, RoutedEventArgs e)
         {
             counter2 = 0;
+            DATAGRIDGMASTERS.Items.Clear();
             List<MasterObject> masters = Interface.getAllMasters();
             if (masters == null) masters = new List<MasterObject>();
             foreach (MasterObject mst in masters)

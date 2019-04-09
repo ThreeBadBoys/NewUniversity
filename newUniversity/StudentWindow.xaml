@@ -296,7 +296,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="163,0,163,126.4" RadiusY="10" RadiusX="10">
+                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="80,0,80,126" RadiusY="10" RadiusX="10">
                     <Rectangle.Fill>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF4E071E" Offset="0"/>
@@ -307,8 +307,8 @@
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <Grid VerticalAlignment="Bottom"  Margin="166.2,0,166.2,126.4" Height="362.133" >
-                    <DataGrid x:Name="DATAGRID" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+                <Grid VerticalAlignment="Bottom"  Margin="80,0,80.4,126" Height="363" >
+                    <DataGrid x:Name="DATAGRIDTHISTERMCOURSES" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
 
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
@@ -332,20 +332,24 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="No"  Binding="{Binding rowNo}" />
-                            <DataGridTextColumn Header="Course ID"   Binding="{Binding ID}"/>
-                            <DataGridTextColumn Header="Course Name"  Binding="{Binding NAME}"/>
-                            <DataGridTextColumn Header="Exam Date" Binding="{Binding EXAMDATE}" />
-                            <DataGridTextColumn Header="Exam Time" Binding="{Binding EXAMTIME}" />
+                            <DataGridTextColumn Header="No"  Binding="{Binding TermCourseNo}" />
+                            <DataGridTextColumn Header="Course ID"   Binding="{Binding TermCourseID}"/>
+                            <DataGridTextColumn Header="Course Name"  Binding="{Binding TermCourseNAME}"/>
+                            <DataGridTextColumn Header="ClassDate" Binding="{Binding TermCourseDate}" />
+                            <DataGridTextColumn Header="ClassTime" Binding="{Binding TermCourseTime}" />
+                            <DataGridTextColumn Header="ClassDays" Binding="{Binding TermCourseDays}" />
+                            <DataGridTextColumn Header="Exam Date" Binding="{Binding TermCourseEXAMDATE}" />
+                            <DataGridTextColumn Header="Exam Time" Binding="{Binding TermCourseEXAMTIME}" />
                         </DataGrid.Columns>
 
                     </DataGrid>
 
                 </Grid>
+                <Button Margin="339,0,339,505.2" Content="Reload" Click="btnReloadThisTemCoursesList_Click" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
 
             <!--TODO: I HAVE TO CHANGE THE BINDING NAMES AND I HAVE TO CHOOSE ONE OF THEM-->
-            <Grid  x:Name="GridPassedCourses" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+            <Grid  x:Name="GridPassedCourses" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -364,7 +368,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <Grid VerticalAlignment="Bottom"  Margin="80,0,79,126.4" Height="362.133" >
-                    <DataGrid x:Name="DATAGRID2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+                    <DataGrid x:Name="DATAGRIDPASSEDCOURSES" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
 
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
@@ -401,6 +405,7 @@
                     </DataGrid>
 
                 </Grid>
+                <Button Margin="339,0,339,505.2" Content="Reload" Click="btnReloadPassedCoursesList_Click" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid  x:Name="GridGRADES" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
