@@ -15,7 +15,16 @@ namespace newUniversity.Classes
             this.masterID = course.masterID;
             this.ID = int.Parse(studentID+""+courseID);
             this.grade = grade;
+        }
 
+        public PassedLessonObject()
+        {
+            this.title = "";
+            this.name = "";
+            this.unitsCount = 0;
+            this.masterID = 0;
+            this.ID = 0;
+            this.grade = 0;
         }
     }
 }
