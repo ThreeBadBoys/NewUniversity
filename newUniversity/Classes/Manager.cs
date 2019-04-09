@@ -101,9 +101,29 @@ namespace newUniversity.Classes
                 return false;
         }
 
-        static public void endingSemister()
+        static public void finishCurrentTerm()
         {
-
+            StudentObject[] stds = allStudents();
+            for(int i = 0; i < stds.Length; i++)
+            {
+                int[] ids = stds[i].currentSemisterCourses.ToArray();
+                for(int j = 0; j < ids.Length; j++)
+                {
+                    StudentLessonObject stdlsn = Universal.instance.studentLessons.getByID(ids[j]) as StudentLessonObject;
+                    if (stdlsn.grade > 10)
+                        stds[i].passedUnits+=stdlsn.unitsCount;
+                    stds[i].passedLessons.Add(stdlsn.ID);
+                    stds[i].currentSemisterCourses.Remove(stdlsn.ID);
+                    Universal.instance.students.loadObject(stds[i]);
+                    Universal.instance.students.save();
+                }
+            }
+            MasterObject[] msts = allMasters();
+            for (int i = 0; i < msts.Length; i++)
+            {
+                msts[i].courses = new List<int>();
+            }
+            Universal.instance.courses = new Database<CourseObject>("courses");
         }
     }
 }

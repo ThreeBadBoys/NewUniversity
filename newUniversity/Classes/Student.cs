@@ -7,11 +7,15 @@
             try
             {
                 CourseObject course = Universal.instance.courses.getByID(courseId) as CourseObject;
-                if (student.currentSemisterCourses.Contains(courseId))
+                if (student.currentSemisterCourses.Contains(int.Parse(courseId+student.ID+"")))
                     throw new DuplicateException("entered course ID recently selected!");
                 else
                 {
-                    student.currentSemisterCourses.Add(courseId);
+                    StudentLessonObject lesson = new StudentLessonObject(course, student.ID);
+                    Universal.instance.studentLessons.insert(lesson);
+                    Universal.instance.studentLessons.loadObject(lesson);
+                    Universal.instance.students.save();
+                    student.currentSemisterCourses.Add(int.Parse(courseId + student.ID + ""));
                     Universal.instance.students.loadObject(student);
                     Universal.instance.students.save();
                     course.studentsID.Add(student.ID);
@@ -27,9 +31,11 @@
 
         public void deleteCourse(StudentObject student, int courseId)
         {
-            if (student.currentSemisterCourses.Contains(courseId))
+            if (student.currentSemisterCourses.Contains(int.Parse(courseId + student.ID + "")))
             {
-                student.currentSemisterCourses.Remove(courseId);
+                Universal.instance.studentLessons.delete(Universal.instance.studentLessons.getByID(int.Parse(courseId + student.ID + "")) as StudentLessonObject);
+                Universal.instance.studentLessons.save();
+                student.currentSemisterCourses.Remove(int.Parse(courseId + student.ID + ""));
                 Universal.instance.students.loadObject(student);
                 Universal.instance.students.save();
                 CourseObject course = Universal.instance.courses.getByID(courseId) as CourseObject;

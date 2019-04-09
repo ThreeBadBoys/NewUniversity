@@ -13,6 +13,7 @@ namespace newUniversity.Classes
         public List<int> passedLessons;
         public List<int> currentSemisterCourses;
         char[] Field = new char[20];
+        public int passedUnits;
         public string field
         {
             get

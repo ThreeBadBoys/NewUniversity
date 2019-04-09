@@ -4,17 +4,15 @@ namespace newUniversity.Classes
     [Serializable]
     class StudentLessonObject : LessonObject
     {
-        public int grade;
+        public double grade;
 
-        public StudentLessonObject(string title, short unitsCount, int courseID, int studentID, int grade)
+        public StudentLessonObject(CourseObject course, int studentID)
         {
-            CourseObject course = Universal.instance.courses.getByID(courseID) as CourseObject;
-            this.title = title;
-            this.name = title;
-            this.unitsCount = unitsCount;
-            this.masterID = course.masterID;
-            this.ID = int.Parse(studentID+""+courseID);
-            this.grade = grade;
+            title = course.title;
+            name = course.title;
+            unitsCount = course.unitsCount;
+            masterID = course.masterID;
+            ID = int.Parse(courseId + student.ID + "");
         }
 
         public StudentLessonObject()

@@ -8,14 +8,14 @@ namespace newUniversity.Classes
 {
     class Master : User
     {
-        public static void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examTime, string courseTime)
+        static public void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examTime, string courseTime)
         {
             Universal.instance.courses.insert(new CourseObject(courseId,courseTitle, courseUnitsCount, master.ID));
             Universal.instance.courses.save();
             master.courses.Add(courseId);
         }
 
-        public void deleteCourse(MasterObject master, int courseId)
+        static public void deleteCourse(MasterObject master, int courseId)
         {
             if (!master.courses.Contains(courseId))
                 throw new NotFoundException("entered courseId not exists!");
@@ -27,6 +27,27 @@ namespace newUniversity.Classes
                 master.courses.Remove(courseId);
                 Universal.instance.masters.loadObject(master);
                 Universal.instance.masters.save();
+            }
+        }
+
+        static public void addGrade(int stdID, int crsID, double grade)
+        {
+            try
+            {
+                StudentObject std = Universal.instance.students.getByID(stdID) as StudentObject;
+                if (!std.currentSemisterCourses.Contains(int.Parse(crsID + "" + stdID)))
+                    throw new NotFoundException();
+                else
+                {
+                    StudentLessonObject stdlsn = Universal.instance.studentLessons.getByID(int.Parse(crsID + "" + stdID)) as StudentLessonObject;
+                    stdlsn.grade = grade;
+                    Universal.instance.studentLessons.loadObject(stdlsn);
+                    Universal.instance.studentLessons.save();
+                }
+            }
+            catch
+            {
+                throw new NotFoundException("course not found or this student hadn't choose it");
             }
         }
     }
