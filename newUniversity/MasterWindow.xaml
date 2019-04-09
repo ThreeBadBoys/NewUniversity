@@ -130,20 +130,6 @@
                         <TextBlock Text="List Of The Classes" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem1_PreviewMouseLeftButtonDown">
-                    <ListViewItem.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListViewItem.RenderTransform>
-                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <Image  Source="Assets/icons8_Key_2_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
-                        <TextBlock Text="Password" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
-                    </StackPanel>
-                </ListViewItem>
                 <ListViewItem x:Name="listViewItem2" Height="55" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem2_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
@@ -156,6 +142,34 @@
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <Image  Source="Assets/icons8_New_Copy_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
                         <TextBlock Text="CreateNewCourse" TextAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem3" Height="55" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem3_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Remove_Property_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Remove Course" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem1_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Key_2_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Password" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
             </ListView>
@@ -269,35 +283,60 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Rectangle Height="386.4" VerticalAlignment="Bottom" Margin="175.2,0,175.2,129.2" RadiusY="23.2" RadiusX="23.2" Fill="White">
+                <Rectangle Height="469" VerticalAlignment="Bottom" Margin="175,0,175.4,80" RadiusY="23.2" RadiusX="23.2" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <Grid VerticalAlignment="Bottom"  Margin="192.6,0,191,47.2" Height="465.333">
+                <Grid VerticalAlignment="Bottom"  Margin="189.6,0,194,79.667" Height="465.333">
                     <Label Content="ENTER COURSE INFO" FontFamily="Champagne &amp; Limousines" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" />
                     <StackPanel Orientation="Vertical" Margin="16.6,43.299,16.6,-1.967" VerticalAlignment="Center" Height="424.001">
 
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="MasterID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseUnit No" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <DatePicker Margin="0,15,0,0" materialDesign:HintAssist.Hint="ExamDate"  Style="{StaticResource MaterialDesignDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
-                        <materialDesign:TimePicker  Margin="0,15,0,0" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+                        <TextBox x:Name="txtCourseNameForCreateClass" Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCourseIDForCreateClass"  Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox  x:Name="txtCourseUnitNOForCreateClass"  Margin="0,10,0,0" materialDesign:HintAssist.Hint="CourseUnit No" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <DatePicker  x:Name="dpCourseExamDateForCreateClass"  Margin="0,15,0,0" materialDesign:HintAssist.Hint="ExamDate"  Style="{StaticResource MaterialDesignDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+                        <materialDesign:TimePicker x:Name="tmCourseExamTimeForCreateClass" materialDesign:HintAssist.Hint="ExamTime"  Margin="0,15,0,0" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+                        <materialDesign:TimePicker x:Name="tmCourseForCreateClass" materialDesign:HintAssist.Hint="ClassTime" Margin="0,15,0,0" FontFamily="Champagne &amp; Limousines" FontSize="18" d:LayoutOverrides="Width"/>
+
+                        <Grid Margin="0,10,0,0" Background="#FFB95279">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock   Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center"  FontFamily="Champagne &amp; Limousines" FontSize="18" Foreground="White" >Select Days</TextBlock>
+                            <CheckBox x:Name="checkBox_Sun" FontFamily="Champagne &amp; Limousines" FontSize="18" Content="Sun" Grid.Row="1" Grid.Column="0" Foreground="White"/>
+                            <CheckBox x:Name="checkBox_Mon"  FontFamily="Champagne &amp; Limousines" FontSize="18" Content="Mon" Grid.Row="1" Grid.Column="1" Foreground="White"/>
+
+                            <CheckBox x:Name="checkBox_Tue" FontFamily="Champagne &amp; Limousines" FontSize="18" Content="Tue" Grid.Row="2" Grid.Column="0" Foreground="White"/>
+                            <CheckBox x:Name="checkBox_Wed"  FontFamily="Champagne &amp; Limousines" FontSize="18" Content="Wed" Grid.Row="2" Grid.Column="1" Foreground="White"/>
+
+                            <CheckBox x:Name="checkBox_Thu" FontFamily="Champagne &amp; Limousines" FontSize="18" Content="Thu" Grid.Row="3" Grid.Column="0" Foreground="White"/>
+
+                        </Grid>
+
+
+
                     </StackPanel>
 
                 </Grid>
 
-                <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="308,0,308,112.8" Content="ADD" Click="btnAddCourse_Click" />
+                <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="301.4,0,314,60" Content="ADD" Click="btnAddClass_Click" />
             </Grid>
-            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Collapsed" Grid.Row="1">
+            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Visible" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Rectangle Height="366" VerticalAlignment="Bottom" Margin="71,0,79.4,88.2" RadiusY="10" RadiusX="10">
+                <Rectangle Height="392" VerticalAlignment="Bottom" Margin="34,0,34,92.2" RadiusY="10" RadiusX="10">
                     <Rectangle.Fill>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF4E071E" Offset="0"/>
@@ -308,8 +347,8 @@
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <Grid  Margin="80,105,79.4,92.2" >
-                    <DataGrid x:Name="DATAGRIDGClASSES" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1.2,10,7.6,2.8" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
+                <Grid  Margin="34,75,31.4,92.2" >
+                    <DataGrid x:Name="DATAGRIDGClASSES" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" GridLinesVisibility="None" Margin="1,10,0,10" Background="{x:Null}" IsReadOnly="True" IsEnabled="True">
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="Foreground" Value="White"/>
@@ -333,14 +372,20 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <!-- TODO -->
                             <DataGridTextColumn Header="No"  Binding="{Binding ClassNo}"/>
-                            <DataGridTextColumn Header="StudentID"  Binding="{Binding ClassID}"/>
-                            <DataGridTextColumn Header="FullName"   Binding="{Binding ClassName}"/>
+                            <DataGridTextColumn Header="CourseName"   Binding="{Binding ClassCourseName}"/>
+                            <DataGridTextColumn Header="CourseID"   Binding="{Binding ClassCourseID}"/>
+                            <DataGridTextColumn Header="ClassTime"   Binding="{Binding ClassTime}"/>
+                            <DataGridTextColumn Header="ClassDate"   Binding="{Binding ClassDate}"/>
+                            <DataGridTextColumn Header="ClassDays"   Binding="{Binding ClassDays}"/>
+                            <DataGridTextColumn Header="ExamTime"   Binding="{Binding ClassExamTime}"/>
+                            <DataGridTextColumn Header="ExamDate"   Binding="{Binding ClassExamDate}"/>
+
+
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-                <Button Margin="0,0,345.4,489.2" Content="Reload" Click="btnReloadClassesList_Click" HorizontalAlignment="Right" Width="99" Height="32" VerticalAlignment="Bottom"/>
+                <Button Margin="339,0,339,505.2" Content="Reload" Click="btnReloadClassesList_Click" Height="32" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="GridChangePassword" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
@@ -395,7 +440,27 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="#FFF55145"  >Old password isn't valid!</TextBlock>
                 </StackPanel>
             </Grid>
-            <!--//-->
+            <Grid x:Name="GridRemoveCourseMaster" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="198.8" VerticalAlignment="Bottom" Margin="235.2,0,228.8,186" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
+                    <Label Content="ENTER COURSE INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                    <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,157.633" VerticalAlignment="Center" Height="62.801">
+                        <TextBox x:Name="txtCourseIDMaster" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Course ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
+
+                </Grid>
+                <Button VerticalAlignment="Bottom" Margin="313.733,0,313.733,168.133" Content="DELETE" Click="btn_DeleteCourse_Click" Background="Red" BorderBrush="Red" />
+            </Grid>
         </Grid>
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="40" Margin="0,0,5,0">
             <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Click="ButtonClose_Click" RenderTransformOrigin="0.5,0.5" >
