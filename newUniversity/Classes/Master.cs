@@ -8,7 +8,7 @@ namespace newUniversity.Classes
 {
     class Master : User
     {
-        public void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examTime, string courseTime)
+        public static void addCourse(MasterObject master, int courseId, string courseTitle, short courseUnitsCount, string examTime, string courseTime)
         {
             Universal.instance.courses.insert(new CourseObject(courseId,courseTitle, courseUnitsCount, master.ID));
             Universal.instance.courses.save();

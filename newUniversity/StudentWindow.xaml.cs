@@ -29,7 +29,7 @@ namespace newUniversity
         public StudentWindow(object o)
         {
             InitializeComponent();
-            bindData(o);
+          bindData(o);
             list.Add(cr1);
             list.Add(cr2);
             list.Add(cr3);
