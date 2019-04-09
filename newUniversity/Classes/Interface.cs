@@ -9,10 +9,24 @@ namespace newUniversity.Classes
     public static class Interface
     {
         //DEFAULT-------------------------------------------------------------------------------------
+        //Change The users Password according the type of the user
         public static bool changeUserPassword(object user, string currentPassword,
            string newPassword, string confirmationPassword, string type)
         {
 
+            switch (type)
+            {
+                case "Manager":
+                    throw new NotImplementedException();
+
+                case "Master":
+                    throw new NotImplementedException();
+                    break;
+
+                case "Student":
+                    throw new NotImplementedException();
+                    break;
+            }
             throw new NotImplementedException();
         }
 
@@ -66,22 +80,28 @@ namespace newUniversity.Classes
             }
             throw new Exception("It shouldn't reach here : " + userType);
         }
+        //
         public static bool createNewCourse(string crsName, string crsId, string masterID, string crsUnit, string examDate, string examTime)
         {
             throw new NotImplementedException();
         }
+
+        //Deleting the User from the DataBase Completely
         public static bool removeUserCompletely(string userType, string userId)
         {
             throw new NotImplementedException();
         }
+        //Removing the Student current Term
         public static bool removeStudentTerm(string stdId)
         {
             throw new NotImplementedException();
         }
+        
         public static bool removeCourseCompletely(string crsID)
         {
             throw new NotImplementedException();
         }
+        //Removing the Course fror the student
         public static bool removeCourseForStudent(string studentId, string crsID)
         {
             throw new NotImplementedException();
@@ -137,7 +157,11 @@ namespace newUniversity.Classes
 
         //STUDENT-------------------------------------------------------------------------------------
 
-
+            //Getting the Student's current Term Courses
+        public static CourseObject[] getThisTermCourse(object o)
+        {
+            throw new NotImplementedException();
+        }
 
 
 
