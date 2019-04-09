@@ -20,20 +20,21 @@ namespace newUniversity
     /// </summary>
     public partial class MasterWindow : Window
     {
-        public MasterWindow
-            (object o)
+        private object o;
+        private static int counter1 = 0;
+        public MasterWindow()
+        // (object o)
         {
             InitializeComponent();
-      bindData(o);
+            this.o = o;
+            // bindData(o);
         }
         public void bindData(object o)
         {
-            if(o != null)
+            if (o != null)
             {
                 MasterObject master = o as MasterObject;
-                txtUserName.Text = master.firstName + " " + master.lastName; 
-
-
+                txtUserName.Text = master.firstName + " " + master.lastName;
             }
         }
         private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -42,6 +43,7 @@ namespace newUniversity
             GridListOfClasses.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
         }
 
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -50,10 +52,20 @@ namespace newUniversity
             GridListOfClasses.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
             GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
         }
         private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GridCreateNewCourse.Visibility = Visibility.Visible;
+            GridListOfClasses.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
+            GridRemoveCourseMaster.Visibility = Visibility.Collapsed;
+        }
+        private void listViewItem3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridRemoveCourseMaster.Visibility = Visibility.Visible;
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridListOfClasses.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
@@ -106,13 +118,107 @@ namespace newUniversity
 
         private void btnReloadClassesList_Click(object sender, RoutedEventArgs e)
         {
+            counter1 = 0;
+            List<CourseObject> crs = Interface.getAllClasses(o);
 
+            foreach(CourseObject crsObject in crs)
+            {
+
+                DATAGRIDGClASSES.Items.Add(new Class(
+                    crsObject.name,
+                    crsObject.ID,
+                    crsObject.time,
+                    crsObject.date,
+                    crsObject.days,
+                    crsObject.examTime,
+                    crsObject.examDate));
+            }
         }
-        private void btnAddCourse_Click(object sender, RoutedEventArgs e)
+        class Class
         {
- 
-            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
+            public int ClassNo { get; set; }
+            public string ClassCourseName { get; set; }
+            public string ClassCourseID { get; set; }
+            public string ClassTime { get; set; }
+            public string ClassDate { get; set; }
+            public string ClassDays { get; set; }
+            public string ClassExamTime { get; set; }
+            public string ClassExamDate { get; set; }
+
+
+            public Class(
+                string ClassCourseName, 
+                string ClassCourseID,
+                string ClassTime,
+                string ClassDate,
+                string ClassDays,
+                string ClassExamTime,
+                string ClassExamDate
+                )
+            {
+                this.ClassNo = ++counter1;
+                this.ClassCourseName = ClassCourseName;
+                this.ClassCourseID = ClassCourseID;
+                this.ClassTime = ClassTime;
+                this.ClassDate = ClassDate;
+                this.ClassDays = ClassDays;
+                this.ClassExamTime = ClassExamTime;
+                this.ClassExamDate = ClassExamDate;
+            }
         }
 
+
+
+
+        private void btnAddClass_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            String days = "";
+
+            if (checkBox_Sun.IsChecked.Value)
+            {
+                days += "Sun _ ";
+            }
+            if (checkBox_Mon.IsChecked.Value)
+            {
+                days += "Mon _ ";
+            }
+
+            if (checkBox_Tue.IsChecked.Value)
+            {
+                days += "Tue _ ";
+            }
+            if (checkBox_Wed.IsChecked.Value)
+            {
+                days += "Wed _ ";
+            }
+
+            if (checkBox_Thu.IsChecked.Value)
+            {
+                days += "Thu";
+            }
+
+
+
+
+
+            Interface.addClass(o,
+                txtCourseNameForCreateClass.Text.ToString(),
+                txtCourseIDForCreateClass.Text.ToString(),
+                txtCourseUnitNOForCreateClass.Text.ToString(),
+                dpCourseExamDateForCreateClass.Text.ToString(),
+                tmCourseExamTimeForCreateClass.Text.ToString(),
+                tmCourseForCreateClass.Text.ToString(),
+                days
+                );
+        }
+
+
+
+        private void btn_DeleteCourse_Click(object sender, RoutedEventArgs e)
+        {
+            Interface.removeCourseMaster(txtCourseIDMaster.Text.ToString());
+        }
     }
 }

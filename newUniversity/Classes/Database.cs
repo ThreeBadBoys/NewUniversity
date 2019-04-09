@@ -19,6 +19,8 @@ namespace newUniversity.Classes
 
         public Database(string fileName)
         {
+   
+
             this.fileName = fileName;
             IDTree = new BTree();
             NameTree = new BTree();
