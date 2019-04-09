@@ -172,6 +172,20 @@
                         <TextBlock Text="Remove Course" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
                     </StackPanel>
                 </ListViewItem>
+                <ListViewItem x:Name="listViewItem10" Height="55" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem10_PreviewMouseLeftButtonDown">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <Image  Source="Assets/icons8_Remove_Property_32px.png" Visibility="Visible" Stretch="Uniform" VerticalAlignment="Center" Margin="5" Height="25.6" Width="23.2"/>
+                        <TextBlock Text="Remove Course For Student" TextAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                    </StackPanel>
+                </ListViewItem>
                 <ListViewItem x:Name="listViewItem4" Height="55" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="listViewItem4_PreviewMouseLeftButtonDown">
                     <ListViewItem.RenderTransform>
                         <TransformGroup>
@@ -374,7 +388,7 @@
                 </Grid>
                 <Button x:Name="btnSignUp" VerticalAlignment="Bottom" Margin="307.2,0,307.2,170.4" Content="SIGN UP" Click="btnSignUp_Click" />
             </Grid>
-            
+
 
             <Grid x:Name="GridRemoveUserCompletely"  Grid.Column="0" Margin="0,-5.783,0,0" Visibility="Collapsed" Grid.Row="1">
                 <Grid.Background>
@@ -395,12 +409,12 @@
                     <Label Content="ENTER USER INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
                     <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,118.033" VerticalAlignment="Center" Height="102.401">
 
-                        <ComboBox x:Name="comboBox" materialDesign:HintAssist.Hint="UserType"  Height="33.6" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                        <ComboBox x:Name="comboBoxRemoveUserCompletely" materialDesign:HintAssist.Hint="UserType"  Height="33.6" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" FontSize="18">
                             <ComboBoxItem Content="Manager"/>
                             <ComboBoxItem Content="Master"/>
                             <ComboBoxItem Content="Student"/>
                         </ComboBox>
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtRemoveUserCompletely" Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
 
                 </Grid>
@@ -428,9 +442,9 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
-                    <Label Content="ENTER Student INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                    <Label Content="ENTER STUDENT INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
                     <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,118.033" VerticalAlignment="Center" Height="102.401">
-                        <TextBox Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtRemoveStudentTerm" Margin="0,10,0,0" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
 
                 </Grid>
@@ -457,11 +471,33 @@
                 <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
                     <Label Content="ENTER COURSE INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
                     <StackPanel Orientation="Vertical" Margin="16.6,62.499,16.6,157.633" VerticalAlignment="Center" Height="62.801">
-                        <TextBox x:Name="txtCourseID" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Course ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCourseIDCompletely" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Course ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
 
                 </Grid>
                 <Button VerticalAlignment="Bottom" Margin="313.733,0,313.733,168.133" Content="DELETE" Click="btn_DeleteCourse_Click" Background="Red" BorderBrush="Red" />
+            </Grid>
+            <Grid x:Name="GridRemoveCourseForStudent" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="198.8" VerticalAlignment="Bottom" Margin="235.2,0,228.8,186" RadiusY="10" RadiusX="10" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid VerticalAlignment="Bottom"  Margin="237.4,0,227.8,100" Height="282.933">
+                    <Label Content="ENTER COURSE INFO" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                    <StackPanel Orientation="Vertical" Margin="17,39,17.2,125.933" VerticalAlignment="Center" Height="118">
+                        <TextBox x:Name="txtStudentIDForCourseDEL" Margin="0,10,0,0" materialDesign:HintAssist.Hint="UerName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCourseIDForStudent" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Course ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                    </StackPanel>
+
+                </Grid>
+                <Button VerticalAlignment="Bottom" Margin="313.733,0,313.733,168.133" Content="DELETE" Click="btn_DeleteCourseForStudent_Click" Background="Red" BorderBrush="Red" />
             </Grid>
             <Grid x:Name="GridControllingUnitChoosing" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
@@ -517,9 +553,9 @@
                 </Rectangle>
                 <Grid VerticalAlignment="Bottom"  Margin="250.2,0,250.2,164.8" Height="280.533">
                     <StackPanel Margin="16.6,46.866,16.6,28.867" VerticalAlignment="Center" Height="204.8">
-                        <TextBox Margin="0,10" materialDesign:HintAssist.Hint="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <PasswordBox x:Name="newPasswordInput" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                        <PasswordBox x:Name="newPasswordInputAgain" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <TextBox x:Name="txtCurrentPasswordManager" Margin="0,10" materialDesign:HintAssist.Hint="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="txtnewPassowrdManager" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                        <PasswordBox x:Name="txtnewPasswordAgainManager" Margin="0,10" materialDesign:HintAssist.Hint="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                     </StackPanel>
                     <Button x:Name="btn_changeManagerPassword" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="61.8,0,61.8,-14.2" Content="Change it!" Click="btn_changeManagerPassword_Click" />
                 </Grid>
@@ -654,7 +690,6 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <!-- TODO -->
                             <DataGridTextColumn Header="No"  Binding="{Binding StudentNo}"/>
                             <DataGridTextColumn Header="StudentID"  Binding="{Binding StudentID}"/>
                             <DataGridTextColumn Header="FullName"   Binding="{Binding StudentName}"/>

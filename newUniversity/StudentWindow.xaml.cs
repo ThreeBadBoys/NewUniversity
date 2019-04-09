@@ -26,10 +26,11 @@ namespace newUniversity
         CHOSENCourses cr2 = new CHOSENCourses(2, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
         CHOSENCourses cr3 = new CHOSENCourses(3, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
         CHOSENCourses cr4 = new CHOSENCourses(4, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
-        public StudentWindow(object o)
+        public StudentWindow()
+            //object o)
         {
             InitializeComponent();
-          bindData(o);
+      //    bindData(o);
             list.Add(cr1);
             list.Add(cr2);
             list.Add(cr3);

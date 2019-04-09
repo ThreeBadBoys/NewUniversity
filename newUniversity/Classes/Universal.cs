@@ -39,11 +39,11 @@ namespace newUniversity.Classes
                         instance.masters = new Database<MasterObject>("masters");
                         instance.courses = new Database<CourseObject>("courses");
                         instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
-                        instance.managers.insert(new ManagerObject("12345", "12345"));
-                        instance.managers.save();
                         bf.Serialize(file, instance);
                         file.Close();
-                        Manager.addManager("sajjad", "najafi");
+                        ManagerObject manager = new ManagerObject();
+                        instance.managers.insert(manager);
+                        instance.managers.save();
                     }
                     else
                     {
@@ -60,14 +60,13 @@ namespace newUniversity.Classes
                     instance.masters = new Database<MasterObject>("masters");
                     instance.courses = new Database<CourseObject>("courses");
                     instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
-                    ManagerObject manager = new ManagerObject();
-                    instance.managers.insert(manager);
-                    instance.managers.save();
                     FileStream file = File.Create("Uni");
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(file, instance);
                     file.Close();
-                    
+                    ManagerObject manager = new ManagerObject();
+                    instance.managers.insert(manager);
+                    instance.managers.save();
                 }
             }
         }        

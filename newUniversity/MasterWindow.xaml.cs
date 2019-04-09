@@ -20,11 +20,11 @@ namespace newUniversity
     /// </summary>
     public partial class MasterWindow : Window
     {
-        public MasterWindow
-            (object o)
+        public MasterWindow()
+           // (object o)
         {
             InitializeComponent();
-      bindData(o);
+     // bindData(o);
         }
         public void bindData(object o)
         {
