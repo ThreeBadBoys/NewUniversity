@@ -11,7 +11,7 @@ namespace newUniversity.Classes
         public Database<ManagerObject> managers;                  //managers database
         public Database<MasterObject> masters;                    //masters database
         public Database<CourseObject> courses;                    //courses database
-        public Database<PassedLessonObject> passedLessons;        //passed lessons database
+        public Database<StudentLessonObject> studentLessons;        //passed lessons database
 
         public bool isAbleUnitChoice = false;       //UnitChoice ability
         public bool isAbleUnitEdit = false;         //UnitEdit ability
@@ -26,19 +26,19 @@ namespace newUniversity.Classes
             if (instance == null)
             {
                 instance = new Universal();
-                if (File.Exists("Uni"))
+                if (File.Exists("Uni.data"))
                 {
                     //File exists.
-                    FileStream file = File.Open("Uni", FileMode.Open);
+                    FileStream file = File.Open("Uni.data", FileMode.Open);
                     BinaryFormatter bf = new BinaryFormatter();
-                    if (new FileInfo("Uni").Length == 0)
+                    if (new FileInfo("Uni.data").Length == 0)
                     {
                         //File exists but it is empty.
                         instance.students = new Database<StudentObject>("students");
                         instance.managers = new Database<ManagerObject>("managers");
                         instance.masters = new Database<MasterObject>("masters");
                         instance.courses = new Database<CourseObject>("courses");
-                        instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
+                        instance.studentLessons = new Database<StudentLessonObject>("studentLessons");
                         bf.Serialize(file, instance);
                         file.Close();
                         ManagerObject manager = new ManagerObject();
@@ -59,8 +59,8 @@ namespace newUniversity.Classes
                     instance.managers = new Database<ManagerObject>("managers");
                     instance.masters = new Database<MasterObject>("masters");
                     instance.courses = new Database<CourseObject>("courses");
-                    instance.passedLessons = new Database<PassedLessonObject>("passedLessons");
-                    FileStream file = File.Create("Uni");
+                    instance.studentLessons = new Database<StudentLessonObject>("studentLessons");
+                    FileStream file = File.Create("Uni.data");
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(file, instance);
                     file.Close();

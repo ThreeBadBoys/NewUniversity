@@ -23,7 +23,7 @@ namespace newUniversity.Classes
             // Get a handle to an existing memory mapped file
             using (MemoryMappedFile mmf =
                 MemoryMappedFile.CreateFromFile
-                (fileDirectoryPlusName, FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
+                (@"DATABASE\"+fileDirectoryPlusName + ".db", FileMode.Open, "mmf", (tempindex + 2) * objectArray.Length))
             // (UP)  Here we created a filefrom  a memoryMappedFile that it's capacity is (tempindex + 2) times larger than objectArray.Length
             //HERE WE SHOULD THINK ABOUT IT!!!!
             {
@@ -53,7 +53,7 @@ namespace newUniversity.Classes
                 Readable = false;
                 return null;
             }
-            objectTempToLoad = LoadObj(objectTempToLoad, fileDirectoryPlusName, index, out Readable);
+            objectTempToLoad = LoadObj(objectTempToLoad, @"DATABASE\" + fileDirectoryPlusName + ".db", index, out Readable);
 
             return objectTempToLoad;
         }
@@ -80,7 +80,7 @@ namespace newUniversity.Classes
         {
             byte[] buffer = ObjectToByteArray(objectToEdit);
 
-            using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(fileDirectoryPlusName, FileMode.Open))
+            using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(@"DATABASE\" + fileDirectoryPlusName + ".db", FileMode.Open))
             {
                 using (MemoryMappedViewAccessor mmfWriter = mmf.CreateViewAccessor())
                 {
@@ -113,24 +113,25 @@ namespace newUniversity.Classes
 
         public static void CreateBtreeFile(string fileName,BTree IDTree)
         {
-            FileStream file = File.Create(fileName);
+            FileStream file = File.Create(@"DATABASE\"+fileName + ".tree");
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, IDTree);
             file.Close();
         }
+
         public static void CreateFile(string fileName)
         {
-            FileStream file = File.Create(fileName);
+            FileStream file = File.Create(@"DATABASE\" + fileName+".db");
             file.Close();
         }
 
         public static BTree loadBTreeFromFile(string fileName , bool isIDTree)
         {
             BTree btree;
-            if (File.Exists(fileName + (isIDTree ?"idtree" : "nametree")))
+            if (File.Exists(@"DATABASE\" + fileName + (isIDTree ?"id.tree" : "name.tree")))
             {
-                FileStream file = File.Open(fileName + (isIDTree ? "idtree" : "nametree"), FileMode.Open);
-                if (new FileInfo(fileName + (isIDTree ? "idtree" : "nametree")).Length != 0)
+                FileStream file = File.Open(@"DATABASE\" + fileName + (isIDTree ? "id.tree" : "name.tree"), FileMode.Open);
+                if (new FileInfo(@"DATABASE\" + fileName + (isIDTree ? "id.tree" : "name.tree")).Length != 0)
                 {
                     BinaryFormatter bf = new BinaryFormatter();
                     btree = bf.Deserialize(file) as BTree;

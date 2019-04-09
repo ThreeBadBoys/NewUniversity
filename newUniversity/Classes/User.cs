@@ -8,7 +8,7 @@ namespace newUniversity.Classes
 {
     public class User
     {
-        public void changePassword(StudentObject user, string currentPassword, string newPassword, string confirmPassword)
+        static public void changePassword(StudentObject user, string currentPassword, string newPassword, string confirmPassword)
         {
             if (currentPassword != user.password)
                 throw new InvalidPasswordException("entered password is not valid!");
@@ -20,7 +20,7 @@ namespace newUniversity.Classes
             Universal.instance.students.save();
         }
 
-        public void changePassword(ManagerObject user, string currentPassword, string newPassword, string confirmPassword)
+        static public void changePassword(ManagerObject user, string currentPassword, string newPassword, string confirmPassword)
         {
             if (currentPassword != user.password)
                 throw new InvalidPasswordException("entered password is not valid!");
@@ -32,7 +32,7 @@ namespace newUniversity.Classes
             Universal.instance.managers.save();
         }
 
-        public void changePassword(MasterObject user, string currentPassword, string newPassword, string confirmPassword)
+        static public void changePassword(MasterObject user, string currentPassword, string newPassword, string confirmPassword)
         {
             if (currentPassword != user.password)
                 throw new InvalidPasswordException("entered password is not valid!");
@@ -44,9 +44,24 @@ namespace newUniversity.Classes
             Universal.instance.masters.save();
         }
 
-        public string toString(UserObject user)
+        static public string toString(UserObject user)
         {
             return user.ID + ";" + user.firstName + " " + user.lastName;
+        }
+
+        static public StudentObject[] allStudents()
+        {
+            return (Universal.instance.students.getAll().ToArray() as StudentObject[]);
+        }
+
+        static public MasterObject[] allMasters()
+        {
+            return (Universal.instance.masters.getAll().ToArray() as MasterObject[]);
+        }
+
+        static public ManagerObject[] allManagers()
+        {
+            return (Universal.instance.managers.getAll().ToArray() as ManagerObject[]);
         }
     }
 }

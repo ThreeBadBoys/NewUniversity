@@ -8,7 +8,7 @@ namespace newUniversity.Classes
 {
     class Manager : User
     {
-        public bool removeCourse(int courseID)
+        static public bool removeCourse(int courseID)
         {
             var course = Universal.instance.courses.getByID(courseID) as DatabaseObject;
             if (course == null)
@@ -24,7 +24,7 @@ namespace newUniversity.Classes
 
         }
 
-        public bool chooseCourse(StudentObject student , int courseID)
+        static public bool chooseCourse(StudentObject student , int courseID)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace newUniversity.Classes
             }
         }
 
-        public bool deleteCourse(StudentObject student, int courseID)
+        static public bool deleteCourse(StudentObject student, int courseID)
         {
             if (student.currentSemisterCourses.Contains(courseID))
             {
@@ -72,7 +72,6 @@ namespace newUniversity.Classes
         {
             var student = new StudentObject(name, family, field);
             Universal.instance.students.insert(student);
-            Universal.instance.students.save();
             return true;
         }
         else
@@ -85,14 +84,11 @@ namespace newUniversity.Classes
         {
             var master = new MasterObject(name, family, field);
             Universal.instance.masters.insert(master);
-            Universal.instance.masters.save();
             return true;
             }
         else
             return false;
-
         }
-
         public static bool addManager(string name, string family)
         {
             if (name != null && family != null)
@@ -105,6 +101,9 @@ namespace newUniversity.Classes
                 return false;
         }
 
+        static public void endingSemister()
+        {
 
+        }
     }
 }

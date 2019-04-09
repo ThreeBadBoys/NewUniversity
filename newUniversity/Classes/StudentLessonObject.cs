@@ -2,11 +2,11 @@
 namespace newUniversity.Classes
 {
     [Serializable]
-    class PassedLessonObject : LessonObject
+    class StudentLessonObject : LessonObject
     {
         public int grade;
 
-        public PassedLessonObject(string title, short unitsCount, int courseID, int studentID, int grade)
+        public StudentLessonObject(string title, short unitsCount, int courseID, int studentID, int grade)
         {
             CourseObject course = Universal.instance.courses.getByID(courseID) as CourseObject;
             this.title = title;
@@ -17,7 +17,7 @@ namespace newUniversity.Classes
             this.grade = grade;
         }
 
-        public PassedLessonObject()
+        public StudentLessonObject()
         {
             this.title = "";
             this.name = "";
