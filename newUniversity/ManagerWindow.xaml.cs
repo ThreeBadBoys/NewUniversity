@@ -28,7 +28,7 @@ namespace newUniversity
         public ManagerWindow(object o)
         {
             InitializeComponent();
-            bindData(o);
+        bindData(o);
         }
         public void bindData(object o)
         {
@@ -102,7 +102,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Visible;
             GridSTUDENTS.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -118,7 +117,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Visible;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridMASTERLIST.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
@@ -134,7 +132,6 @@ namespace newUniversity
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Visible;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridMASTERLIST.Visibility = Visibility.Collapsed;
@@ -150,7 +147,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Visible;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -167,7 +163,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Visible;
@@ -182,7 +177,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -199,7 +193,6 @@ namespace newUniversity
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -213,7 +206,6 @@ namespace newUniversity
             ResetUnitChoicePanel();
             GridSTUDENTS.Visibility = Visibility.Visible;
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -229,7 +221,6 @@ namespace newUniversity
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -245,7 +236,6 @@ namespace newUniversity
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;
@@ -305,11 +295,6 @@ namespace newUniversity
                 txtCreateLastName.Text.ToString(),
                 txtCreateMajor.Text.ToString());
         }
-        private void btnAddCourse_Click(object sender, RoutedEventArgs e)
-        {
-            MyBlureEffectLoading();
-            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
-        }
 
         private void btnPassTheTerm_Click(object sender, RoutedEventArgs e)
         {
@@ -320,7 +305,6 @@ namespace newUniversity
         private void btnNotPassTheTerm_Click(object sender, RoutedEventArgs e)
         {
             GridCreateNewUser.Visibility = Visibility.Collapsed;
-            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridRemoveUserCompletely.Visibility = Visibility.Collapsed;
             GridRemoveCourse.Visibility = Visibility.Collapsed;
             GridControllingUnitChoosing.Visibility = Visibility.Collapsed;

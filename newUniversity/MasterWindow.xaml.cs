@@ -20,10 +20,11 @@ namespace newUniversity
     /// </summary>
     public partial class MasterWindow : Window
     {
-        public MasterWindow(object o)
+        public MasterWindow
+            (object o)
         {
             InitializeComponent();
-            bindData(o);
+      bindData(o);
         }
         public void bindData(object o)
         {
@@ -37,6 +38,7 @@ namespace newUniversity
         }
         private void listViewItem0_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridListOfClasses.Visibility = Visibility.Visible;
             GridChangePassword.Visibility = Visibility.Collapsed;
             GridArrow.Visibility = Visibility.Collapsed;
@@ -44,11 +46,18 @@ namespace newUniversity
 
         private void listViewItem1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            GridCreateNewCourse.Visibility = Visibility.Collapsed;
             GridListOfClasses.Visibility = Visibility.Collapsed;
             GridChangePassword.Visibility = Visibility.Visible;
             GridArrow.Visibility = Visibility.Collapsed;
         }
-
+        private void listViewItem2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GridCreateNewCourse.Visibility = Visibility.Visible;
+            GridListOfClasses.Visibility = Visibility.Collapsed;
+            GridChangePassword.Visibility = Visibility.Collapsed;
+            GridArrow.Visibility = Visibility.Collapsed;
+        }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             LoginPage loginWindow = new LoginPage();
@@ -99,5 +108,11 @@ namespace newUniversity
         {
 
         }
+        private void btnAddCourse_Click(object sender, RoutedEventArgs e)
+        {
+ 
+            //TODO: RESULTS OF CREATING NEW Course WITH UI SHOULD BE SET
+        }
+
     }
 }
