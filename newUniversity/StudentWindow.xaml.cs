@@ -13,21 +13,13 @@ namespace newUniversity
     {
         private object o;
         private static int counter1 = 0;
-        List<CHOSENCourses> list = new List<CHOSENCourses>();
-        CHOSENCourses cr1 = new CHOSENCourses(1, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
-        CHOSENCourses cr2 = new CHOSENCourses(2, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
-        CHOSENCourses cr3 = new CHOSENCourses(3, "ALGO", "123", "03/12/2019", "12:00", "JAFAR TANHA", 9876);
-        CHOSENCourses cr4 = new CHOSENCourses(4, "ALGsdaO", "444", "03/06/2019", "16:00", "RAZAVI", 1313);
         public StudentWindow()
         //object o)
         {
             InitializeComponent();
             //    bindData(o);
             this.o = o;
-            list.Add(cr1);
-            list.Add(cr2);
-            list.Add(cr3);
-            list.Add(cr4);
+       
         }
         public void bindData(object o)
         {
@@ -248,7 +240,7 @@ namespace newUniversity
             //Be sure if the course with this id Exists
             //Then delete it
 
-            DATAGRIDADDORREMOVECOURSE.Items.Add(cr1);
+            //DATAGRIDADDORREMOVECOURSE.Items.Add(cr1);
 
 
         }
@@ -260,7 +252,9 @@ namespace newUniversity
             //Here We got the id of the course which should be deleted to user's chosen units.
             //Now we have to search and find that chosen course.If it exists then delete it
             //else show error    if(DATAGRIDUNITCHOICE.Items[i].Equals(list[j]))
-            DATAGRIDADDORREMOVECOURSE.Items.Remove(cr1);
+         
+            
+            // DATAGRIDADDORREMOVECOURSE.Items.Remove(cr1);
         }
 
         private void btn_change_Password_Click(object sender, RoutedEventArgs e)
@@ -292,7 +286,6 @@ namespace newUniversity
             public string TermCourseDays { get; set; }
             public string TermCourseEXAMDATE { get; set; }
             public string TermCourseEXAMTIME { get; set; }
-
 
             public ThisTermCourse(
                 string TermCourseID,
