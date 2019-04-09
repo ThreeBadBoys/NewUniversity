@@ -24,8 +24,8 @@ namespace newUniversity.Classes
             this.fileName = fileName;
             IDTree = new BTree();
             NameTree = new BTree();
-            FileHandler.CreateBtreeFile(fileName + "idtree", IDTree);
-            FileHandler.CreateBtreeFile(fileName + "nametree", NameTree);
+            FileHandler.CreateBtreeFile(fileName + "id", IDTree);
+            FileHandler.CreateBtreeFile(fileName + "name", NameTree);
             FileHandler.CreateFile(fileName);
         } // READ
 
@@ -43,12 +43,12 @@ namespace newUniversity.Classes
 
         protected void saveIdTree()
         {
-            FileHandler.CreateBtreeFile(fileName + "idtree", IDTree);
+            FileHandler.CreateBtreeFile(fileName + "id", IDTree);
         }//WRITE
 
         protected void saveNameTree()
         {
-            FileHandler.CreateBtreeFile(fileName + "nametree", NameTree);
+            FileHandler.CreateBtreeFile(fileName + "name", NameTree);
         }//WRITE
 
         protected void loadIdTree()
@@ -75,12 +75,12 @@ namespace newUniversity.Classes
 
         public void insertEdittedRecordToFile(int index)
         {
-            FileHandler.SaveEdited(index, new T(), fileName);
+            FileHandler.SaveEdited(index, dbObject, fileName);
         }
 
         public int insertRecordToFile()
         {
-            return FileHandler.Add<T>(IDTree, new T(), fileName);
+            return FileHandler.Add<T>(IDTree, dbObject, fileName);
         }
 
         public void save()
@@ -121,9 +121,9 @@ namespace newUniversity.Classes
                 else
                     insertEdittedRecordToFile(index);
             }
-            else if (dbObject is PassedLessonObject)
+            else if (dbObject is StudentLessonObject)
             {
-                int index = IDTree.get((dbObject as PassedLessonObject).ID + "");
+                int index = IDTree.get((dbObject as StudentLessonObject).ID + "");
                 if (index == -1)
                     insertRecordToFile();
                 else
@@ -156,9 +156,9 @@ namespace newUniversity.Classes
                 IDTree.put((dbObject as CourseObject).ID + "", index);
                 insertRecordToFile();
             }
-            else if (dbObject is PassedLessonObject)
+            else if (dbObject is StudentLessonObject)
             {
-                IDTree.put((dbObject as PassedLessonObject).ID + "", index);
+                IDTree.put((dbObject as StudentLessonObject).ID + "", index);
                 insertRecordToFile();
             }
             saveTrees();
@@ -222,11 +222,11 @@ namespace newUniversity.Classes
                     save(index);
                 }
             }
-            else if (newObject is PassedLessonObject)
+            else if (newObject is StudentLessonObject)
             {
                 try
                 {
-                    getByID((newObject as PassedLessonObject).ID);
+                    getByID((newObject as StudentLessonObject).ID);
                     throw new DuplicateException();
                 }
                 catch (NotFoundException)
@@ -254,6 +254,18 @@ namespace newUniversity.Classes
             {
                 throw new NotFoundException("argument to delete() is null");
             }
+        }
+
+        public List<object> getAll()
+        {
+            List<object> items = new List<object>();
+            List<int> indexes = IDTree.toArray();
+            for(int i = 0; i < indexes.Count; i++)
+            {
+                loadRecordFromFile(indexes[i]);
+                items.Add(dbObject);
+            }
+            return items;
         }
 
         public object getByID(int id)
