@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace newUniversity.Classes
 {
     [Serializable]
-    class Database<T>
+    class Database<T> where T : new ()
     {
         string fileName = "";
         public string getFileName()
@@ -64,23 +64,23 @@ namespace newUniversity.Classes
         public void loadRecordFromFile(int index)
         {
             bool read;
-            dbObject = FileHandler.Load(dbObject, out read, fileName, index);
+            dbObject = FileHandler.Load(new T(), out read, fileName, index);
         }
 
         public void loadRecordFromFile(string FileName, int index)
         {
             bool read;
-            dbObject = FileHandler.Load(dbObject, out read, FileName, index);
+            dbObject = FileHandler.Load(new T(), out read, FileName, index);
         }
 
         public void insertEdittedRecordToFile(int index)
         {
-            FileHandler.SaveEdited(index, dbObject, fileName);
+            FileHandler.SaveEdited(index, new T(), fileName);
         }
 
         public int insertRecordToFile()
         {
-            return FileHandler.Add<T>(IDTree, dbObject, fileName);
+            return FileHandler.Add<T>(IDTree, new T(), fileName);
         }
 
         public void save()

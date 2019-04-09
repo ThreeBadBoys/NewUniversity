@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace newUniversity.Classes
 {
     [Serializable]
-  public class StudentObject : UserObject
+    public class StudentObject : UserObject
     {
         public List<int> passedLessons;
         public List<int> currentSemisterCourses;
@@ -44,6 +44,18 @@ namespace newUniversity.Classes
             this.lastName = family;
             this.field = field;
             this.name = name + " " + family;
+            this.password = ID + "";
+            currentSemisterCourses = new List<int>(20);
+            passedLessons = new List<int>(100);
+        }
+
+        public StudentObject()
+        {
+            this.ID = 0;
+            this.firstName = "";
+            this.lastName = "";
+            this.field = "";
+            this.name = "";
             this.password = ID + "";
             currentSemisterCourses = new List<int>(20);
             passedLessons = new List<int>(100);

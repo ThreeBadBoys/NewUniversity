@@ -23,5 +23,16 @@ namespace newUniversity.Classes
             this.password = ID + "";
             this.courses = new List<int>(20);
         }
+
+        public MasterObject()
+        {
+            this.ID = 0;
+            this.firstName = "";
+            this.lastName = "";
+            this.field = "";
+            this.name = "";
+            this.password = ID + "";
+            this.courses = new List<int>(20);
+        }
     }
 }
