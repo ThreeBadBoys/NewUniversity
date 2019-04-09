@@ -25,7 +25,7 @@ namespace newUniversity
         public LoginPage()
         {
             InitializeComponent();
- 
+
         }
 
         BlurEffect myEffect = new BlurEffect();
@@ -82,12 +82,12 @@ namespace newUniversity
                 }
 
                 MyBlureEffectLoading();
-               MasterObject master = Interface.authentication("Master", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as MasterObject;
+                MasterObject master = Interface.authentication("Master", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as MasterObject;
                 if (
                    master != null)
                 {
                     MyBlureEffectCorrect();
-                    MasterWindow masterWindow = new MasterWindow( master);
+                    MasterWindow masterWindow = new MasterWindow(master);
                     masterWindow.Show();
                     CloseWIndowUsingIdentifier("login");
                 }
@@ -109,9 +109,8 @@ namespace newUniversity
 
 
                 MyBlureEffectLoading();
-               StudentObject student = Interface.authentication("Student", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as StudentObject;
-                if(true)
-                    //student != null)
+                StudentObject student = Interface.authentication("Student", UserNameInput.Text.ToString(), passwordInput.Password.ToString()) as StudentObject;
+                if (student != null)
                 {
                     MyBlureEffectCorrect();
                     StudentWindow studentWindow = new StudentWindow(
