@@ -305,6 +305,7 @@
     <Resource Include="arrow.png" />
     <Resource Include="Assets\icons8_Crowd_50px.png" />
     <Resource Include="Assets\icons8_Classroom_50px.png" />
+    <Resource Include="Assets\icons8_Grades_32px_2.png" />
     <Content Include="Assets\sky.MP4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

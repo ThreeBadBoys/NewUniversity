@@ -198,7 +198,7 @@ namespace newUniversity
 
         private void listViewItem6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //MasterList
+            
             GridSTUDENTS.Visibility = Visibility.Collapsed;
             ResetUnitChoicePanel();
             GridCreateNewUser.Visibility = Visibility.Collapsed;
