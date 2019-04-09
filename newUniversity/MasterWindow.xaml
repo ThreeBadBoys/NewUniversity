@@ -410,7 +410,7 @@
             </Grid>
 
 
-            <Grid x:Name="GridInsertGrade" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Visible" >
+            <Grid x:Name="GridInsertGrade" Grid.Column="0" Margin="0" Grid.RowSpan="2" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
