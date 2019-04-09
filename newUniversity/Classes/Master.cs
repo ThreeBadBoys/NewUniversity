@@ -30,7 +30,7 @@ namespace newUniversity.Classes
             }
         }
 
-        static public void addGrade(int stdID, int crsID, double grade)
+        static public void insertGrade(object master, int stdID, int crsID, double grade)
         {
             try
             {
@@ -40,6 +40,8 @@ namespace newUniversity.Classes
                 else
                 {
                     StudentLessonObject stdlsn = Universal.instance.studentLessons.getByID(int.Parse(crsID + "" + stdID)) as StudentLessonObject;
+                    if ((master as MasterObject).ID != stdlsn.masterID)
+                        throw new Exception("permission denied!");
                     stdlsn.grade = grade;
                     Universal.instance.studentLessons.loadObject(stdlsn);
                     Universal.instance.studentLessons.save();

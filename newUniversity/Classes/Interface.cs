@@ -93,11 +93,11 @@ namespace newUniversity.Classes
 
         public static List<StudentObject> getAllStudents()//TODO
         {
-            return null;
+            return new List<StudentObject>(User.allStudents());
         }
         public static List<MasterObject> getAllMasters()//TODO
         {
-            return null;
+            return new List<MasterObject>(User.allMasters());
         }
         public static bool passTerm()
         {
@@ -124,26 +124,20 @@ namespace newUniversity.Classes
 
         public static List<CourseObject> getAllClasses(object o)
         {
-            throw new NotImplementedException();
+            throw new  NotImplementedException();
         }
 
 
-        public static bool insertGrade(object o, string courseID, string studentID, string grade)
+        public static bool insertGrade(object master,string courseID,string studentID,string grade)
         {
-
+            Master.insertGrade(master, int.Parse(courseID), int.Parse(studentID), double.Parse(grade));
             throw new NotImplementedException();
         }
 
 
         //STUDENT-------------------------------------------------------------------------------------
 
-        
 
-
-        public static CourseObject[] getThisTermCourse(object o)
-        {
-            throw new NotImplementedException();
-        }
 
 
 
