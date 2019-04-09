@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace newUniversity.Classes
 {
@@ -10,24 +9,23 @@ namespace newUniversity.Classes
     {
         //DEFAULT-------------------------------------------------------------------------------------
         //Change The users Password according the type of the user
-        public static bool changeUserPassword(object user, string currentPassword,
+        public static void changeUserPassword(object user, string currentPassword,
            string newPassword, string confirmationPassword, string type)
         {
-
             switch (type)
             {
                 case "Manager":
-                    throw new NotImplementedException();
+                    Manager.changePassword(user as ManagerObject, currentPassword, newPassword, confirmationPassword);
+                    break;
 
                 case "Master":
-                    throw new NotImplementedException();
+                    Master.changePassword(user as MasterObject, currentPassword, newPassword, confirmationPassword);
                     break;
 
                 case "Student":
-                    throw new NotImplementedException();
+                    Student.changePassword(user as StudentObject, currentPassword, newPassword, confirmationPassword);
                     break;
             }
-            throw new NotImplementedException();
         }
 
         //LOGIN--------------------------------------------------------------------------------------
@@ -86,81 +84,106 @@ namespace newUniversity.Classes
         }
 
         //Deleting the User from the DataBase Completely
-        public static bool removeUserCompletely(string userType, string userId)
+        public static void removeUserCompletely(string type, string userId)
         {
-            throw new NotImplementedException();
-        }
-        //Removing the Student current Term
-        public static bool removeStudentTerm(string stdId)
-        {
-            throw new NotImplementedException();
+            switch (type)
+            {
+                case "Manager":
+                    ManagerObject manager = Universal.instance.managers.getByID(int.Parse(userId)) as ManagerObject;
+                    User.deleteUser(manager);
+                    break;
+
+                case "Master":
+                    MasterObject master = Universal.instance.masters.getByID(int.Parse(userId)) as MasterObject;
+                    User.deleteUser(master);
+                    break;
+
+                case "Student":
+                    StudentObject student = Universal.instance.students.getByID(int.Parse(userId)) as StudentObject;
+                    User.deleteUser(student);
+                    break;
+            }
         }
         
+        //Removing the Student current Term
+        public static void removeStudentTerm(string studentId)
+        {
+            StudentObject student = Universal.instance.students.getByID(int.Parse(studentId)) as StudentObject;
+            Student.deleteTerm(student);
+        }
+
         public static bool removeCourseCompletely(string crsID)
         {
             throw new NotImplementedException();
         }
-        //Removing the Course fror the student
-        public static bool removeCourseForStudent(string studentId, string crsID)
+        //Removing the Course from the student
+        public static void removeCourseForStudent(string studentId, string crsID)
         {
-            throw new NotImplementedException();
+            StudentObject student = Universal.instance.students.getByID(int.Parse(studentId)) as StudentObject;
+            Student.deleteCourse(student, int.Parse(crsID));
         }
-        public static bool controllingUnitChoice(bool isUnitChoiceActive, bool isAddRemoveActive)
+        public static void controllingUnitChoice(bool isUnitChoiceActive, bool isAddRemoveActive)
         {
-            throw new NotImplementedException();
+            Universal.instance.isAbleUnitChoice = isUnitChoiceActive;
+            Universal.instance.isAbleUnitEdit = isAddRemoveActive;
+            FileStream file = File.Create("Uni");
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, Universal.instance);
+            file.Close();
         }
 
         public static List<StudentObject> getAllStudents()//TODO
         {
             return new List<StudentObject>(User.allStudents());
         }
+
         public static List<MasterObject> getAllMasters()//TODO
         {
             return new List<MasterObject>(User.allMasters());
         }
+
         public static bool passTerm()
         {
             throw new NotImplementedException();
         }
         //MASTER--------------------------------------------------------------------------------------
-        public static bool removeCourseMaster(string crsID)
+        public static void removeCourseMaster(object master, string crsID)
         {
-            throw new NotImplementedException();
+            Master.deleteCourse(master as MasterObject, int.Parse(crsID));
         }
-        public static bool addClass(
-            object manager,
-            string courseName,
+
+        public static void addClass(
+            object master,
+            string courseTitle,
             string courseId,
-            string UnitNO,
+            string UnitsCount,
             string examDate,
             string examTime,
             string courseTime,
             string classDays
             )
         {
-            throw new NotImplementedException();
+            Master.addCourse(master as MasterObject, int.Parse(courseId), courseTitle, short.Parse(UnitsCount), examDate, examTime, courseTime, classDays);
         }
 
         //Getting the CourseObjects of the Master that chose
-        public static List<CourseObject> getAllClasses(object o)
+        public static List<CourseObject> getAllClasses(object mst)
         {
-            throw new  NotImplementedException();
+            return new List<CourseObject>(Master.getAllCourses(mst as MasterObject));
         }
 
-
-        public static bool insertGrade(object master,string courseID,string studentID,string grade)
+        public static void insertGrade(object master,string courseID,string studentID,string grade)
         {
             Master.insertGrade(master, int.Parse(courseID), int.Parse(studentID), double.Parse(grade));
-            throw new NotImplementedException();
         }
 
 
         //STUDENT-------------------------------------------------------------------------------------
 
         //Getting the Student's current Term Courses
-        public static CourseObject[] getThisTermCourse(object o)
+        public static CourseObject[] getThisTermCourse(object std)
         {
-            throw new NotImplementedException();
+            return Student.getCurrentCourses(std as StudentObject);
         }
 
 

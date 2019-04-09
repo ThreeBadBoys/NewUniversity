@@ -2,7 +2,7 @@
 namespace newUniversity.Classes
 {
     [Serializable]
-    class StudentLessonObject : LessonObject
+    public class StudentLessonObject : LessonObject
     {
         public double grade;
 

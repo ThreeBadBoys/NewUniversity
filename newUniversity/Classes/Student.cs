@@ -2,7 +2,7 @@
 {
     class Student : User
     {
-        public void chooseCourse(StudentObject student, int courseId)
+        static public void chooseCourse(StudentObject student, int courseId)
         {
             try
             {
@@ -29,7 +29,7 @@
             }
         }
 
-        public void deleteCourse(StudentObject student, int courseId)
+        static public void deleteCourse(StudentObject student, int courseId)
         {
             if (student.currentSemisterCourses.Contains(int.Parse(courseId + student.ID + "")))
             {
@@ -45,6 +45,21 @@
             }
             else
                 throw new NotFoundException("entered course ID was not selected recently!");
+        }
+
+        static public CourseObject[] getCurrentCourses(StudentObject std)
+        {
+            int[] arr = new int[20];
+            for(int i = 0;i< std.currentSemisterCourses.Count; i++)
+            {
+                arr[i] = int.Parse(std.currentSemisterCourses[i].ToString().Substring(0,5));
+            }
+            return (Universal.instance.studentLessons.getAll(arr).ToArray() as CourseObject[]);
+        }
+
+        static public void deleteTerm(StudentObject std)
+        {
+            std.currentSemisterCourses.Clear();
         }
     }
 }

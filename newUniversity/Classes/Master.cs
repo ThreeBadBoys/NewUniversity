@@ -53,5 +53,10 @@ namespace newUniversity.Classes
                 throw new NotFoundException("course not found or this student hadn't choose it");
             }
         }
+
+        static public CourseObject[] getAllCourses(MasterObject mst)
+        {
+            return (Universal.instance.studentLessons.getAll(mst.courses.ToArray()).ToArray() as CourseObject[]);
+        }
     }
 }

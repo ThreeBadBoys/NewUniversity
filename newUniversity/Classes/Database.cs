@@ -240,7 +240,7 @@ namespace newUniversity.Classes
 
         public void loadObject(T newObject)
         {
-            this.dbObject = newObject;
+            dbObject = newObject;
         }
 
         public void delete(DatabaseObject obj)
@@ -263,6 +263,17 @@ namespace newUniversity.Classes
             for(int i = 0; i < indexes.Count; i++)
             {
                 loadRecordFromFile(indexes[i]);
+                items.Add(dbObject);
+            }
+            return items;
+        }
+
+        public List<object> getAll(int[] arr)
+        {
+            List<object> items = new List<object>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                loadRecordFromFile(arr[i]);
                 items.Add(dbObject);
             }
             return items;

@@ -244,7 +244,7 @@ namespace newUniversity
 
         private void btn_DeleteCourse_Click(object sender, RoutedEventArgs e)
         {
-            Interface.removeCourseMaster(txtCourseIDMaster.Text.ToString());
+            Interface.removeCourseMaster(o, txtCourseIDMaster.Text.ToString());
         }
 
         private void Button_Insert_Grade_Click(object sender, RoutedEventArgs e)

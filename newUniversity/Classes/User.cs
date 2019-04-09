@@ -44,6 +44,24 @@ namespace newUniversity.Classes
             Universal.instance.masters.save();
         }
 
+        static public void deleteUser(StudentObject user)
+        {
+            Universal.instance.students.delete(user);
+            Universal.instance.students.save();
+        }
+
+        static public void deleteUser(ManagerObject user)
+        {
+            Universal.instance.managers.delete(user);
+            Universal.instance.managers.save();
+        }
+
+        static public void deleteUser(MasterObject user)
+        {
+            Universal.instance.masters.delete(user);
+            Universal.instance.masters.save();
+        }
+
         static public string toString(UserObject user)
         {
             return user.ID + ";" + user.firstName + " " + user.lastName;
