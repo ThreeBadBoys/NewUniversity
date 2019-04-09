@@ -45,7 +45,7 @@ namespace newUniversity.Classes
                 }
 
             }
-            catch (NotFoundException e)
+            catch (NotFoundException)
             {
                 return null;
             }

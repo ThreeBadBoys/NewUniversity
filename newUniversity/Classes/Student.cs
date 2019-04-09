@@ -6,7 +6,7 @@
         {
             try
             {
-                CourseObject course = Universal.instance.courses.getByID(courseId);
+                CourseObject course = Universal.instance.courses.getByID(courseId) as CourseObject;
                 if (student.currentSemisterCourses.Contains(courseId))
                     throw new DuplicateException("entered course ID recently selected!");
                 else
@@ -32,7 +32,7 @@
                 student.currentSemisterCourses.Remove(courseId);
                 Universal.instance.students.loadObject(student);
                 Universal.instance.students.save();
-                CourseObject course = Universal.instance.courses.getByID(courseId);
+                CourseObject course = Universal.instance.courses.getByID(courseId) as CourseObject;
                 course.studentsID.Remove(student.ID);
                 Universal.instance.courses.loadObject(course);
                 Universal.instance.courses.save();

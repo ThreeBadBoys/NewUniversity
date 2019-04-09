@@ -127,10 +127,10 @@ namespace newUniversity.Classes
         public static BTree loadBTreeFromFile(string fileName , bool isIDTree)
         {
             BTree btree;
-            if (File.Exists(fileName + (isIDTree ?"idTree" : "nameTree")))
+            if (File.Exists(fileName + (isIDTree ?"idtree" : "nametree")))
             {
-                FileStream file = File.Open(fileName + "idTree", FileMode.Open);
-                if (new FileInfo(fileName + (isIDTree ? "idTree" : "nameTree")).Length != 0)
+                FileStream file = File.Open(fileName + (isIDTree ? "idtree" : "nametree"), FileMode.Open);
+                if (new FileInfo(fileName + (isIDTree ? "idtree" : "nametree")).Length != 0)
                 {
                     BinaryFormatter bf = new BinaryFormatter();
                     btree = bf.Deserialize(file) as BTree;

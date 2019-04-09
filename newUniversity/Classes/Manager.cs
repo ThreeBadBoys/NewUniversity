@@ -10,7 +10,7 @@ namespace newUniversity.Classes
     {
         public bool removeCourse(int courseID)
         {
-            var course = Universal.instance.courses.getByID(courseID);
+            var course = Universal.instance.courses.getByID(courseID) as DatabaseObject;
             if (course == null)
                 throw new NotFoundException("entered courseId not exists!");
             else
@@ -28,7 +28,7 @@ namespace newUniversity.Classes
         {
             try
             {
-                var course = Universal.instance.courses.getByID(courseID);
+                var course = Universal.instance.courses.getByID(courseID) as CourseObject;
                 if (student.currentSemisterCourses.Contains(courseID))
                     throw new DuplicateException("entered course ID recently selected!");
                 else
@@ -55,7 +55,7 @@ namespace newUniversity.Classes
                 student.currentSemisterCourses.Remove(courseID);
                 Universal.instance.students.loadObject(student);
                 Universal.instance.students.save();
-                CourseObject course = Universal.instance.courses.getByID(courseID);
+                CourseObject course = Universal.instance.courses.getByID(courseID) as CourseObject;
                 course.studentsID.Remove(student.ID);
                 Universal.instance.courses.loadObject(course);
                 Universal.instance.courses.save();
@@ -99,7 +99,6 @@ namespace newUniversity.Classes
             {
                 var manager = new ManagerObject(name, family);
                 Universal.instance.managers.insert(manager);
-                Universal.instance.managers.save();
                 return true;
             }
             else
