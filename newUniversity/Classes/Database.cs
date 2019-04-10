@@ -19,8 +19,6 @@ namespace newUniversity.Classes
 
         public Database(string fileName)
         {
-   
-
             this.fileName = fileName;
             IDTree = new BTree();
             NameTree = new BTree();
@@ -258,6 +256,7 @@ namespace newUniversity.Classes
 
         public List<object> getAll()
         {
+            loadTrees();
             List<object> items = new List<object>();
             List<int> indexes = IDTree.toArray();
             for(int i = 0; i < indexes.Count; i++)
@@ -270,6 +269,7 @@ namespace newUniversity.Classes
 
         public List<object> getAll(int[] arr)
         {
+            loadTrees();
             List<object> items = new List<object>();
             for (int i = 0; i < arr.Length; i++)
             {

@@ -132,14 +132,14 @@ namespace newUniversity.Classes
             file.Close();
         }
 
-        public static List<StudentObject> getAllStudents()//TODO
+        public static List<object> getAllStudents()//TODO
         {
-            return new List<StudentObject>(User.allStudents());
+            return User.allStudents();
         }
 
-        public static List<MasterObject> getAllMasters()//TODO
+        public static List<object> getAllMasters()//TODO
         {
-            return new List<MasterObject>(User.allMasters());
+            return User.allMasters();
         }
 
         public static bool passTerm()

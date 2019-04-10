@@ -40,12 +40,12 @@ namespace newUniversity.Classes
         }
         public StudentObject(string name, string family, string field)
         {
-            this.ID = int.Parse(Universal.instance.students.getLastID()) + 1;
-            this.firstName = name;
-            this.lastName = family;
+            ID = int.Parse(Universal.instance.students.getLastID()) + 1;
+            firstName = name;
+            lastName = family;
             this.field = field;
             this.name = name + " " + family;
-            this.password = ID + "";
+            password = ID + "";
             currentSemisterCourses = new List<int>(20);
             passedLessons = new List<int>(100);
         }

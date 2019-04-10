@@ -371,8 +371,8 @@ namespace newUniversity
         {
             counter1 = 0;
             DATAGRIDGSTUDENTS.Items.Clear();
-            List<StudentObject> students = Interface.getAllStudents();
-            if (students == null) students = new List<StudentObject>();
+            List<object> students = Interface.getAllStudents();
+            if (students == null) students = new List<object>();
             foreach (StudentObject std in students)
             {
                 DATAGRIDGSTUDENTS.Items.Add(new Student(std.firstName + std.lastName, Convert.ToString(std.ID), std.field));
@@ -412,11 +412,17 @@ namespace newUniversity
         {
             counter2 = 0;
             DATAGRIDGMASTERS.Items.Clear();
-            List<MasterObject> masters = Interface.getAllMasters();
-            if (masters == null) masters = new List<MasterObject>();
-            foreach (MasterObject mst in masters)
+            List<object> masters = User.allMasters();
+            if (masters == null) masters = new List<object>();
+            for(int i = 0;i<masters.Count;i++)
             {
-                DATAGRIDGMASTERS.Items.Add(new Master(mst.firstName + mst.lastName, Convert.ToString(mst.ID), mst.field));
+                if (masters[i] == null) break;
+                MasterObject mst = masters[i] as MasterObject;
+                    DATAGRIDGMASTERS.Items.Add(new Master(
+                        mst.firstName + mst.lastName,
+                        mst.ID + "",
+                        mst.field));
+                
             }
         }
 

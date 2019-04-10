@@ -75,7 +75,7 @@ namespace newUniversity.Classes
 
         public string getLastID()
         {
-            return n == 0 ? "98000" : searchID(root, height);
+            return n == 0 ? "97999" : searchID(root, height);
         }
 
         private string searchID(Node x, int ht)

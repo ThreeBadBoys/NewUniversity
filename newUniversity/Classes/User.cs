@@ -24,7 +24,7 @@ namespace newUniversity.Classes
         {
             if (currentPassword != user.password)
                 throw new InvalidPasswordException("entered password is not valid!");
-            else if (currentPassword != confirmPassword)
+            else if (newPassword != confirmPassword)
                 throw new InvalidPasswordException("entered password for confirm is not valid!");
             else
                 user.password = newPassword;
@@ -67,14 +67,14 @@ namespace newUniversity.Classes
             return user.ID + ";" + user.firstName + " " + user.lastName;
         }
 
-        static public StudentObject[] allStudents()
+        static public List<object> allStudents()
         {
-            return (Universal.instance.students.getAll().ToArray() as StudentObject[]);
+            return Universal.instance.students.getAll();
         }
 
-        static public MasterObject[] allMasters()
+        static public List<object> allMasters()
         {
-            return (Universal.instance.masters.getAll().ToArray() as MasterObject[]);
+            return (Universal.instance.masters.getAll());
         }
 
         static public ManagerObject[] allManagers()
