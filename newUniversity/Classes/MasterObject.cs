@@ -10,29 +10,54 @@ namespace newUniversity.Classes
     [Serializable]
     public class MasterObject : UserObject
     {
-        public string field;
+        char[] Field = new char[20];
         public List<int> courses;
-        
+
+        public string field
+        {
+            get
+            {
+                string temp = "";
+                for (int i = 0; i < Field.Length; i++)
+                {
+                    if (Field[i] != '\0')
+                        temp += Field[i];
+                    else
+                        break;
+                }
+                return temp;
+            }
+            set
+            {
+                int i;
+                for (i = 0; i < value.Length; i++)
+                {
+                    Field[i] = value[i];
+                }
+                Field[i] = '\0';
+            }
+        }
+
         public MasterObject(string name, string family, string field)
         {
-            this.ID = int.Parse(Universal.instance.masters.getLastID()) + 1;
-            this.firstName = name;
-            this.lastName = family;
+            ID = int.Parse(Universal.instance.masters.getLastID()) + 1;
+            firstName = name;
+            lastName = family;
             this.field = field;
             this.name = name + " " + family;
-            this.password = ID + "";
-            this.courses = new List<int>(20);
+            password = ID + "";
+            courses = new List<int>(20);
         }
 
         public MasterObject()
         {
-            this.ID = 0;
-            this.firstName = "";
-            this.lastName = "";
-            this.field = "";
-            this.name = "";
-            this.password = ID + "";
-            this.courses = new List<int>(20);
+            ID = 0;
+            firstName = "";
+            lastName = "";
+            field = "";
+            name = "";
+            password = ID + "";
+            courses = new List<int>(20);
         }
     }
 }

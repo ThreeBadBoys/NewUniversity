@@ -38,6 +38,7 @@ namespace newUniversity.Classes
                 Field[i] = '\0';
             }
         }
+
         public StudentObject(string name, string family, string field)
         {
             ID = int.Parse(Universal.instance.students.getLastID()) + 1;
@@ -52,12 +53,12 @@ namespace newUniversity.Classes
 
         public StudentObject()
         {
-            this.ID = 0;
-            this.firstName = "";
-            this.lastName = "";
-            this.field = "";
-            this.name = "";
-            this.password = ID + "";
+            ID = 0;
+            firstName = "";
+            lastName = "";
+            field = "";
+            name = "";
+            password = ID + "";
             currentSemisterCourses = new List<int>(20);
             passedLessons = new List<int>(100);
         }

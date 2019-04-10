@@ -65,6 +65,7 @@ namespace newUniversity.Classes
         {
             if (name != null && family != null && field != null)
             {
+                Universal.instance.students.loadTrees();
                 var student = new StudentObject(name, family, field);
                 Universal.instance.students.insert(student);
                 return true;
@@ -77,6 +78,7 @@ namespace newUniversity.Classes
         {
         if (name != null && family != null && field != null)
         {
+            Universal.instance.masters.loadTrees();
             var master = new MasterObject(name, family, field);
             Universal.instance.masters.insert(master);
             return true;

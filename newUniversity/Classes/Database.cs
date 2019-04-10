@@ -27,7 +27,7 @@ namespace newUniversity.Classes
             FileHandler.CreateFile(fileName);
         } // READ
 
-        protected void loadTrees()
+        public void loadTrees()
         {
             loadIdTree();
             loadNameTree();
@@ -83,8 +83,7 @@ namespace newUniversity.Classes
 
         public void save()
         {
-            if (IDTree == null)
-                loadTrees();
+            loadTrees();
             if (dbObject is StudentObject)
             {
                 int index = IDTree.get((dbObject as StudentObject).ID + "");
@@ -132,8 +131,7 @@ namespace newUniversity.Classes
 
         public void save(int index)
         {
-            if (IDTree == null)
-                loadTrees();
+            loadTrees();
             if (dbObject is StudentObject)
             {
                 IDTree.put((dbObject as StudentObject).ID + "", index);
