@@ -350,7 +350,7 @@
 
                 <Button x:Name="btnAddCourse" VerticalAlignment="Bottom" Margin="301.4,0,314,60" Content="ADD" Click="btnAddClass_Click" />
             </Grid>
-            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Collapsed" Grid.Row="1">
+            <Grid  x:Name="GridListOfClasses" Grid.Column="0" Margin="0,0.2,0.4,0" Visibility="Visible" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -397,11 +397,10 @@
                             <DataGridTextColumn Header="CourseName"   Binding="{Binding ClassCourseName}"/>
                             <DataGridTextColumn Header="CourseID"   Binding="{Binding ClassCourseID}"/>
                             <DataGridTextColumn Header="ClassTime"   Binding="{Binding ClassTime}"/>
-                            <DataGridTextColumn Header="ClassDate"   Binding="{Binding ClassDate}"/>
                             <DataGridTextColumn Header="ClassDays"   Binding="{Binding ClassDays}"/>
                             <DataGridTextColumn Header="ExamTime"   Binding="{Binding ClassExamTime}"/>
                             <DataGridTextColumn Header="ExamDate"   Binding="{Binding ClassExamDate}"/>
-
+                            <DataGridTextColumn Header="Students Count"   Binding="{Binding ClassStudentsCount}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>

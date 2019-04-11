@@ -54,9 +54,9 @@ namespace newUniversity.Classes
             }
         }
 
-        static public CourseObject[] getAllCourses(MasterObject mst)
+        static public  List<object> getAllCourses(MasterObject mst)
         {
-            return (Universal.instance.studentLessons.getAll(mst.courses.ToArray()).ToArray() as CourseObject[]);
+            return Universal.instance.courses.getAll(mst.courses.ToArray());
         }
     }
 }

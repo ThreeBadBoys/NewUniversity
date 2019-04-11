@@ -167,9 +167,9 @@ namespace newUniversity.Classes
         }
 
         //Getting the CourseObjects of the Master that chose
-        public static List<CourseObject> getAllClasses(object mst)
+        public static List<object> getAllClasses(object mst)
         {
-            return new List<CourseObject>(Master.getAllCourses(mst as MasterObject));
+            return Master.getAllCourses(mst as MasterObject);
         }
 
         public static void insertGrade(object master,string courseID,string studentID,string grade)
@@ -180,8 +180,14 @@ namespace newUniversity.Classes
 
         //STUDENT-------------------------------------------------------------------------------------
 
+        public static List<object> chooseCourse(object std ,string courseId)
+        {
+            Student.chooseCourse(std as StudentObject, int.Parse(courseId));
+            return Student.getCurrentCourses(Universal.instance.students.getByID((std as StudentObject).ID) as StudentObject);
+        }
+
         //Getting the Student's current Term Courses
-        public static CourseObject[] getThisTermCourse(object std)
+        public static List<object> getThisTermCourse(object std)
         {
             return Student.getCurrentCourses(std as StudentObject);
         }

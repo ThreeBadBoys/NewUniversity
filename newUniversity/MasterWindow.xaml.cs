@@ -149,19 +149,19 @@ namespace newUniversity
         {
             counter1 = 0;
             DATAGRIDGClASSES.Items.Clear();
-            List<CourseObject> crs = Interface.getAllClasses(o);
+            List<object> crs = Interface.getAllClasses(o) ;
 
             foreach (CourseObject crsObject in crs)
             {
 
-                //DATAGRIDGClASSES.Items.Add(new Class(
-                //    crsObject.name,
-                //    crsObject.ID,
-                //    crsObject.time,
-                //    crsObject.date,
-                //    crsObject.days,
-                //    crsObject.examTime,
-                //    crsObject.examDate));
+                DATAGRIDGClASSES.Items.Add(new Class(
+                    crsObject.name,
+                    crsObject.ID + "",
+                    crsObject.courseTime,
+                    crsObject.studentsID.Count+"",
+                    crsObject.classDays,
+                    crsObject.examTime,
+                    crsObject.examDate));
             }
         }
         class Class
@@ -170,17 +170,17 @@ namespace newUniversity
             public string ClassCourseName { get; set; }
             public string ClassCourseID { get; set; }
             public string ClassTime { get; set; }
-            public string ClassDate { get; set; }
+            public string ClassStudentsCount { get; set; }
             public string ClassDays { get; set; }
             public string ClassExamTime { get; set; }
             public string ClassExamDate { get; set; }
 
-
+   
             public Class(
                 string ClassCourseName,
                 string ClassCourseID,
                 string ClassTime,
-                string ClassDate,
+                string ClassStudentsCount,
                 string ClassDays,
                 string ClassExamTime,
                 string ClassExamDate
@@ -190,7 +190,7 @@ namespace newUniversity
                 this.ClassCourseName = ClassCourseName;
                 this.ClassCourseID = ClassCourseID;
                 this.ClassTime = ClassTime;
-                this.ClassDate = ClassDate;
+                this.ClassStudentsCount = ClassStudentsCount;
                 this.ClassDays = ClassDays;
                 this.ClassExamTime = ClassExamTime;
                 this.ClassExamDate = ClassExamDate;

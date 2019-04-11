@@ -271,7 +271,8 @@ namespace newUniversity.Classes
             List<object> items = new List<object>();
             for (int i = 0; i < arr.Length; i++)
             {
-                loadRecordFromFile(arr[i]);
+                int index = IDTree.get(arr[i] + "");
+                loadRecordFromFile(index);
                 items.Add(dbObject);
             }
             return items;

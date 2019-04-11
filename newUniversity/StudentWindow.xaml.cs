@@ -13,6 +13,7 @@ namespace newUniversity
     {
         private object o;
         private static int counter1 = 0;
+        private static int counter2 = 0;
         public StudentWindow(
         object o)
         {
@@ -192,16 +193,16 @@ namespace newUniversity
             public string CHOSENCOURSEEXAMDATE { get; set; }
             public string CHOSENEXAMTIME { get; set; }
             public string CHOSENCOURSEMASTERNAME { get; set; }
-            public int CHOSENCOURSECLASSNO { get; set; }
-            public CHOSENCourses(int CHOSENCOURSErowNo, string CHOSENCOURSENAME, string CHOSENCOURSEID, string CHOSENCOURSEEXAMDATE, string CHOSENEXAMTIME, string CHOSENCOURSEMASTERNAME, int CHOSENCOURSECLASSNO)
+           
+            public CHOSENCourses(string CHOSENCOURSENAME, string CHOSENCOURSEID, string CHOSENCOURSEEXAMDATE, string CHOSENEXAMTIME, string CHOSENCOURSEMASTERNAME)
             {
-                this.CHOSENCOURSErowNo = CHOSENCOURSErowNo;
+                this.CHOSENCOURSErowNo = ++counter2;
                 this.CHOSENCOURSENAME = CHOSENCOURSENAME;
                 this.CHOSENCOURSEID = CHOSENCOURSEID;
                 this.CHOSENCOURSEEXAMDATE = CHOSENCOURSEEXAMDATE;
                 this.CHOSENEXAMTIME = CHOSENEXAMTIME;
                 this.CHOSENCOURSEMASTERNAME = CHOSENCOURSEMASTERNAME;
-                this.CHOSENCOURSECLASSNO = CHOSENCOURSECLASSNO;
+               
             }
 
 
@@ -234,13 +235,27 @@ namespace newUniversity
         private void AddNewCourseUnitChoiceButton_Click(object sender, RoutedEventArgs e)
         {
             //AddNewCourseUnitChoiceButton
-            string id = AddNewCourseUnitChoicecourseID.Text;
             //Here We got the id of the course which should be added to user's chosen units.
             //Be sure if it wasn't chosen before.
             //Be sure if the course with this id Exists
             //Then delete it
 
-            //DATAGRIDADDORREMOVECOURSE.Items.Add(cr1);
+
+       
+
+
+
+        List<object>crses =   Interface.chooseCourse(o, UnitChoiceID.Text.ToString());
+            foreach(CourseObject crs in crses)
+            {
+                DATAGRIDADDORREMOVECOURSE.Items.Add(
+                    new CHOSENCourses(crs.name,crs.ID+"",crs.examDate,crs.examTime,crs.masterID+""));
+            }
+
+
+
+
+
 
 
         }
@@ -281,30 +296,30 @@ namespace newUniversity
             public int TermCourseNo { get; set; }
             public string TermCourseID { get; set; }
             public string TermCourseNAME { get; set; }
-            public string TermCourseDate { get; set; }
             public string TermCourseTime { get; set; }
             public string TermCourseDays { get; set; }
             public string TermCourseEXAMDATE { get; set; }
             public string TermCourseEXAMTIME { get; set; }
-
+            public string TermCoursesMasterID { get; set; }
+       
             public ThisTermCourse(
                 string TermCourseID,
                 string TermCourseNAME,
-                string TermCourseDate,
                 string TermCourseTime,
                 string TermCourseDays,
                 string TermCourseEXAMDATE,
-                string TermCourseEXAMTIME
+                string TermCourseEXAMTIME,
+                string TermCoursesMasterID
                 )
             {
                 this.TermCourseNo = ++counter1;
                 this.TermCourseID = TermCourseID;
                 this.TermCourseNAME = TermCourseNAME;
-                this.TermCourseDate = TermCourseDate;
                 this.TermCourseTime = TermCourseTime;
                 this.TermCourseDays = TermCourseDays;
                 this.TermCourseEXAMDATE = TermCourseEXAMDATE;
                 this.TermCourseEXAMTIME = TermCourseEXAMTIME;
+                this.TermCoursesMasterID = TermCoursesMasterID;
             }
 
         }
@@ -314,18 +329,20 @@ namespace newUniversity
         {
             counter1 = 0;
             DATAGRIDTHISTERMCOURSES.Items.Clear();
-            CourseObject[] courses = Interface.getThisTermCourse(o);
+            List<object> courses = Interface.getThisTermCourse(o);
             foreach (CourseObject termCrs in courses)
             {
-                //DATAGRIDTHISTERMCOURSES.Items.Add(new ThisTermCourse(
-                //    termCrs.ID,
-                //    termCrs.name,
-                //    termCrs.date,
-                //    termCrs.time,
-                //    termCrs.days,
-                //    termCrs.examDate,
-                //    termCrs.examTime
-                //    ) );
+             
+                DATAGRIDTHISTERMCOURSES.Items.Add(new ThisTermCourse(
+                    termCrs.ID.ToString(),
+                    termCrs.name,
+                    termCrs.courseTime,
+                    termCrs.classDays,
+                    termCrs.examDate,
+                    termCrs.examTime,
+                    termCrs.masterID.ToString()
+
+                    ));
             }
         }
 
@@ -335,6 +352,11 @@ namespace newUniversity
 
 
 
+
+        }
+
+        private void btnReloadUnits_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

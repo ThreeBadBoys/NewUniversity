@@ -7,10 +7,10 @@ namespace newUniversity.Classes
   public  class CourseObject : LessonObject
     {
         public List<int> studentsID;
-        public char[] ExamDate = new char[10];
-        public char[] ExamTime = new char[5];
+        public char[] ExamDate = new char[20];
+        public char[] ExamTime = new char[10];
         public char[] CourseTime = new char[20];
-        public char[] ClassDays = new char[20];
+        public char[] ClassDays = new char[30];
 
 
         public string examDate

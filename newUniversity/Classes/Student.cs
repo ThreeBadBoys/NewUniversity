@@ -1,4 +1,6 @@
-﻿namespace newUniversity.Classes
+﻿using System.Collections.Generic;
+
+namespace newUniversity.Classes
 {
     class Student : User
     {
@@ -47,14 +49,14 @@
                 throw new NotFoundException("entered course ID was not selected recently!");
         }
 
-        static public CourseObject[] getCurrentCourses(StudentObject std)
+        static public List<object> getCurrentCourses(StudentObject std)
         {
             int[] arr = new int[20];
             for(int i = 0;i< std.currentSemisterCourses.Count; i++)
             {
-                arr[i] = int.Parse(std.currentSemisterCourses[i].ToString().Substring(5,4));
+                arr[i] = int.Parse(std.currentSemisterCourses[i].ToString().Substring(5));
             }
-            return (Universal.instance.studentLessons.getAll(arr).ToArray() as CourseObject[]);
+            return Universal.instance.studentLessons.getAll(arr);
         }
 
         static public void deleteTerm(StudentObject std)
